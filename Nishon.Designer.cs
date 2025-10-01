@@ -52,6 +52,12 @@
             this.target = new System.Windows.Forms.Panel();
             this.g8 = new System.Windows.Forms.PictureBox();
             this.txtsharif = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.malumotlarBazasiBilanBoglashToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yangiMalumotlarBazasiYaratishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Malumotlarbazasijoylashuvinikorish = new System.Windows.Forms.ToolStripMenuItem();
+            this.parolniAlmashtirishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adminOynasidanChiqishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.r7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.g7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r6)).BeginInit();
@@ -68,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).BeginInit();
             this.target.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.g8)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // r7
@@ -354,6 +361,57 @@
             this.txtsharif.Size = new System.Drawing.Size(181, 27);
             this.txtsharif.TabIndex = 32;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.malumotlarBazasiBilanBoglashToolStripMenuItem,
+            this.yangiMalumotlarBazasiYaratishToolStripMenuItem,
+            this.Malumotlarbazasijoylashuvinikorish,
+            this.parolniAlmashtirishToolStripMenuItem,
+            this.adminOynasidanChiqishToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1098, 29);
+            this.menuStrip1.TabIndex = 37;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // malumotlarBazasiBilanBoglashToolStripMenuItem
+            // 
+            this.malumotlarBazasiBilanBoglashToolStripMenuItem.Name = "malumotlarBazasiBilanBoglashToolStripMenuItem";
+            this.malumotlarBazasiBilanBoglashToolStripMenuItem.Size = new System.Drawing.Size(387, 25);
+            this.malumotlarBazasiBilanBoglashToolStripMenuItem.Text = "Ma\'lumotlar bazasi bilan bog\'lash yoki almashtirish";
+            this.malumotlarBazasiBilanBoglashToolStripMenuItem.Click += new System.EventHandler(this.malumotlarBazasiBilanBoglashToolStripMenuItem_Click);
+            // 
+            // yangiMalumotlarBazasiYaratishToolStripMenuItem
+            // 
+            this.yangiMalumotlarBazasiYaratishToolStripMenuItem.Name = "yangiMalumotlarBazasiYaratishToolStripMenuItem";
+            this.yangiMalumotlarBazasiYaratishToolStripMenuItem.Size = new System.Drawing.Size(260, 25);
+            this.yangiMalumotlarBazasiYaratishToolStripMenuItem.Text = "Yangi ma\'lumotlar bazasi yaratish";
+            this.yangiMalumotlarBazasiYaratishToolStripMenuItem.Click += new System.EventHandler(this.yangiMalumotlarBazasiYaratishToolStripMenuItem_Click);
+            // 
+            // Malumotlarbazasijoylashuvinikorish
+            // 
+            this.Malumotlarbazasijoylashuvinikorish.Name = "Malumotlarbazasijoylashuvinikorish";
+            this.Malumotlarbazasijoylashuvinikorish.Size = new System.Drawing.Size(297, 25);
+            this.Malumotlarbazasijoylashuvinikorish.Text = "Ma\'lumotlar bazasi joylashuvini ko\'rish";
+            this.Malumotlarbazasijoylashuvinikorish.Click += new System.EventHandler(this.Malumotlarbazasijoylashuvinikorish_Click);
+            // 
+            // parolniAlmashtirishToolStripMenuItem
+            // 
+            this.parolniAlmashtirishToolStripMenuItem.Name = "parolniAlmashtirishToolStripMenuItem";
+            this.parolniAlmashtirishToolStripMenuItem.Size = new System.Drawing.Size(162, 25);
+            this.parolniAlmashtirishToolStripMenuItem.Text = "Parolni almashtirish";
+            // 
+            // adminOynasidanChiqishToolStripMenuItem
+            // 
+            this.adminOynasidanChiqishToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.adminOynasidanChiqishToolStripMenuItem.BackColor = System.Drawing.Color.LightCoral;
+            this.adminOynasidanChiqishToolStripMenuItem.Name = "adminOynasidanChiqishToolStripMenuItem";
+            this.adminOynasidanChiqishToolStripMenuItem.Size = new System.Drawing.Size(202, 25);
+            this.adminOynasidanChiqishToolStripMenuItem.Text = "Admin oynasidan chiqish";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,6 +419,7 @@
             this.BackgroundImage = global::MultiFaceRec.Properties.Resources.Background_nishon1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1098, 561);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnSearchPerson);
             this.Controls.Add(this.btnAddPerson);
             this.Controls.Add(this.txtunvoni);
@@ -375,6 +434,7 @@
             this.DoubleBuffered = true;
             this.Name = "FrmPrincipal";
             this.Text = "Camera Input & Face Detection";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.r7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.g7)).EndInit();
@@ -392,6 +452,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).EndInit();
             this.target.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.g8)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -422,6 +484,12 @@
         private System.Windows.Forms.Panel target;
         private System.Windows.Forms.PictureBox g8;
         private System.Windows.Forms.TextBox txtsharif;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem malumotlarBazasiBilanBoglashToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem yangiMalumotlarBazasiYaratishToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Malumotlarbazasijoylashuvinikorish;
+        private System.Windows.Forms.ToolStripMenuItem parolniAlmashtirishToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adminOynasidanChiqishToolStripMenuItem;
     }
 }
 
