@@ -445,7 +445,6 @@
             this.txts1.Name = "txts1";
             this.txts1.Size = new System.Drawing.Size(32, 33);
             this.txts1.TabIndex = 41;
-            this.txts1.Text = "10";
             this.txts1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnTake
@@ -484,6 +483,7 @@
             this.btnClear.Size = new System.Drawing.Size(60, 60);
             this.btnClear.TabIndex = 51;
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnUpgrade
             // 
@@ -635,7 +635,6 @@
             this.txtbaho.Name = "txtbaho";
             this.txtbaho.Size = new System.Drawing.Size(81, 33);
             this.txtbaho.TabIndex = 80;
-            this.txtbaho.Text = "5";
             this.txtbaho.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtball
@@ -648,7 +647,6 @@
             this.txtball.Name = "txtball";
             this.txtball.Size = new System.Drawing.Size(81, 33);
             this.txtball.TabIndex = 79;
-            this.txtball.Text = "20";
             this.txtball.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtotishdavomiyligi
@@ -661,7 +659,6 @@
             this.txtotishdavomiyligi.Name = "txtotishdavomiyligi";
             this.txtotishdavomiyligi.Size = new System.Drawing.Size(165, 45);
             this.txtotishdavomiyligi.TabIndex = 78;
-            this.txtotishdavomiyligi.Text = "23:55:55";
             this.txtotishdavomiyligi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtsonggiotishsanasi
@@ -674,7 +671,6 @@
             this.txtsonggiotishsanasi.Name = "txtsonggiotishsanasi";
             this.txtsonggiotishsanasi.Size = new System.Drawing.Size(165, 45);
             this.txtsonggiotishsanasi.TabIndex = 77;
-            this.txtsonggiotishsanasi.Text = "18.02.2025";
             this.txtsonggiotishsanasi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtnball
@@ -687,7 +683,6 @@
             this.txtnball.Name = "txtnball";
             this.txtnball.Size = new System.Drawing.Size(32, 33);
             this.txtnball.TabIndex = 76;
-            this.txtnball.Text = "10";
             this.txtnball.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtn3
@@ -700,7 +695,6 @@
             this.txtn3.Name = "txtn3";
             this.txtn3.Size = new System.Drawing.Size(32, 33);
             this.txtn3.TabIndex = 75;
-            this.txtn3.Text = "10";
             this.txtn3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtn2
@@ -713,7 +707,6 @@
             this.txtn2.Name = "txtn2";
             this.txtn2.Size = new System.Drawing.Size(32, 33);
             this.txtn2.TabIndex = 74;
-            this.txtn2.Text = "10";
             this.txtn2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtn1
@@ -726,7 +719,6 @@
             this.txtn1.Name = "txtn1";
             this.txtn1.Size = new System.Drawing.Size(32, 33);
             this.txtn1.TabIndex = 73;
-            this.txtn1.Text = "10";
             this.txtn1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtsball
@@ -739,7 +731,6 @@
             this.txtsball.Name = "txtsball";
             this.txtsball.Size = new System.Drawing.Size(32, 33);
             this.txtsball.TabIndex = 72;
-            this.txtsball.Text = "10";
             this.txtsball.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txts3
@@ -752,7 +743,6 @@
             this.txts3.Name = "txts3";
             this.txts3.Size = new System.Drawing.Size(32, 33);
             this.txts3.TabIndex = 71;
-            this.txts3.Text = "10";
             this.txts3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txts2
@@ -765,7 +755,6 @@
             this.txts2.Name = "txts2";
             this.txts2.Size = new System.Drawing.Size(32, 33);
             this.txts2.TabIndex = 70;
-            this.txts2.Text = "10";
             this.txts2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox3

@@ -128,16 +128,26 @@ namespace MultiFaceRec
                 return;
             }
 
-            // Endi faqat DB dan trening ma’lumotlarini yuklaymiz
+            // 🔹 Avval connection stringni yuklaymiz
+            connectionString = loadConnectionString();
+
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                ShowNotification("Ulanish satri topilmadi. Ma’lumotlar bazasini ulang.");
+                return;
+            }
+
+            // 🔹 Endi DB dan training ma’lumotlarini yuklaymiz
             try
             {
-                LoadTrainingDataFromDB(); // alohida metod, faqat DB dan yuklaydi
+                LoadTrainingDataFromDB();
             }
             catch (Exception ex)
             {
                 ShowNotification("Database bo'sh yoki ulanishda xato: " + ex.Message);
             }
         }
+
 
 
         // --- Qidirish tugmasi ---
@@ -474,12 +484,38 @@ namespace MultiFaceRec
             txtn3.Clear();
             txtball.Clear();
             txtbaho.Clear();
+            txtsball.Clear();
+            txtnball.Clear();
+            txtsonggiotishsanasi.Clear();
+            txtotishdavomiyligi.Clear();
+            id = string.Empty;
+            familiya = string.Empty;
+            ism = string.Empty;
+            sharif = string.Empty;
+            unvoni = string.Empty;
+            bolinma = string.Empty;
+            haqida = string.Empty;
+            s1 = string.Empty;
+            s2 = string.Empty;
+            s3 = string.Empty;
+            n1 = string.Empty;
+            n2 = string.Empty;
+            n3 = string.Empty;
+            ball = string.Empty;
+            baho = string.Empty;
+            sball = string.Empty;
+            nball = string.Empty;
+            songgiotishsanasi = string.Empty;
+            otishdavomiyligi = string.Empty;
+            image = null;
+
 
             // Rasmni tozalash
             picFace.Image = null;
 
             // Fokusni rasmga berish (qulaylik uchun)
             picFace.Focus();
+            //picFace.Visible = false;
         }
 
 
@@ -487,9 +523,9 @@ namespace MultiFaceRec
 
         /// <summary>
         /// //////////////////////////////////////////////////////////////////////
-        // --- Funksiyalar ---
-        /// //////////////////////////////////////////////////////////////////////
-        /// </summary>
+            // --- Funksiyalar ---
+            /// //////////////////////////////////////////////////////////////////////
+            /// </summary>
 
         private bool checkDatabaseConnection(string connectionString)
         {
@@ -1124,7 +1160,16 @@ CREATE TABLE [dbo].[users]
                                         // 🔴 yangi maydonlar
                                         txtsball.Text = reader["sball"].ToString();
                                         txtnball.Text = reader["nball"].ToString();
-                                        txtsonggiotishsanasi.Text = reader["songgiotishsanasi"].ToString();
+                                        if (!(reader["songgiotishsanasi"] is DBNull))
+                                        {
+                                            DateTime sana = Convert.ToDateTime(reader["songgiotishsanasi"]);
+                                            txtsonggiotishsanasi.Text = sana.ToString("dd.MM.yyyy");
+                                        }
+                                        else
+                                        {
+                                            txtsonggiotishsanasi.Text = "";
+                                        }
+
                                         txtotishdavomiyligi.Text = reader["otishdavomiyligi"].ToString();
 
                                         if (!(reader["image"] is DBNull))
@@ -1156,7 +1201,7 @@ CREATE TABLE [dbo].[users]
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("FrameGrabber xato: " + ex.Message);
+                ShowNotification("FrameGrabber xato: " + ex.Message);
             }
         }
 
