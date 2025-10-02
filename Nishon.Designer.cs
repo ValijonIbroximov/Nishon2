@@ -510,6 +510,7 @@
             this.cmbPorts.Name = "cmbPorts";
             this.cmbPorts.Size = new System.Drawing.Size(252, 29);
             this.cmbPorts.TabIndex = 53;
+            this.cmbPorts.SelectedIndexChanged += new System.EventHandler(this.cmbPorts_SelectedIndexChanged);
             // 
             // panelInfo
             // 

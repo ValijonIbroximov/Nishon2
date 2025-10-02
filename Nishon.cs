@@ -1445,6 +1445,7 @@ WHERE id = @id;
 
                 this.Invoke(new Action(() =>
                 {
+                    RedTrue(Convert.ToInt16(data.Trim()));
                     string notification = $"Portdan ma’lumot keldi: {data}";
                     ShowNotification(notification);
                     // Shu yerda DB ga yozish yoki boshqa logika qo‘shish mumkin
@@ -1481,6 +1482,43 @@ WHERE id = @id;
                 {
                     serialPort = null;
                 }
+            }
+        }
+
+        private async void RedTrue(int n)
+        {
+            switch (n)
+            {
+                case 5:
+                    r5.Visible = true;
+                    await Task.Delay(500);
+                    r5.Visible = false;
+                    break;
+                case 6:
+                    r6.Visible = true;
+                    await Task.Delay(500);
+                    r6.Visible = false;
+                    break;
+                case 7:
+                    r7.Visible = true;
+                    await Task.Delay(500);
+                    r7.Visible = false;
+                    break;
+                case 8:
+                    r8.Visible = true;
+                    await Task.Delay(500);
+                    r8.Visible = false;
+                    break;
+                case 9:
+                    r9.Visible = true;
+                    await Task.Delay(500);
+                    r9.Visible = false;
+                    break;
+                case 10:
+                    r10.Visible = true;
+                    await Task.Delay(500);
+                    r10.Visible = false;
+                    break;
             }
         }
 
