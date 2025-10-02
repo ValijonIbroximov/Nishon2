@@ -118,76 +118,91 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="g5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\g5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="g7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\g7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="g9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\g9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="r6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\r6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Info_user2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Info_user2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="r10" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\r10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="g8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\g8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnUpgrade" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnUpgrade.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="personAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\personAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="g7-" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\g7-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Info_user3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Info_user3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Background_nishon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Background_nishon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="g10" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\g10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Info_user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Info_user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="r8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\r8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Info_user4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Info_user4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="g6-" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\g6-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="btnClear" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btnClear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="personSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\personSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="r7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\r7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="r9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\r9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="r5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\r5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Background_nishon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Background_nishon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bulletScore" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bulletScore.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="btnTake" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnTake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="r9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\r9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Info_user3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info_user3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="personSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\personSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnUpgrade" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnUpgrade.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="btnDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btnDelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\g5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Info_user2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info_user2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\g9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Info_user4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info_user4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\r6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frameGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frameGreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g6-" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\g6-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\r7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\r10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\r8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frameTarget" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frameTarget.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="personAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\personAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\g8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\g10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\g7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g7-" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\g7-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frameTime" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frameTime.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnClear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnClear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Info_user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info_user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="frameGreenLandScape" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frameGreenLandScape.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

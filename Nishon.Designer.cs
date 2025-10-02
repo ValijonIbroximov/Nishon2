@@ -43,7 +43,6 @@
             this.txtism = new System.Windows.Forms.TextBox();
             this.txtfamiliya = new System.Windows.Forms.TextBox();
             this.g10 = new System.Windows.Forms.PictureBox();
-            this.picInfoPanel = new System.Windows.Forms.PictureBox();
             this.r10 = new System.Windows.Forms.PictureBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtid = new System.Windows.Forms.TextBox();
@@ -51,26 +50,57 @@
             this.target = new System.Windows.Forms.Panel();
             this.g8 = new System.Windows.Forms.PictureBox();
             this.txtsharif = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.malumotlarBazasiBilanBoglashToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.yangiMalumotlarBazasiYaratishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Malumotlarbazasijoylashuvinikorish = new System.Windows.Forms.ToolStripMenuItem();
             this.picFace = new System.Windows.Forms.PictureBox();
             this.txtbolinma = new System.Windows.Forms.TextBox();
             this.txthaqida = new System.Windows.Forms.TextBox();
-            this.txts2 = new System.Windows.Forms.TextBox();
             this.txts1 = new System.Windows.Forms.TextBox();
-            this.txtn3 = new System.Windows.Forms.TextBox();
-            this.txtn2 = new System.Windows.Forms.TextBox();
-            this.txtn1 = new System.Windows.Forms.TextBox();
-            this.txts3 = new System.Windows.Forms.TextBox();
-            this.txtbaho = new System.Windows.Forms.TextBox();
-            this.txtball = new System.Windows.Forms.TextBox();
             this.btnTake = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnUpgrade = new System.Windows.Forms.Button();
-            this.portToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cboPorts = new System.Windows.Forms.ComboBox();
+            this.panelInfo = new System.Windows.Forms.Panel();
+            this.header = new System.Windows.Forms.Panel();
+            this.btnLocation = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.panelScore = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.picBallN = new System.Windows.Forms.PictureBox();
+            this.picN3 = new System.Windows.Forms.PictureBox();
+            this.picN2 = new System.Windows.Forms.PictureBox();
+            this.picN1 = new System.Windows.Forms.PictureBox();
+            this.lblBallNazorat = new System.Windows.Forms.Label();
+            this.lblNazoratOtishMashqi = new System.Windows.Forms.Label();
+            this.picBallS = new System.Windows.Forms.PictureBox();
+            this.picS3 = new System.Windows.Forms.PictureBox();
+            this.picS2 = new System.Windows.Forms.PictureBox();
+            this.picS1 = new System.Windows.Forms.PictureBox();
+            this.lblBallSinov = new System.Windows.Forms.Label();
+            this.lblSinov = new System.Windows.Forms.Label();
+            this.picOtishVaqti = new System.Windows.Forms.PictureBox();
+            this.lblOtishVaqti = new System.Windows.Forms.Label();
+            this.picOtishSanasi = new System.Windows.Forms.PictureBox();
+            this.lblOtishSanasi = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.panelRight = new System.Windows.Forms.Panel();
+            this.panelRightElements = new System.Windows.Forms.Panel();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.panelLeftElements = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.r7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.g7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r6)).BeginInit();
@@ -81,13 +111,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.r8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.g10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picInfoPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).BeginInit();
             this.target.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.g8)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFace)).BeginInit();
+            this.panelInfo.SuspendLayout();
+            this.header.SuspendLayout();
+            this.panelScore.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBallN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picN3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picN2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picN1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBallS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picS3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picS2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picS1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOtishVaqti)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOtishSanasi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panelRightElements.SuspendLayout();
+            this.panelLeftElements.SuspendLayout();
             this.SuspendLayout();
             // 
             // r7
@@ -173,7 +219,7 @@
             this.btnSearch.BackgroundImage = global::MultiFaceRec.Properties.Resources.personSearch;
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(1704, 276);
+            this.btnSearch.Location = new System.Drawing.Point(323, 195);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(60, 60);
             this.btnSearch.TabIndex = 36;
@@ -211,7 +257,7 @@
             this.txtunvoni.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtunvoni.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtunvoni.ForeColor = System.Drawing.Color.White;
-            this.txtunvoni.Location = new System.Drawing.Point(1434, 613);
+            this.txtunvoni.Location = new System.Drawing.Point(53, 532);
             this.txtunvoni.Name = "txtunvoni";
             this.txtunvoni.Size = new System.Drawing.Size(310, 27);
             this.txtunvoni.TabIndex = 33;
@@ -235,7 +281,7 @@
             this.txtism.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtism.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtism.ForeColor = System.Drawing.Color.White;
-            this.txtism.Location = new System.Drawing.Point(1434, 488);
+            this.txtism.Location = new System.Drawing.Point(53, 407);
             this.txtism.Name = "txtism";
             this.txtism.Size = new System.Drawing.Size(310, 27);
             this.txtism.TabIndex = 31;
@@ -246,7 +292,7 @@
             this.txtfamiliya.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtfamiliya.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtfamiliya.ForeColor = System.Drawing.Color.White;
-            this.txtfamiliya.Location = new System.Drawing.Point(1434, 424);
+            this.txtfamiliya.Location = new System.Drawing.Point(53, 343);
             this.txtfamiliya.Name = "txtfamiliya";
             this.txtfamiliya.Size = new System.Drawing.Size(310, 27);
             this.txtfamiliya.TabIndex = 30;
@@ -262,17 +308,6 @@
             this.g10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.g10.TabIndex = 5;
             this.g10.TabStop = false;
-            // 
-            // picInfoPanel
-            // 
-            this.picInfoPanel.BackColor = System.Drawing.Color.Transparent;
-            this.picInfoPanel.Image = global::MultiFaceRec.Properties.Resources.Info_user4;
-            this.picInfoPanel.Location = new System.Drawing.Point(1381, 81);
-            this.picInfoPanel.Name = "picInfoPanel";
-            this.picInfoPanel.Size = new System.Drawing.Size(418, 800);
-            this.picInfoPanel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picInfoPanel.TabIndex = 27;
-            this.picInfoPanel.TabStop = false;
             // 
             // r10
             // 
@@ -293,7 +328,7 @@
             this.btnAdd.BackgroundImage = global::MultiFaceRec.Properties.Resources.personAdd;
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(1704, 144);
+            this.btnAdd.Location = new System.Drawing.Point(323, 63);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(60, 60);
             this.btnAdd.TabIndex = 35;
@@ -306,7 +341,7 @@
             this.txtid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtid.Font = new System.Drawing.Font("Agency FB", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtid.ForeColor = System.Drawing.Color.White;
-            this.txtid.Location = new System.Drawing.Point(1456, 809);
+            this.txtid.Location = new System.Drawing.Point(76, 728);
             this.txtid.Name = "txtid";
             this.txtid.Size = new System.Drawing.Size(265, 28);
             this.txtid.TabIndex = 34;
@@ -316,7 +351,7 @@
             // 
             this.imageBoxFrameGrabber.BackColor = System.Drawing.Color.Transparent;
             this.imageBoxFrameGrabber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.imageBoxFrameGrabber.Location = new System.Drawing.Point(1509, 162);
+            this.imageBoxFrameGrabber.Location = new System.Drawing.Point(128, 80);
             this.imageBoxFrameGrabber.Name = "imageBoxFrameGrabber";
             this.imageBoxFrameGrabber.Size = new System.Drawing.Size(160, 160);
             this.imageBoxFrameGrabber.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -338,7 +373,7 @@
             this.target.Controls.Add(this.g6);
             this.target.Controls.Add(this.r5);
             this.target.Controls.Add(this.g5);
-            this.target.Location = new System.Drawing.Point(93, 81);
+            this.target.Location = new System.Drawing.Point(3, 51);
             this.target.Name = "target";
             this.target.Size = new System.Drawing.Size(800, 800);
             this.target.TabIndex = 26;
@@ -361,52 +396,16 @@
             this.txtsharif.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtsharif.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsharif.ForeColor = System.Drawing.Color.White;
-            this.txtsharif.Location = new System.Drawing.Point(1434, 551);
+            this.txtsharif.Location = new System.Drawing.Point(53, 470);
             this.txtsharif.Name = "txtsharif";
             this.txtsharif.Size = new System.Drawing.Size(310, 27);
             this.txtsharif.TabIndex = 32;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.malumotlarBazasiBilanBoglashToolStripMenuItem,
-            this.yangiMalumotlarBazasiYaratishToolStripMenuItem,
-            this.Malumotlarbazasijoylashuvinikorish,
-            this.portToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1844, 29);
-            this.menuStrip1.TabIndex = 37;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // malumotlarBazasiBilanBoglashToolStripMenuItem
-            // 
-            this.malumotlarBazasiBilanBoglashToolStripMenuItem.Name = "malumotlarBazasiBilanBoglashToolStripMenuItem";
-            this.malumotlarBazasiBilanBoglashToolStripMenuItem.Size = new System.Drawing.Size(387, 25);
-            this.malumotlarBazasiBilanBoglashToolStripMenuItem.Text = "Ma\'lumotlar bazasi bilan bog\'lash yoki almashtirish";
-            this.malumotlarBazasiBilanBoglashToolStripMenuItem.Click += new System.EventHandler(this.malumotlarBazasiBilanBoglashToolStripMenuItem_Click);
-            // 
-            // yangiMalumotlarBazasiYaratishToolStripMenuItem
-            // 
-            this.yangiMalumotlarBazasiYaratishToolStripMenuItem.Name = "yangiMalumotlarBazasiYaratishToolStripMenuItem";
-            this.yangiMalumotlarBazasiYaratishToolStripMenuItem.Size = new System.Drawing.Size(260, 25);
-            this.yangiMalumotlarBazasiYaratishToolStripMenuItem.Text = "Yangi ma\'lumotlar bazasi yaratish";
-            this.yangiMalumotlarBazasiYaratishToolStripMenuItem.Click += new System.EventHandler(this.yangiMalumotlarBazasiYaratishToolStripMenuItem_Click);
-            // 
-            // Malumotlarbazasijoylashuvinikorish
-            // 
-            this.Malumotlarbazasijoylashuvinikorish.Name = "Malumotlarbazasijoylashuvinikorish";
-            this.Malumotlarbazasijoylashuvinikorish.Size = new System.Drawing.Size(297, 25);
-            this.Malumotlarbazasijoylashuvinikorish.Text = "Ma\'lumotlar bazasi joylashuvini ko\'rish";
-            this.Malumotlarbazasijoylashuvinikorish.Click += new System.EventHandler(this.Malumotlarbazasijoylashuvinikorish_Click);
             // 
             // picFace
             // 
             this.picFace.BackColor = System.Drawing.Color.Transparent;
             this.picFace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picFace.Location = new System.Drawing.Point(1509, 162);
+            this.picFace.Location = new System.Drawing.Point(128, 80);
             this.picFace.Name = "picFace";
             this.picFace.Size = new System.Drawing.Size(160, 160);
             this.picFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -419,7 +418,7 @@
             this.txtbolinma.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbolinma.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbolinma.ForeColor = System.Drawing.Color.White;
-            this.txtbolinma.Location = new System.Drawing.Point(1434, 676);
+            this.txtbolinma.Location = new System.Drawing.Point(53, 595);
             this.txtbolinma.Name = "txtbolinma";
             this.txtbolinma.Size = new System.Drawing.Size(310, 27);
             this.txtbolinma.TabIndex = 39;
@@ -430,98 +429,23 @@
             this.txthaqida.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txthaqida.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txthaqida.ForeColor = System.Drawing.Color.White;
-            this.txthaqida.Location = new System.Drawing.Point(1434, 741);
+            this.txthaqida.Location = new System.Drawing.Point(53, 660);
             this.txthaqida.Name = "txthaqida";
             this.txthaqida.Size = new System.Drawing.Size(310, 27);
             this.txthaqida.TabIndex = 40;
-            // 
-            // txts2
-            // 
-            this.txts2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txts2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txts2.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txts2.ForeColor = System.Drawing.Color.White;
-            this.txts2.Location = new System.Drawing.Point(1054, 392);
-            this.txts2.Name = "txts2";
-            this.txts2.Size = new System.Drawing.Size(181, 27);
-            this.txts2.TabIndex = 42;
             // 
             // txts1
             // 
             this.txts1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txts1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txts1.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txts1.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txts1.ForeColor = System.Drawing.Color.White;
-            this.txts1.Location = new System.Drawing.Point(1054, 359);
+            this.txts1.Location = new System.Drawing.Point(110, 347);
             this.txts1.Name = "txts1";
-            this.txts1.Size = new System.Drawing.Size(181, 27);
+            this.txts1.Size = new System.Drawing.Size(32, 33);
             this.txts1.TabIndex = 41;
-            // 
-            // txtn3
-            // 
-            this.txtn3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtn3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtn3.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtn3.ForeColor = System.Drawing.Color.White;
-            this.txtn3.Location = new System.Drawing.Point(1054, 525);
-            this.txtn3.Name = "txtn3";
-            this.txtn3.Size = new System.Drawing.Size(181, 27);
-            this.txtn3.TabIndex = 46;
-            // 
-            // txtn2
-            // 
-            this.txtn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtn2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtn2.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtn2.ForeColor = System.Drawing.Color.White;
-            this.txtn2.Location = new System.Drawing.Point(1054, 492);
-            this.txtn2.Name = "txtn2";
-            this.txtn2.Size = new System.Drawing.Size(181, 27);
-            this.txtn2.TabIndex = 45;
-            // 
-            // txtn1
-            // 
-            this.txtn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtn1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtn1.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtn1.ForeColor = System.Drawing.Color.White;
-            this.txtn1.Location = new System.Drawing.Point(1054, 459);
-            this.txtn1.Name = "txtn1";
-            this.txtn1.Size = new System.Drawing.Size(181, 27);
-            this.txtn1.TabIndex = 44;
-            // 
-            // txts3
-            // 
-            this.txts3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txts3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txts3.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txts3.ForeColor = System.Drawing.Color.White;
-            this.txts3.Location = new System.Drawing.Point(1054, 426);
-            this.txts3.Name = "txts3";
-            this.txts3.Size = new System.Drawing.Size(181, 27);
-            this.txts3.TabIndex = 43;
-            // 
-            // txtbaho
-            // 
-            this.txtbaho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtbaho.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtbaho.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbaho.ForeColor = System.Drawing.Color.White;
-            this.txtbaho.Location = new System.Drawing.Point(1054, 592);
-            this.txtbaho.Name = "txtbaho";
-            this.txtbaho.Size = new System.Drawing.Size(181, 27);
-            this.txtbaho.TabIndex = 48;
-            // 
-            // txtball
-            // 
-            this.txtball.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtball.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtball.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtball.ForeColor = System.Drawing.Color.White;
-            this.txtball.Location = new System.Drawing.Point(1054, 559);
-            this.txtball.Name = "txtball";
-            this.txtball.Size = new System.Drawing.Size(181, 27);
-            this.txtball.TabIndex = 47;
+            this.txts1.Text = "10";
+            this.txts1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnTake
             // 
@@ -529,7 +453,7 @@
             this.btnTake.BackgroundImage = global::MultiFaceRec.Properties.Resources.btnTake;
             this.btnTake.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTake.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTake.Location = new System.Drawing.Point(1704, 210);
+            this.btnTake.Location = new System.Drawing.Point(323, 129);
             this.btnTake.Name = "btnTake";
             this.btnTake.Size = new System.Drawing.Size(60, 60);
             this.btnTake.TabIndex = 49;
@@ -541,7 +465,7 @@
             this.btnDelete.BackgroundImage = global::MultiFaceRec.Properties.Resources.btnDelete;
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(1414, 144);
+            this.btnDelete.Location = new System.Drawing.Point(33, 63);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(60, 60);
             this.btnDelete.TabIndex = 52;
@@ -553,7 +477,7 @@
             this.btnClear.BackgroundImage = global::MultiFaceRec.Properties.Resources.btnClear;
             this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Location = new System.Drawing.Point(1414, 276);
+            this.btnClear.Location = new System.Drawing.Point(33, 195);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(60, 60);
             this.btnClear.TabIndex = 51;
@@ -565,21 +489,539 @@
             this.btnUpgrade.BackgroundImage = global::MultiFaceRec.Properties.Resources.btnUpgrade;
             this.btnUpgrade.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpgrade.Location = new System.Drawing.Point(1414, 210);
+            this.btnUpgrade.Location = new System.Drawing.Point(33, 129);
             this.btnUpgrade.Name = "btnUpgrade";
             this.btnUpgrade.Size = new System.Drawing.Size(60, 60);
             this.btnUpgrade.TabIndex = 50;
             this.btnUpgrade.UseVisualStyleBackColor = false;
             // 
-            // portToolStripMenuItem
+            // cboPorts
             // 
-            this.portToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.portToolStripMenuItem.AutoSize = false;
-            this.portToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.portToolStripMenuItem.Name = "portToolStripMenuItem";
-            this.portToolStripMenuItem.Size = new System.Drawing.Size(200, 25);
-            this.portToolStripMenuItem.Text = "Port";
-            this.portToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cboPorts.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cboPorts.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cboPorts.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cboPorts.FormattingEnabled = true;
+            this.cboPorts.Location = new System.Drawing.Point(1592, 0);
+            this.cboPorts.Name = "cboPorts";
+            this.cboPorts.Size = new System.Drawing.Size(252, 29);
+            this.cboPorts.TabIndex = 53;
+            this.cboPorts.Text = "Port";
+            // 
+            // panelInfo
+            // 
+            this.panelInfo.BackColor = System.Drawing.Color.Transparent;
+            this.panelInfo.BackgroundImage = global::MultiFaceRec.Properties.Resources.Info_user4;
+            this.panelInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelInfo.Controls.Add(this.btnDelete);
+            this.panelInfo.Controls.Add(this.btnClear);
+            this.panelInfo.Controls.Add(this.btnUpgrade);
+            this.panelInfo.Controls.Add(this.btnTake);
+            this.panelInfo.Controls.Add(this.btnSearch);
+            this.panelInfo.Controls.Add(this.btnAdd);
+            this.panelInfo.Controls.Add(this.picFace);
+            this.panelInfo.Controls.Add(this.imageBoxFrameGrabber);
+            this.panelInfo.Controls.Add(this.txtfamiliya);
+            this.panelInfo.Controls.Add(this.txtism);
+            this.panelInfo.Controls.Add(this.txtsharif);
+            this.panelInfo.Controls.Add(this.txtunvoni);
+            this.panelInfo.Controls.Add(this.txtbolinma);
+            this.panelInfo.Controls.Add(this.txthaqida);
+            this.panelInfo.Controls.Add(this.txtid);
+            this.panelInfo.Location = new System.Drawing.Point(476, 51);
+            this.panelInfo.Name = "panelInfo";
+            this.panelInfo.Size = new System.Drawing.Size(418, 800);
+            this.panelInfo.TabIndex = 54;
+            // 
+            // header
+            // 
+            this.header.Controls.Add(this.cboPorts);
+            this.header.Controls.Add(this.btnLocation);
+            this.header.Controls.Add(this.btnCreate);
+            this.header.Controls.Add(this.btnConnect);
+            this.header.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header.Location = new System.Drawing.Point(0, 0);
+            this.header.Name = "header";
+            this.header.Size = new System.Drawing.Size(1844, 30);
+            this.header.TabIndex = 55;
+            // 
+            // btnLocation
+            // 
+            this.btnLocation.AutoSize = true;
+            this.btnLocation.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnLocation.Location = new System.Drawing.Point(420, 0);
+            this.btnLocation.Name = "btnLocation";
+            this.btnLocation.Size = new System.Drawing.Size(193, 30);
+            this.btnLocation.TabIndex = 2;
+            this.btnLocation.Text = "Ma\'lumotlar bazasi joylashuvini ko\'rish";
+            this.btnLocation.UseVisualStyleBackColor = true;
+            this.btnLocation.Click += new System.EventHandler(this.Malumotlarbazasijoylashuvinikorish_Click);
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.AutoSize = true;
+            this.btnCreate.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCreate.Location = new System.Drawing.Point(249, 0);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(171, 30);
+            this.btnCreate.TabIndex = 1;
+            this.btnCreate.Text = "Yangi ma\'lumotlar bazasi yaratish";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.yangiMalumotlarBazasiYaratishToolStripMenuItem_Click);
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.AutoSize = true;
+            this.btnConnect.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnConnect.Location = new System.Drawing.Point(0, 0);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(249, 30);
+            this.btnConnect.TabIndex = 0;
+            this.btnConnect.Text = "Ma\'lumotlar bazasi bilan bog\'lash yoki almashtirish";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.malumotlarBazasiBilanBoglashToolStripMenuItem_Click);
+            // 
+            // panelScore
+            // 
+            this.panelScore.BackColor = System.Drawing.Color.Transparent;
+            this.panelScore.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameGreen;
+            this.panelScore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelScore.Controls.Add(this.textBox11);
+            this.panelScore.Controls.Add(this.textBox10);
+            this.panelScore.Controls.Add(this.textBox9);
+            this.panelScore.Controls.Add(this.textBox8);
+            this.panelScore.Controls.Add(this.textBox4);
+            this.panelScore.Controls.Add(this.textBox5);
+            this.panelScore.Controls.Add(this.textBox6);
+            this.panelScore.Controls.Add(this.textBox7);
+            this.panelScore.Controls.Add(this.textBox2);
+            this.panelScore.Controls.Add(this.textBox3);
+            this.panelScore.Controls.Add(this.textBox1);
+            this.panelScore.Controls.Add(this.txts1);
+            this.panelScore.Controls.Add(this.pictureBox3);
+            this.panelScore.Controls.Add(this.pictureBox1);
+            this.panelScore.Controls.Add(this.pictureBox2);
+            this.panelScore.Controls.Add(this.label1);
+            this.panelScore.Controls.Add(this.label2);
+            this.panelScore.Controls.Add(this.picBallN);
+            this.panelScore.Controls.Add(this.picN3);
+            this.panelScore.Controls.Add(this.picN2);
+            this.panelScore.Controls.Add(this.picN1);
+            this.panelScore.Controls.Add(this.lblBallNazorat);
+            this.panelScore.Controls.Add(this.lblNazoratOtishMashqi);
+            this.panelScore.Controls.Add(this.picBallS);
+            this.panelScore.Controls.Add(this.picS3);
+            this.panelScore.Controls.Add(this.picS2);
+            this.panelScore.Controls.Add(this.picS1);
+            this.panelScore.Controls.Add(this.lblBallSinov);
+            this.panelScore.Controls.Add(this.lblSinov);
+            this.panelScore.Controls.Add(this.picOtishVaqti);
+            this.panelScore.Controls.Add(this.lblOtishVaqti);
+            this.panelScore.Controls.Add(this.picOtishSanasi);
+            this.panelScore.Controls.Add(this.lblOtishSanasi);
+            this.panelScore.Location = new System.Drawing.Point(3, 51);
+            this.panelScore.Name = "panelScore";
+            this.panelScore.Size = new System.Drawing.Size(467, 800);
+            this.panelScore.TabIndex = 56;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameGreenLandScape;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(240, 561);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(135, 61);
+            this.pictureBox1.TabIndex = 68;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameGreenLandScape;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(96, 561);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(135, 61);
+            this.pictureBox2.TabIndex = 67;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label1.Location = new System.Drawing.Point(240, 535);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 23);
+            this.label1.TabIndex = 66;
+            this.label1.Text = "BAHO";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label2.Location = new System.Drawing.Point(95, 535);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 23);
+            this.label2.TabIndex = 65;
+            this.label2.Text = "ENG YAXSHI BALL";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // picBallN
+            // 
+            this.picBallN.BackgroundImage = global::MultiFaceRec.Properties.Resources.bulletScore;
+            this.picBallN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picBallN.Location = new System.Drawing.Point(310, 440);
+            this.picBallN.Name = "picBallN";
+            this.picBallN.Size = new System.Drawing.Size(60, 92);
+            this.picBallN.TabIndex = 64;
+            this.picBallN.TabStop = false;
+            // 
+            // picN3
+            // 
+            this.picN3.BackgroundImage = global::MultiFaceRec.Properties.Resources.bulletScore;
+            this.picN3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picN3.Location = new System.Drawing.Point(228, 440);
+            this.picN3.Name = "picN3";
+            this.picN3.Size = new System.Drawing.Size(60, 92);
+            this.picN3.TabIndex = 63;
+            this.picN3.TabStop = false;
+            // 
+            // picN2
+            // 
+            this.picN2.BackgroundImage = global::MultiFaceRec.Properties.Resources.bulletScore;
+            this.picN2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picN2.Location = new System.Drawing.Point(162, 440);
+            this.picN2.Name = "picN2";
+            this.picN2.Size = new System.Drawing.Size(60, 92);
+            this.picN2.TabIndex = 62;
+            this.picN2.TabStop = false;
+            // 
+            // picN1
+            // 
+            this.picN1.BackgroundImage = global::MultiFaceRec.Properties.Resources.bulletScore;
+            this.picN1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picN1.Location = new System.Drawing.Point(96, 440);
+            this.picN1.Name = "picN1";
+            this.picN1.Size = new System.Drawing.Size(60, 92);
+            this.picN1.TabIndex = 61;
+            this.picN1.TabStop = false;
+            // 
+            // lblBallNazorat
+            // 
+            this.lblBallNazorat.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBallNazorat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblBallNazorat.Location = new System.Drawing.Point(299, 414);
+            this.lblBallNazorat.Name = "lblBallNazorat";
+            this.lblBallNazorat.Size = new System.Drawing.Size(76, 23);
+            this.lblBallNazorat.TabIndex = 60;
+            this.lblBallNazorat.Text = "BALL";
+            this.lblBallNazorat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblNazoratOtishMashqi
+            // 
+            this.lblNazoratOtishMashqi.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNazoratOtishMashqi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblNazoratOtishMashqi.Location = new System.Drawing.Point(95, 414);
+            this.lblNazoratOtishMashqi.Name = "lblNazoratOtishMashqi";
+            this.lblNazoratOtishMashqi.Size = new System.Drawing.Size(198, 23);
+            this.lblNazoratOtishMashqi.TabIndex = 59;
+            this.lblNazoratOtishMashqi.Text = "NAZORAT OTISH MASHQI";
+            this.lblNazoratOtishMashqi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // picBallS
+            // 
+            this.picBallS.BackgroundImage = global::MultiFaceRec.Properties.Resources.bulletScore;
+            this.picBallS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picBallS.Location = new System.Drawing.Point(310, 319);
+            this.picBallS.Name = "picBallS";
+            this.picBallS.Size = new System.Drawing.Size(60, 92);
+            this.picBallS.TabIndex = 58;
+            this.picBallS.TabStop = false;
+            // 
+            // picS3
+            // 
+            this.picS3.BackgroundImage = global::MultiFaceRec.Properties.Resources.bulletScore;
+            this.picS3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picS3.Location = new System.Drawing.Point(228, 319);
+            this.picS3.Name = "picS3";
+            this.picS3.Size = new System.Drawing.Size(60, 92);
+            this.picS3.TabIndex = 57;
+            this.picS3.TabStop = false;
+            // 
+            // picS2
+            // 
+            this.picS2.BackgroundImage = global::MultiFaceRec.Properties.Resources.bulletScore;
+            this.picS2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picS2.Location = new System.Drawing.Point(162, 319);
+            this.picS2.Name = "picS2";
+            this.picS2.Size = new System.Drawing.Size(60, 92);
+            this.picS2.TabIndex = 56;
+            this.picS2.TabStop = false;
+            // 
+            // picS1
+            // 
+            this.picS1.BackgroundImage = global::MultiFaceRec.Properties.Resources.bulletScore;
+            this.picS1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picS1.Location = new System.Drawing.Point(96, 319);
+            this.picS1.Name = "picS1";
+            this.picS1.Size = new System.Drawing.Size(60, 92);
+            this.picS1.TabIndex = 55;
+            this.picS1.TabStop = false;
+            // 
+            // lblBallSinov
+            // 
+            this.lblBallSinov.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBallSinov.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblBallSinov.Location = new System.Drawing.Point(299, 293);
+            this.lblBallSinov.Name = "lblBallSinov";
+            this.lblBallSinov.Size = new System.Drawing.Size(76, 23);
+            this.lblBallSinov.TabIndex = 54;
+            this.lblBallSinov.Text = "BALL";
+            this.lblBallSinov.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSinov
+            // 
+            this.lblSinov.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSinov.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblSinov.Location = new System.Drawing.Point(95, 293);
+            this.lblSinov.Name = "lblSinov";
+            this.lblSinov.Size = new System.Drawing.Size(198, 23);
+            this.lblSinov.TabIndex = 53;
+            this.lblSinov.Text = "SINOV OTISH MASHQI";
+            this.lblSinov.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // picOtishVaqti
+            // 
+            this.picOtishVaqti.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameTime;
+            this.picOtishVaqti.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picOtishVaqti.Location = new System.Drawing.Point(100, 218);
+            this.picOtishVaqti.Name = "picOtishVaqti";
+            this.picOtishVaqti.Size = new System.Drawing.Size(275, 72);
+            this.picOtishVaqti.TabIndex = 52;
+            this.picOtishVaqti.TabStop = false;
+            // 
+            // lblOtishVaqti
+            // 
+            this.lblOtishVaqti.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOtishVaqti.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblOtishVaqti.Location = new System.Drawing.Point(95, 192);
+            this.lblOtishVaqti.Name = "lblOtishVaqti";
+            this.lblOtishVaqti.Size = new System.Drawing.Size(280, 23);
+            this.lblOtishVaqti.TabIndex = 51;
+            this.lblOtishVaqti.Text = "OTISH VAQTI DAVOMIYLIGI";
+            this.lblOtishVaqti.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // picOtishSanasi
+            // 
+            this.picOtishSanasi.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameTarget;
+            this.picOtishSanasi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picOtishSanasi.Location = new System.Drawing.Point(100, 117);
+            this.picOtishSanasi.Name = "picOtishSanasi";
+            this.picOtishSanasi.Size = new System.Drawing.Size(275, 72);
+            this.picOtishSanasi.TabIndex = 50;
+            this.picOtishSanasi.TabStop = false;
+            // 
+            // lblOtishSanasi
+            // 
+            this.lblOtishSanasi.Font = new System.Drawing.Font("Agency FB", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOtishSanasi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblOtishSanasi.Location = new System.Drawing.Point(95, 91);
+            this.lblOtishSanasi.Name = "lblOtishSanasi";
+            this.lblOtishSanasi.Size = new System.Drawing.Size(280, 23);
+            this.lblOtishSanasi.TabIndex = 49;
+            this.lblOtishSanasi.Text = "SO‘NGGI OTISH SANASI";
+            this.lblOtishSanasi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameGreenLandScape;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox3.Location = new System.Drawing.Point(96, 630);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(279, 61);
+            this.pictureBox3.TabIndex = 69;
+            this.pictureBox3.TabStop = false;
+            // 
+            // panelRight
+            // 
+            this.panelRight.BackColor = System.Drawing.Color.Transparent;
+            this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelRight.Location = new System.Drawing.Point(1784, 30);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Size = new System.Drawing.Size(60, 845);
+            this.panelRight.TabIndex = 57;
+            // 
+            // panelRightElements
+            // 
+            this.panelRightElements.BackColor = System.Drawing.Color.Transparent;
+            this.panelRightElements.Controls.Add(this.panelInfo);
+            this.panelRightElements.Controls.Add(this.panelScore);
+            this.panelRightElements.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelRightElements.Location = new System.Drawing.Point(899, 30);
+            this.panelRightElements.Name = "panelRightElements";
+            this.panelRightElements.Size = new System.Drawing.Size(885, 845);
+            this.panelRightElements.TabIndex = 58;
+            // 
+            // panelLeft
+            // 
+            this.panelLeft.BackColor = System.Drawing.Color.Transparent;
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLeft.Location = new System.Drawing.Point(0, 30);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(60, 845);
+            this.panelLeft.TabIndex = 59;
+            // 
+            // panelLeftElements
+            // 
+            this.panelLeftElements.BackColor = System.Drawing.Color.Transparent;
+            this.panelLeftElements.Controls.Add(this.target);
+            this.panelLeftElements.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLeftElements.Location = new System.Drawing.Point(60, 30);
+            this.panelLeftElements.Name = "panelLeftElements";
+            this.panelLeftElements.Size = new System.Drawing.Size(810, 845);
+            this.panelLeftElements.TabIndex = 60;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(176, 347);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(32, 33);
+            this.textBox1.TabIndex = 70;
+            this.textBox1.Text = "10";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.Location = new System.Drawing.Point(324, 347);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(32, 33);
+            this.textBox2.TabIndex = 72;
+            this.textBox2.Text = "10";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.ForeColor = System.Drawing.Color.White;
+            this.textBox3.Location = new System.Drawing.Point(242, 347);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(32, 33);
+            this.textBox3.TabIndex = 71;
+            this.textBox3.Text = "10";
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.White;
+            this.textBox4.Location = new System.Drawing.Point(324, 468);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(32, 33);
+            this.textBox4.TabIndex = 76;
+            this.textBox4.Text = "10";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.ForeColor = System.Drawing.Color.White;
+            this.textBox5.Location = new System.Drawing.Point(242, 468);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(32, 33);
+            this.textBox5.TabIndex = 75;
+            this.textBox5.Text = "10";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox6.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.ForeColor = System.Drawing.Color.White;
+            this.textBox6.Location = new System.Drawing.Point(176, 468);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(32, 33);
+            this.textBox6.TabIndex = 74;
+            this.textBox6.Text = "10";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.ForeColor = System.Drawing.Color.White;
+            this.textBox7.Location = new System.Drawing.Point(110, 468);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(32, 33);
+            this.textBox7.TabIndex = 73;
+            this.textBox7.Text = "10";
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.ForeColor = System.Drawing.Color.White;
+            this.textBox8.Location = new System.Drawing.Point(178, 131);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(165, 45);
+            this.textBox8.TabIndex = 77;
+            this.textBox8.Text = "18-02-2025";
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox9.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox9.ForeColor = System.Drawing.Color.White;
+            this.textBox9.Location = new System.Drawing.Point(178, 232);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(165, 45);
+            this.textBox9.TabIndex = 78;
+            this.textBox9.Text = "23:55:55";
+            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox10
+            // 
+            this.textBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox10.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.ForeColor = System.Drawing.Color.White;
+            this.textBox10.Location = new System.Drawing.Point(126, 574);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(81, 33);
+            this.textBox10.TabIndex = 79;
+            this.textBox10.Text = "20";
+            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox11
+            // 
+            this.textBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox11.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox11.ForeColor = System.Drawing.Color.White;
+            this.textBox11.Location = new System.Drawing.Point(269, 574);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(81, 33);
+            this.textBox11.TabIndex = 80;
+            this.textBox11.Text = "5";
+            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FrmPrincipal
             // 
@@ -588,32 +1030,11 @@
             this.BackgroundImage = global::MultiFaceRec.Properties.Resources.Background_nishon1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1844, 875);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnUpgrade);
-            this.Controls.Add(this.btnTake);
-            this.Controls.Add(this.txtbaho);
-            this.Controls.Add(this.txtball);
-            this.Controls.Add(this.txtn3);
-            this.Controls.Add(this.txtn2);
-            this.Controls.Add(this.txtn1);
-            this.Controls.Add(this.txts3);
-            this.Controls.Add(this.txts2);
-            this.Controls.Add(this.txts1);
-            this.Controls.Add(this.txthaqida);
-            this.Controls.Add(this.txtbolinma);
-            this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtunvoni);
-            this.Controls.Add(this.txtism);
-            this.Controls.Add(this.txtfamiliya);
-            this.Controls.Add(this.txtid);
-            this.Controls.Add(this.txtsharif);
-            this.Controls.Add(this.picFace);
-            this.Controls.Add(this.imageBoxFrameGrabber);
-            this.Controls.Add(this.picInfoPanel);
-            this.Controls.Add(this.target);
+            this.Controls.Add(this.panelLeftElements);
+            this.Controls.Add(this.panelRightElements);
+            this.Controls.Add(this.panelLeft);
+            this.Controls.Add(this.panelRight);
+            this.Controls.Add(this.header);
             this.DoubleBuffered = true;
             this.Name = "FrmPrincipal";
             this.Text = "Camera Input & Face Detection";
@@ -629,16 +1050,33 @@
             ((System.ComponentModel.ISupportInitialize)(this.r8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.r9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.g10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picInfoPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.r10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).EndInit();
             this.target.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.g8)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFace)).EndInit();
+            this.panelInfo.ResumeLayout(false);
+            this.panelInfo.PerformLayout();
+            this.header.ResumeLayout(false);
+            this.header.PerformLayout();
+            this.panelScore.ResumeLayout(false);
+            this.panelScore.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBallN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picN3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picN2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picN1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBallS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picS3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picS2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picS1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOtishVaqti)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOtishSanasi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panelRightElements.ResumeLayout(false);
+            this.panelLeftElements.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -658,7 +1096,6 @@
         private System.Windows.Forms.TextBox txtism;
         private System.Windows.Forms.TextBox txtfamiliya;
         private System.Windows.Forms.PictureBox g10;
-        private System.Windows.Forms.PictureBox picInfoPanel;
         private System.Windows.Forms.PictureBox r10;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtid;
@@ -666,26 +1103,57 @@
         private System.Windows.Forms.Panel target;
         private System.Windows.Forms.PictureBox g8;
         private System.Windows.Forms.TextBox txtsharif;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem malumotlarBazasiBilanBoglashToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem yangiMalumotlarBazasiYaratishToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem Malumotlarbazasijoylashuvinikorish;
         private System.Windows.Forms.PictureBox picFace;
         private System.Windows.Forms.TextBox txtbolinma;
         private System.Windows.Forms.TextBox txthaqida;
-        private System.Windows.Forms.TextBox txts2;
         private System.Windows.Forms.TextBox txts1;
-        private System.Windows.Forms.TextBox txtn3;
-        private System.Windows.Forms.TextBox txtn2;
-        private System.Windows.Forms.TextBox txtn1;
-        private System.Windows.Forms.TextBox txts3;
-        private System.Windows.Forms.TextBox txtbaho;
-        private System.Windows.Forms.TextBox txtball;
         private System.Windows.Forms.Button btnTake;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnUpgrade;
-        private System.Windows.Forms.ToolStripMenuItem portToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cboPorts;
+        private System.Windows.Forms.Panel panelInfo;
+        private System.Windows.Forms.Panel header;
+        private System.Windows.Forms.Button btnLocation;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.Panel panelScore;
+        private System.Windows.Forms.PictureBox picOtishSanasi;
+        private System.Windows.Forms.Label lblOtishSanasi;
+        private System.Windows.Forms.PictureBox picOtishVaqti;
+        private System.Windows.Forms.Label lblOtishVaqti;
+        private System.Windows.Forms.PictureBox picS1;
+        private System.Windows.Forms.Label lblBallSinov;
+        private System.Windows.Forms.Label lblSinov;
+        private System.Windows.Forms.PictureBox picS2;
+        private System.Windows.Forms.PictureBox picBallN;
+        private System.Windows.Forms.PictureBox picN3;
+        private System.Windows.Forms.PictureBox picN2;
+        private System.Windows.Forms.PictureBox picN1;
+        private System.Windows.Forms.Label lblBallNazorat;
+        private System.Windows.Forms.Label lblNazoratOtishMashqi;
+        private System.Windows.Forms.PictureBox picBallS;
+        private System.Windows.Forms.PictureBox picS3;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Panel panelRight;
+        private System.Windows.Forms.Panel panelRightElements;
+        private System.Windows.Forms.Panel panelLeft;
+        private System.Windows.Forms.Panel panelLeftElements;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox10;
     }
 }
 
