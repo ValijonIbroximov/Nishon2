@@ -1053,14 +1053,22 @@ namespace MultiFaceRec
                                         txtunvoni.Text = reader["unvoni"].ToString();
                                         txtbolinma.Text = reader["bolinma"].ToString();
                                         txthaqida.Text = reader["haqida"].ToString();
+
                                         txts1.Text = reader["s1"].ToString();
                                         txts2.Text = reader["s2"].ToString();
                                         txts3.Text = reader["s3"].ToString();
                                         txtn1.Text = reader["n1"].ToString();
                                         txtn2.Text = reader["n2"].ToString();
                                         txtn3.Text = reader["n3"].ToString();
+
                                         txtball.Text = reader["ball"].ToString();
                                         txtbaho.Text = reader["baho"].ToString();
+
+                                        // 🔴 yangi maydonlar
+                                        txtsball.Text = reader["sball"].ToString();
+                                        txtnball.Text = reader["nball"].ToString();
+                                        txtsonggiotishsanasi.Text = reader["songgiotishsanasi"].ToString();
+                                        txtotishdavomiyligi.Text = reader["otishdavomiyligi"].ToString();
 
                                         if (!(reader["image"] is DBNull))
                                         {
@@ -1094,7 +1102,8 @@ namespace MultiFaceRec
                 Debug.WriteLine("FrameGrabber xato: " + ex.Message);
             }
         }
-        
+
+
 
         /* eski kod
         void FrameGrabber(object sender, EventArgs e)

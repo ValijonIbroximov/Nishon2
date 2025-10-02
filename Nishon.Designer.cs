@@ -67,13 +67,13 @@
             this.panelScore = new System.Windows.Forms.Panel();
             this.txtbaho = new System.Windows.Forms.TextBox();
             this.txtball = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.txtnBall = new System.Windows.Forms.TextBox();
+            this.txtotishdavomiyligi = new System.Windows.Forms.TextBox();
+            this.txtsonggiotishsanasi = new System.Windows.Forms.TextBox();
+            this.txtnball = new System.Windows.Forms.TextBox();
             this.txtn3 = new System.Windows.Forms.TextBox();
             this.txtn2 = new System.Windows.Forms.TextBox();
             this.txtn1 = new System.Windows.Forms.TextBox();
-            this.txtsBall = new System.Windows.Forms.TextBox();
+            this.txtsball = new System.Windows.Forms.TextBox();
             this.txts3 = new System.Windows.Forms.TextBox();
             this.txts2 = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -589,13 +589,13 @@
             this.panelScore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelScore.Controls.Add(this.txtbaho);
             this.panelScore.Controls.Add(this.txtball);
-            this.panelScore.Controls.Add(this.textBox9);
-            this.panelScore.Controls.Add(this.textBox8);
-            this.panelScore.Controls.Add(this.txtnBall);
+            this.panelScore.Controls.Add(this.txtotishdavomiyligi);
+            this.panelScore.Controls.Add(this.txtsonggiotishsanasi);
+            this.panelScore.Controls.Add(this.txtnball);
             this.panelScore.Controls.Add(this.txtn3);
             this.panelScore.Controls.Add(this.txtn2);
             this.panelScore.Controls.Add(this.txtn1);
-            this.panelScore.Controls.Add(this.txtsBall);
+            this.panelScore.Controls.Add(this.txtsball);
             this.panelScore.Controls.Add(this.txts3);
             this.panelScore.Controls.Add(this.txts2);
             this.panelScore.Controls.Add(this.txts1);
@@ -651,44 +651,44 @@
             this.txtball.Text = "20";
             this.txtball.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox9
+            // txtotishdavomiyligi
             // 
-            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.ForeColor = System.Drawing.Color.White;
-            this.textBox9.Location = new System.Drawing.Point(178, 232);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(165, 45);
-            this.textBox9.TabIndex = 78;
-            this.textBox9.Text = "23:55:55";
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtotishdavomiyligi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.txtotishdavomiyligi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtotishdavomiyligi.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtotishdavomiyligi.ForeColor = System.Drawing.Color.White;
+            this.txtotishdavomiyligi.Location = new System.Drawing.Point(178, 232);
+            this.txtotishdavomiyligi.Name = "txtotishdavomiyligi";
+            this.txtotishdavomiyligi.Size = new System.Drawing.Size(165, 45);
+            this.txtotishdavomiyligi.TabIndex = 78;
+            this.txtotishdavomiyligi.Text = "23:55:55";
+            this.txtotishdavomiyligi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox8
+            // txtsonggiotishsanasi
             // 
-            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.ForeColor = System.Drawing.Color.White;
-            this.textBox8.Location = new System.Drawing.Point(178, 131);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(165, 45);
-            this.textBox8.TabIndex = 77;
-            this.textBox8.Text = "18-02-2025";
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtsonggiotishsanasi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.txtsonggiotishsanasi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtsonggiotishsanasi.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsonggiotishsanasi.ForeColor = System.Drawing.Color.White;
+            this.txtsonggiotishsanasi.Location = new System.Drawing.Point(178, 131);
+            this.txtsonggiotishsanasi.Name = "txtsonggiotishsanasi";
+            this.txtsonggiotishsanasi.Size = new System.Drawing.Size(165, 45);
+            this.txtsonggiotishsanasi.TabIndex = 77;
+            this.txtsonggiotishsanasi.Text = "18-02-2025";
+            this.txtsonggiotishsanasi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtnBall
+            // txtnball
             // 
-            this.txtnBall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtnBall.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtnBall.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnBall.ForeColor = System.Drawing.Color.White;
-            this.txtnBall.Location = new System.Drawing.Point(324, 468);
-            this.txtnBall.Name = "txtnBall";
-            this.txtnBall.Size = new System.Drawing.Size(32, 33);
-            this.txtnBall.TabIndex = 76;
-            this.txtnBall.Text = "10";
-            this.txtnBall.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtnball.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtnball.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtnball.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnball.ForeColor = System.Drawing.Color.White;
+            this.txtnball.Location = new System.Drawing.Point(324, 468);
+            this.txtnball.Name = "txtnball";
+            this.txtnball.Size = new System.Drawing.Size(32, 33);
+            this.txtnball.TabIndex = 76;
+            this.txtnball.Text = "10";
+            this.txtnball.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtn3
             // 
@@ -729,18 +729,18 @@
             this.txtn1.Text = "10";
             this.txtn1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtsBall
+            // txtsball
             // 
-            this.txtsBall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtsBall.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtsBall.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtsBall.ForeColor = System.Drawing.Color.White;
-            this.txtsBall.Location = new System.Drawing.Point(324, 347);
-            this.txtsBall.Name = "txtsBall";
-            this.txtsBall.Size = new System.Drawing.Size(32, 33);
-            this.txtsBall.TabIndex = 72;
-            this.txtsBall.Text = "10";
-            this.txtsBall.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtsball.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtsball.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtsball.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsball.ForeColor = System.Drawing.Color.White;
+            this.txtsball.Location = new System.Drawing.Point(324, 347);
+            this.txtsball.Name = "txtsball";
+            this.txtsball.Size = new System.Drawing.Size(32, 33);
+            this.txtsball.TabIndex = 72;
+            this.txtsball.Text = "10";
+            this.txtsball.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txts3
             // 
@@ -1158,15 +1158,15 @@
         private System.Windows.Forms.Panel panelRightElements;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panelLeftElements;
-        private System.Windows.Forms.TextBox txtnBall;
+        private System.Windows.Forms.TextBox txtnball;
         private System.Windows.Forms.TextBox txtn3;
         private System.Windows.Forms.TextBox txtn2;
         private System.Windows.Forms.TextBox txtn1;
-        private System.Windows.Forms.TextBox txtsBall;
+        private System.Windows.Forms.TextBox txtsball;
         private System.Windows.Forms.TextBox txts3;
         private System.Windows.Forms.TextBox txts2;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtsonggiotishsanasi;
+        private System.Windows.Forms.TextBox txtotishdavomiyligi;
         private System.Windows.Forms.TextBox txtbaho;
         private System.Windows.Forms.TextBox txtball;
         private System.Windows.Forms.Label lblMsg;
