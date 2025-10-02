@@ -90,17 +90,17 @@
             this.panelRightElements = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelLeftElements = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txts2 = new System.Windows.Forms.TextBox();
+            this.txtsBall = new System.Windows.Forms.TextBox();
+            this.txts3 = new System.Windows.Forms.TextBox();
+            this.txtnBall = new System.Windows.Forms.TextBox();
+            this.txtn3 = new System.Windows.Forms.TextBox();
+            this.txtn2 = new System.Windows.Forms.TextBox();
+            this.txtn1 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtball = new System.Windows.Forms.TextBox();
+            this.txtbaho = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.r7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.g7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r6)).BeginInit();
@@ -585,17 +585,17 @@
             this.panelScore.BackColor = System.Drawing.Color.Transparent;
             this.panelScore.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameGreen;
             this.panelScore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelScore.Controls.Add(this.textBox11);
-            this.panelScore.Controls.Add(this.textBox10);
+            this.panelScore.Controls.Add(this.txtbaho);
+            this.panelScore.Controls.Add(this.txtball);
             this.panelScore.Controls.Add(this.textBox9);
             this.panelScore.Controls.Add(this.textBox8);
-            this.panelScore.Controls.Add(this.textBox4);
-            this.panelScore.Controls.Add(this.textBox5);
-            this.panelScore.Controls.Add(this.textBox6);
-            this.panelScore.Controls.Add(this.textBox7);
-            this.panelScore.Controls.Add(this.textBox2);
-            this.panelScore.Controls.Add(this.textBox3);
-            this.panelScore.Controls.Add(this.textBox1);
+            this.panelScore.Controls.Add(this.txtnBall);
+            this.panelScore.Controls.Add(this.txtn3);
+            this.panelScore.Controls.Add(this.txtn2);
+            this.panelScore.Controls.Add(this.txtn1);
+            this.panelScore.Controls.Add(this.txtsBall);
+            this.panelScore.Controls.Add(this.txts3);
+            this.panelScore.Controls.Add(this.txts2);
             this.panelScore.Controls.Add(this.txts1);
             this.panelScore.Controls.Add(this.pictureBox3);
             this.panelScore.Controls.Add(this.pictureBox1);
@@ -880,96 +880,96 @@
             this.panelLeftElements.Size = new System.Drawing.Size(810, 845);
             this.panelLeftElements.TabIndex = 60;
             // 
-            // textBox1
+            // txts2
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(176, 347);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(32, 33);
-            this.textBox1.TabIndex = 70;
-            this.textBox1.Text = "10";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txts2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txts2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txts2.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txts2.ForeColor = System.Drawing.Color.White;
+            this.txts2.Location = new System.Drawing.Point(176, 347);
+            this.txts2.Name = "txts2";
+            this.txts2.Size = new System.Drawing.Size(32, 33);
+            this.txts2.TabIndex = 70;
+            this.txts2.Text = "10";
+            this.txts2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // txtsBall
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(324, 347);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(32, 33);
-            this.textBox2.TabIndex = 72;
-            this.textBox2.Text = "10";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtsBall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtsBall.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtsBall.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsBall.ForeColor = System.Drawing.Color.White;
+            this.txtsBall.Location = new System.Drawing.Point(324, 347);
+            this.txtsBall.Name = "txtsBall";
+            this.txtsBall.Size = new System.Drawing.Size(32, 33);
+            this.txtsBall.TabIndex = 72;
+            this.txtsBall.Text = "10";
+            this.txtsBall.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox3
+            // txts3
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(242, 347);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(32, 33);
-            this.textBox3.TabIndex = 71;
-            this.textBox3.Text = "10";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txts3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txts3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txts3.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txts3.ForeColor = System.Drawing.Color.White;
+            this.txts3.Location = new System.Drawing.Point(242, 347);
+            this.txts3.Name = "txts3";
+            this.txts3.Size = new System.Drawing.Size(32, 33);
+            this.txts3.TabIndex = 71;
+            this.txts3.Text = "10";
+            this.txts3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox4
+            // txtnBall
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(324, 468);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(32, 33);
-            this.textBox4.TabIndex = 76;
-            this.textBox4.Text = "10";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtnBall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtnBall.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtnBall.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnBall.ForeColor = System.Drawing.Color.White;
+            this.txtnBall.Location = new System.Drawing.Point(324, 468);
+            this.txtnBall.Name = "txtnBall";
+            this.txtnBall.Size = new System.Drawing.Size(32, 33);
+            this.txtnBall.TabIndex = 76;
+            this.txtnBall.Text = "10";
+            this.txtnBall.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox5
+            // txtn3
             // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.White;
-            this.textBox5.Location = new System.Drawing.Point(242, 468);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(32, 33);
-            this.textBox5.TabIndex = 75;
-            this.textBox5.Text = "10";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtn3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtn3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtn3.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtn3.ForeColor = System.Drawing.Color.White;
+            this.txtn3.Location = new System.Drawing.Point(242, 468);
+            this.txtn3.Name = "txtn3";
+            this.txtn3.Size = new System.Drawing.Size(32, 33);
+            this.txtn3.TabIndex = 75;
+            this.txtn3.Text = "10";
+            this.txtn3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox6
+            // txtn2
             // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.ForeColor = System.Drawing.Color.White;
-            this.textBox6.Location = new System.Drawing.Point(176, 468);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(32, 33);
-            this.textBox6.TabIndex = 74;
-            this.textBox6.Text = "10";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtn2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtn2.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtn2.ForeColor = System.Drawing.Color.White;
+            this.txtn2.Location = new System.Drawing.Point(176, 468);
+            this.txtn2.Name = "txtn2";
+            this.txtn2.Size = new System.Drawing.Size(32, 33);
+            this.txtn2.TabIndex = 74;
+            this.txtn2.Text = "10";
+            this.txtn2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox7
+            // txtn1
             // 
-            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.ForeColor = System.Drawing.Color.White;
-            this.textBox7.Location = new System.Drawing.Point(110, 468);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(32, 33);
-            this.textBox7.TabIndex = 73;
-            this.textBox7.Text = "10";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtn1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtn1.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtn1.ForeColor = System.Drawing.Color.White;
+            this.txtn1.Location = new System.Drawing.Point(110, 468);
+            this.txtn1.Name = "txtn1";
+            this.txtn1.Size = new System.Drawing.Size(32, 33);
+            this.txtn1.TabIndex = 73;
+            this.txtn1.Text = "10";
+            this.txtn1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox8
             // 
@@ -997,31 +997,31 @@
             this.textBox9.Text = "23:55:55";
             this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox10
+            // txtball
             // 
-            this.textBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox10.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.ForeColor = System.Drawing.Color.White;
-            this.textBox10.Location = new System.Drawing.Point(126, 574);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(81, 33);
-            this.textBox10.TabIndex = 79;
-            this.textBox10.Text = "20";
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtball.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.txtball.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtball.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtball.ForeColor = System.Drawing.Color.White;
+            this.txtball.Location = new System.Drawing.Point(126, 574);
+            this.txtball.Name = "txtball";
+            this.txtball.Size = new System.Drawing.Size(81, 33);
+            this.txtball.TabIndex = 79;
+            this.txtball.Text = "20";
+            this.txtball.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox11
+            // txtbaho
             // 
-            this.textBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox11.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.ForeColor = System.Drawing.Color.White;
-            this.textBox11.Location = new System.Drawing.Point(269, 574);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(81, 33);
-            this.textBox11.TabIndex = 80;
-            this.textBox11.Text = "5";
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtbaho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.txtbaho.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtbaho.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbaho.ForeColor = System.Drawing.Color.White;
+            this.txtbaho.Location = new System.Drawing.Point(269, 574);
+            this.txtbaho.Name = "txtbaho";
+            this.txtbaho.Size = new System.Drawing.Size(81, 33);
+            this.txtbaho.TabIndex = 80;
+            this.txtbaho.Text = "5";
+            this.txtbaho.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FrmPrincipal
             // 
@@ -1143,17 +1143,17 @@
         private System.Windows.Forms.Panel panelRightElements;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panelLeftElements;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtnBall;
+        private System.Windows.Forms.TextBox txtn3;
+        private System.Windows.Forms.TextBox txtn2;
+        private System.Windows.Forms.TextBox txtn1;
+        private System.Windows.Forms.TextBox txtsBall;
+        private System.Windows.Forms.TextBox txts3;
+        private System.Windows.Forms.TextBox txts2;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtbaho;
+        private System.Windows.Forms.TextBox txtball;
     }
 }
 
