@@ -471,6 +471,7 @@
             this.btnDelete.Size = new System.Drawing.Size(60, 60);
             this.btnDelete.TabIndex = 52;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClear
             // 

@@ -155,6 +155,7 @@ namespace MultiFaceRec
         {
             try
             {
+                btnClear_Click(null, EventArgs.Empty);
                 if (grabber != null) grabber.Dispose(); // Avvalgi connectionni yopamiz
                 picFace.Visible = false; // Oldingi yuzni yashiramiz
                 grabber = new Capture();                // Kamera ishga tushiriladi
@@ -351,6 +352,7 @@ namespace MultiFaceRec
         private void btnDelete_Click(object sender, EventArgs e)
         {
             string currentId = txtid.Text.Trim();
+            LoadUserDataById(currentId); // ID bo‘yicha ma'lumotlarni yuklash
 
             if (!string.IsNullOrEmpty(currentId))
             {
@@ -1092,6 +1094,62 @@ CREATE TABLE [dbo].[users]
 
         // --- FrameGrabber (kamera oqimi) ---
 
+        // 🔹 id bo‘yicha ma’lumotlarni o‘qib, formadagi maydonlarga to‘ldiradi
+        private void LoadUserDataById(string userId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM users WHERE id=@id";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", userId);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            txtfamiliya.Text = reader["familiya"].ToString();
+                            txtism.Text = reader["ism"].ToString();
+                            txtsharif.Text = reader["sharif"].ToString();
+                            txtunvoni.Text = reader["unvoni"].ToString();
+                            txtbolinma.Text = reader["bolinma"].ToString();
+                            txthaqida.Text = reader["haqida"].ToString();
+
+                            txts1.Text = reader["s1"].ToString();
+                            txts2.Text = reader["s2"].ToString();
+                            txts3.Text = reader["s3"].ToString();
+                            txtn1.Text = reader["n1"].ToString();
+                            txtn2.Text = reader["n2"].ToString();
+                            txtn3.Text = reader["n3"].ToString();
+
+                            txtball.Text = reader["ball"].ToString();
+                            txtbaho.Text = reader["baho"].ToString();
+
+                            // 🔴 yangi maydonlar
+                            txtsball.Text = reader["sball"].ToString();
+                            txtnball.Text = reader["nball"].ToString();
+                            if (!(reader["songgiotishsanasi"] is DBNull))
+                            {
+                                DateTime sana = Convert.ToDateTime(reader["songgiotishsanasi"]);
+                                txtsonggiotishsanasi.Text = sana.ToString("dd.MM.yyyy");
+                            }
+                            else
+                            {
+                                txtsonggiotishsanasi.Text = "";
+                            }
+
+                            txtotishdavomiyligi.Text = reader["otishdavomiyligi"].ToString();
+
+                            if (!(reader["image"] is DBNull))
+                            {
+                                byte[] imgBytes = (byte[])reader["image"];
+                                picFace.Image = ByteArrayToImage(imgBytes);
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
 
         void FrameGrabber(object sender, EventArgs e)
@@ -1127,60 +1185,7 @@ CREATE TABLE [dbo].[users]
                     if (!string.IsNullOrEmpty(name))
                     {
                         txtid.Text = name;
-
-                        // 🔍 DB dan ma’lumotlarni olish
-                        using (SqlConnection conn = new SqlConnection(connectionString))
-                        {
-                            conn.Open();
-                            string query = "SELECT * FROM users WHERE id=@id";
-                            using (SqlCommand cmd = new SqlCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("@id", name);
-                                using (SqlDataReader reader = cmd.ExecuteReader())
-                                {
-                                    if (reader.Read())
-                                    {
-                                        txtfamiliya.Text = reader["familiya"].ToString();
-                                        txtism.Text = reader["ism"].ToString();
-                                        txtsharif.Text = reader["sharif"].ToString();
-                                        txtunvoni.Text = reader["unvoni"].ToString();
-                                        txtbolinma.Text = reader["bolinma"].ToString();
-                                        txthaqida.Text = reader["haqida"].ToString();
-
-                                        txts1.Text = reader["s1"].ToString();
-                                        txts2.Text = reader["s2"].ToString();
-                                        txts3.Text = reader["s3"].ToString();
-                                        txtn1.Text = reader["n1"].ToString();
-                                        txtn2.Text = reader["n2"].ToString();
-                                        txtn3.Text = reader["n3"].ToString();
-
-                                        txtball.Text = reader["ball"].ToString();
-                                        txtbaho.Text = reader["baho"].ToString();
-
-                                        // 🔴 yangi maydonlar
-                                        txtsball.Text = reader["sball"].ToString();
-                                        txtnball.Text = reader["nball"].ToString();
-                                        if (!(reader["songgiotishsanasi"] is DBNull))
-                                        {
-                                            DateTime sana = Convert.ToDateTime(reader["songgiotishsanasi"]);
-                                            txtsonggiotishsanasi.Text = sana.ToString("dd.MM.yyyy");
-                                        }
-                                        else
-                                        {
-                                            txtsonggiotishsanasi.Text = "";
-                                        }
-
-                                        txtotishdavomiyligi.Text = reader["otishdavomiyligi"].ToString();
-
-                                        if (!(reader["image"] is DBNull))
-                                        {
-                                            byte[] imgBytes = (byte[])reader["image"];
-                                            picFace.Image = ByteArrayToImage(imgBytes);
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        LoadUserDataById(name); // ✅ alohida funksiyaga chaqirildi
                     }
 
                     currentFrame.Draw(name ?? "Unknown",
@@ -1204,6 +1209,7 @@ CREATE TABLE [dbo].[users]
                 ShowNotification("FrameGrabber xato: " + ex.Message);
             }
         }
+
 
     }
 }
