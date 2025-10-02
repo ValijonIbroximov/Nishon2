@@ -62,6 +62,10 @@ namespace MultiFaceRec
         string connectionString = string.Empty;
 
 
+        private int retryCount = 0;
+        private Timer faceTimer;
+
+
         /// <summary>
         /// //////////////////////////////////////////////////////////////////////
         // --- Form ---
@@ -90,11 +94,12 @@ namespace MultiFaceRec
                 // Bog'lanish muvaffaqiyatli, users jadvalini tekshirish
                 if (!checkTableExistence(connectionString))
                 {
-                    MessageBox.Show("Ma'lumotlar bazasida 'users' jadvali mavjud emas. Jadvalni yaratilmoqda...");
+                    ShowNotification("Ma'lumotlar bazasida 'users' jadvali mavjud emas. Jadvalni yaratilmoqda...");
                     createTable(connectionString);
                 }
             }
             connectionString = loadConnectionString();
+            LoadTrainingDataFromDB();
         }
 
         public FrmPrincipal()
@@ -108,7 +113,7 @@ namespace MultiFaceRec
             }
             catch
             {
-                MessageBox.Show("Haarcascade fayli topilmadi! XML faylni tekshiring.");
+                ShowNotification("Haarcascade fayli topilmadi! XML faylni tekshiring.");
                 return;
             }
 
@@ -129,8 +134,7 @@ namespace MultiFaceRec
             }
             catch
             {
-                MessageBox.Show("Database bo'sh. Yuz qo‘shing!", "Warning",
-                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ShowNotification("Database bo'sh. Yuz qo‘shing!");
             }
         }
 
@@ -148,7 +152,7 @@ namespace MultiFaceRec
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Kameraga ulanishda xato: " + ex.Message);
+                ShowNotification("Kameraga ulanishda xato: " + ex.Message);
             }
         }
 
@@ -161,7 +165,7 @@ namespace MultiFaceRec
                 picFace.Visible = true;
                 if (string.IsNullOrEmpty(txtid.Text))
                 {
-                    MessageBox.Show("Yangi yuz qo‘shish uchun ID kiriting!");
+                    ShowNotification("Yangi yuz qo‘shish uchun ID kiriting!");
                     return;
                 }
 
@@ -177,7 +181,7 @@ namespace MultiFaceRec
 
                 if (facesDetected[0].Length == 0)
                 {
-                    MessageBox.Show("Yuz aniqlanmadi. Kameraga yaqinroq turing.");
+                    ShowNotification("Yuz aniqlanmadi. Kameraga yaqinroq turing.");
                     return;
                 }
 
@@ -208,12 +212,11 @@ namespace MultiFaceRec
 
                 btnAdd_Click(sender, e); // Ma'lumotlar bazasiga qo‘shish
 
-                MessageBox.Show(txtid.Text + " yuz ma'lumotlar bazasiga qo‘shildi!");
+                ShowNotification(txtid.Text + " yuz ma'lumotlar bazasiga qo‘shildi!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Xato: " + ex.Message, "Training Fail",
-                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                ShowNotification("Xato: " + ex.Message);
             }
         }
 
@@ -273,7 +276,7 @@ namespace MultiFaceRec
         }
         private void Malumotlarbazasijoylashuvinikorish_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(connectionString, "Ma'lumotlar bazasi joylashuvi");
+            ShowNotification("Ma'lumotlar bazasi joylashuvi: " + connectionString);
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -286,7 +289,7 @@ namespace MultiFaceRec
             }
             else
             {
-                MessageBox.Show("O‘chirish uchun ID kiritilmagan!");
+                ShowNotification("O‘chirish uchun ID kiritilmagan!");
             }
         }
 
@@ -315,7 +318,7 @@ namespace MultiFaceRec
                 string.IsNullOrWhiteSpace(ism) ||
                 image == null)
             {
-                MessageBox.Show("Familiya, ism va rasm kiritilishi shart!");
+                ShowNotification("Familiya, ism va rasm kiritilishi shart!");
                 return;
             }
 
@@ -353,11 +356,11 @@ namespace MultiFaceRec
                     // Ma'lumotlarni qo‘shib ID ni olish
                     int newId = Convert.ToInt32(cmd.ExecuteScalar());
 
-                    MessageBox.Show("Yangi foydalanuvchi qo‘shildi. ID = " + newId);
+                    ShowNotification("Yangi foydalanuvchi qo‘shildi. ID = " + newId);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Xatolik: " + ex.Message);
+                    ShowNotification("Xatolik: " + ex.Message);
                 }
             }
         }
@@ -385,7 +388,7 @@ namespace MultiFaceRec
                     string.IsNullOrWhiteSpace(ism) ||
                     image == null)
                 {
-                    MessageBox.Show("Familiya, ism va rasm kiritilishi shart!");
+                    ShowNotification("Familiya, ism va rasm kiritilishi shart!");
                     return;
                 }
 
@@ -443,7 +446,7 @@ namespace MultiFaceRec
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Xatolik: " + ex.Message);
+                ShowNotification("Xatolik: " + ex.Message);
             }
 
             return isConnected;
@@ -522,16 +525,16 @@ namespace MultiFaceRec
                         {
                             command.ExecuteNonQuery();
                         }
-                        MessageBox.Show("users jadvali muvaffaqiyatli yaratildi.");
+                        ShowNotification("users jadvali muvaffaqiyatli yaratildi.");
                     }
                     else
                     {
-                        MessageBox.Show("users jadvali allaqachon mavjud.");
+                        ShowNotification("users jadvali allaqachon mavjud.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Xatolik: " + ex.Message);
+                    ShowNotification("Xatolik: " + ex.Message);
                 }
             }
         }
@@ -589,7 +592,7 @@ namespace MultiFaceRec
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Xatolik: " + ex.Message);
+                    ShowNotification("Xatolik: " + ex.Message);
                 }
             }
         }
@@ -623,7 +626,7 @@ namespace MultiFaceRec
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Xatolik: " + ex.Message);
+                    ShowNotification("Xatolik: " + ex.Message);
                 }
             }
         }
@@ -649,7 +652,7 @@ namespace MultiFaceRec
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Xatolik yuz berdi: " + ex.Message);
+                ShowNotification("Xatolik yuz berdi: " + ex.Message);
             }
         }
 
@@ -678,12 +681,12 @@ namespace MultiFaceRec
                 }
                 else
                 {
-                    MessageBox.Show("Fayl mavjud emas: " + fileName);
+                    ShowNotification("Fayl mavjud emas: " + fileName);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Xatolik yuz berdi: " + ex.Message);
+                ShowNotification("Xatolik yuz berdi: " + ex.Message);
             }
 
             return connectionString;
@@ -720,18 +723,18 @@ namespace MultiFaceRec
 
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Ma'lumot muvaffaqiyatli o‘chirildi.");
+                        ShowNotification("Ma'lumot muvaffaqiyatli o‘chirildi.");
                         // O‘chirildi – formadagi maydonlarni tozalash foydali
                         btnClear_Click(null, EventArgs.Empty);
                     }
                     else
                     {
-                        MessageBox.Show("Ma'lumot topilmadi yoki o‘chirilmadi.");
+                        ShowNotification("Ma'lumot topilmadi yoki o‘chirilmadi.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Xatolik: " + ex.Message);
+                    ShowNotification("Xatolik: " + ex.Message);
                 }
             }
         }
@@ -793,16 +796,16 @@ namespace MultiFaceRec
 
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Foydalanuvchi ma'lumotlari muvaffaqiyatli yangilandi.");
+                        ShowNotification("Foydalanuvchi ma'lumotlari muvaffaqiyatli yangilandi.");
                     }
                     else
                     {
-                        MessageBox.Show("Yangilashda xatolik: foydalanuvchi topilmadi.");
+                        ShowNotification("Yangilashda xatolik: foydalanuvchi topilmadi.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Xatolik: " + ex.Message);
+                    ShowNotification("Xatolik: " + ex.Message);
                 }
             }
         }
@@ -820,15 +823,218 @@ namespace MultiFaceRec
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Xatolik: " + ex.Message);
+                    ShowNotification("Xatolik: " + ex.Message);
                 }
             }
         }
 
 
+        private void btnTake_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnTake.Enabled = false; // kutayotgan paytda bosilmasin
+
+                if (grabber == null)
+                {
+                    grabber = new Capture();
+                    grabber.QueryFrame();
+                }
+
+                lblMsg.Text = "Yuz qidirilmoqda...";
+                Application.Idle -= TakeFaceFrame;
+                Application.Idle += TakeFaceFrame;
+            }
+            catch (Exception ex)
+            {
+                lblMsg.Text = "Xatolik: " + ex.Message;
+                btnTake.Enabled = true;
+            }
+        }
+
+        private void TakeFaceFrame(object sender, EventArgs e)
+        {
+            currentFrame = grabber.QueryFrame().Resize(320, 240, INTER.CV_INTER_CUBIC);
+            gray = currentFrame.Convert<Gray, Byte>();
+
+            MCvAvgComp[][] facesDetected = gray.DetectHaarCascade(
+                face,
+                1.2,
+                10,
+                HAAR_DETECTION_TYPE.DO_CANNY_PRUNING,
+                new Size(20, 20));
+
+            if (facesDetected[0].Length > 0)
+            {
+                MCvAvgComp f = facesDetected[0][0];
+                result = currentFrame.Copy(f.rect).Convert<Gray, byte>()
+                          .Resize(100, 100, INTER.CV_INTER_CUBIC);
+                Application.Idle -= FrameGrabber;
+                picFace.Visible = true;
+                picFace.Image = result.ToBitmap();
+                imageBoxFrameGrabber.Image = currentFrame;
+
+                ShowNotification("Yuz topildi ✅");
+
+                Application.Idle -= TakeFaceFrame;
+                btnTake.Enabled = true; // qayta yoqiladi
+            }
+            else
+            {
+                picFace.Visible = false;
+                ShowNotification("Yuz aniqlanmadi, kuting...");
+                imageBoxFrameGrabber.Image = currentFrame;
+            }
+        }
+
+
+        private async void ShowNotification(string message = "")
+        {
+            lblMsg.Text = message;
+            await Task.Delay(3000); // 2 sekund kutadi
+            lblMsg.Text = "";
+        }
+
+
+        private void LoadTrainingDataFromDB()
+        {
+            trainingImages.Clear();
+            labels.Clear();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT id, image FROM users WHERE image IS NOT NULL";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string personId = reader["id"].ToString();
+
+                        if (!(reader["image"] is DBNull))
+                        {
+                            byte[] imgBytes = (byte[])reader["image"];
+                            using (MemoryStream ms = new MemoryStream(imgBytes))
+                            {
+                                Bitmap bmp = new Bitmap(ms);
+                                Image<Gray, byte> faceImg = new Image<Gray, byte>(bmp)
+                                                                .Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+
+                                trainingImages.Add(faceImg);
+                                labels.Add(personId);
+                            }
+                        }
+                    }
+                }
+            }
+
+            ContTrain = trainingImages.Count;
+            NumLabels = labels.Count;
+        }
+
 
 
         // --- FrameGrabber (kamera oqimi) ---
+
+
+
+        void FrameGrabber(object sender, EventArgs e)
+        {
+            try
+            {
+                currentFrame = grabber.QueryFrame().Resize(320, 240, INTER.CV_INTER_CUBIC);
+                gray = currentFrame.Convert<Gray, Byte>();
+
+                MCvAvgComp[][] facesDetected = gray.DetectHaarCascade(
+                    face, 1.2, 10,
+                    Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING,
+                    new Size(20, 20));
+
+                if (facesDetected[0].Length > 0 && trainingImages.Count > 0)
+                {
+                    MCvAvgComp f = facesDetected[0][0];
+                    result = currentFrame.Copy(f.rect).Convert<Gray, byte>()
+                              .Resize(100, 100, INTER.CV_INTER_CUBIC);
+
+                    currentFrame.Draw(f.rect, new Bgr(Color.Green), 2);
+
+                    // --- Tanish ---
+                    MCvTermCriteria termCrit = new MCvTermCriteria(ContTrain, 0.001);
+                    EigenObjectRecognizer recognizer = new EigenObjectRecognizer(
+                        trainingImages.ToArray(),
+                        labels.ToArray(),
+                        3000,
+                        ref termCrit);
+
+                    name = recognizer.Recognize(result);
+
+                    if (!string.IsNullOrEmpty(name))
+                    {
+                        txtid.Text = name;
+
+                        // 🔍 DB dan ma’lumotlarni olish
+                        using (SqlConnection conn = new SqlConnection(connectionString))
+                        {
+                            conn.Open();
+                            string query = "SELECT * FROM users WHERE id=@id";
+                            using (SqlCommand cmd = new SqlCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@id", name);
+                                using (SqlDataReader reader = cmd.ExecuteReader())
+                                {
+                                    if (reader.Read())
+                                    {
+                                        txtfamiliya.Text = reader["familiya"].ToString();
+                                        txtism.Text = reader["ism"].ToString();
+                                        txtsharif.Text = reader["sharif"].ToString();
+                                        txtunvoni.Text = reader["unvoni"].ToString();
+                                        txtbolinma.Text = reader["bolinma"].ToString();
+                                        txthaqida.Text = reader["haqida"].ToString();
+                                        txts1.Text = reader["s1"].ToString();
+                                        txts2.Text = reader["s2"].ToString();
+                                        txts3.Text = reader["s3"].ToString();
+                                        txtn1.Text = reader["n1"].ToString();
+                                        txtn2.Text = reader["n2"].ToString();
+                                        txtn3.Text = reader["n3"].ToString();
+                                        txtball.Text = reader["ball"].ToString();
+                                        txtbaho.Text = reader["baho"].ToString();
+
+                                        if (!(reader["image"] is DBNull))
+                                        {
+                                            byte[] imgBytes = (byte[])reader["image"];
+                                            picFace.Image = ByteArrayToImage(imgBytes);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    currentFrame.Draw(name ?? "Unknown",
+                        ref font, new Point(f.rect.X - 2, f.rect.Y - 2),
+                        new Bgr(Color.Red));
+
+                    imageBoxFrameGrabber.Image = currentFrame;
+                    picFace.Visible = true;
+                    picFace.Image = result.Bitmap;
+
+                    Application.Idle -= FrameGrabber;
+                }
+                else
+                {
+                    imageBoxFrameGrabber.Image = currentFrame;
+                    picFace.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("FrameGrabber xato: " + ex.Message);
+            }
+        }
+        
+
+        /* eski kod
         void FrameGrabber(object sender, EventArgs e)
         {
             try
@@ -943,6 +1149,7 @@ namespace MultiFaceRec
                 Debug.WriteLine("FrameGrabber xato: " + ex.Message);
             }
         }
+        */
 
     }
 }

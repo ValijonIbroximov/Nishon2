@@ -123,6 +123,16 @@ namespace MultiFaceRec.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap frameButton {
+            get {
+                object obj = ResourceManager.GetObject("frameButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap frameGreen {
             get {
                 object obj = ResourceManager.GetObject("frameGreen", resourceCulture);
@@ -226,6 +236,16 @@ namespace MultiFaceRec.Properties {
         internal static System.Drawing.Bitmap g9 {
             get {
                 object obj = ResourceManager.GetObject("g9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gemini_Generated_Image_o0unnno0unnno0un__1_ {
+            get {
+                object obj = ResourceManager.GetObject("Gemini_Generated_Image_o0unnno0unnno0un (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
