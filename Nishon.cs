@@ -103,6 +103,12 @@ namespace MultiFaceRec
         private string[] lastKnownPorts = Array.Empty<string>();
 
 
+        private Stopwatch stopwatch = new Stopwatch();
+        private int[] shots = new int[6]; // 6 ta o‘q
+        private int currentShotIndex = 0;
+        private bool isShooting = false;
+
+
 
 
         /// <summary>
@@ -921,9 +927,9 @@ CREATE TABLE [dbo].[users]
 
         private void UpdateData(string id)
         {
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                try
                 {
                     connection.Open();
 
@@ -948,82 +954,77 @@ SET familiya = @familiya,
     songgiotishsanasi = @songgiotishsanasi,
     otishdavomiyligi = @otishdavomiyligi,
     image = @image
-WHERE id = @id;
-";
+WHERE id = @id";
 
                     using (SqlCommand cmd = new SqlCommand(updateQuery, connection))
                     {
-                        // Matn maydonlari (NULL bo'lsa DB NULL yuboriladi)
-                        cmd.Parameters.Add("@familiya", SqlDbType.NVarChar, 100).Value = string.IsNullOrWhiteSpace(familiya) ? (object)DBNull.Value : familiya;
-                        cmd.Parameters.Add("@ism", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(ism) ? (object)DBNull.Value : ism;
-                        cmd.Parameters.Add("@sharif", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(sharif) ? (object)DBNull.Value : sharif;
-                        cmd.Parameters.Add("@unvoni", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(unvoni) ? (object)DBNull.Value : unvoni;
-                        cmd.Parameters.Add("@bolinma", SqlDbType.NVarChar, 100).Value = string.IsNullOrWhiteSpace(bolinma) ? (object)DBNull.Value : bolinma;
-                        cmd.Parameters.Add("@haqida", SqlDbType.NVarChar, -1).Value = string.IsNullOrWhiteSpace(haqida) ? (object)DBNull.Value : (object)haqida;
-                        cmd.Parameters.Add("@s1", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(s1) ? (object)DBNull.Value : s1;
-                        cmd.Parameters.Add("@s2", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(s2) ? (object)DBNull.Value : s2;
-                        cmd.Parameters.Add("@s3", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(s3) ? (object)DBNull.Value : s3;
-                        cmd.Parameters.Add("@n1", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(n1) ? (object)DBNull.Value : n1;
-                        cmd.Parameters.Add("@n2", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(n2) ? (object)DBNull.Value : n2;
-                        cmd.Parameters.Add("@n3", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(n3) ? (object)DBNull.Value : n3;
-                        cmd.Parameters.Add("@ball", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(ball) ? (object)DBNull.Value : ball;
-                        cmd.Parameters.Add("@baho", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(baho) ? (object)DBNull.Value : baho;
+                        // Matn maydonlari — agar bo'sh bo'lsa DBNull.Value qo'yish
+                        cmd.Parameters.AddWithValue("@familiya", string.IsNullOrWhiteSpace(familiya) ? (object)DBNull.Value : familiya);
+                        cmd.Parameters.AddWithValue("@ism", string.IsNullOrWhiteSpace(ism) ? (object)DBNull.Value : ism);
+                        cmd.Parameters.AddWithValue("@sharif", string.IsNullOrWhiteSpace(sharif) ? (object)DBNull.Value : sharif);
+                        cmd.Parameters.AddWithValue("@unvoni", string.IsNullOrWhiteSpace(unvoni) ? (object)DBNull.Value : unvoni);
+                        cmd.Parameters.AddWithValue("@bolinma", string.IsNullOrWhiteSpace(bolinma) ? (object)DBNull.Value : bolinma);
+                        cmd.Parameters.AddWithValue("@haqida", string.IsNullOrWhiteSpace(haqida) ? (object)DBNull.Value : haqida);
+                        cmd.Parameters.AddWithValue("@s1", string.IsNullOrWhiteSpace(s1) ? (object)DBNull.Value : s1);
+                        cmd.Parameters.AddWithValue("@s2", string.IsNullOrWhiteSpace(s2) ? (object)DBNull.Value : s2);
+                        cmd.Parameters.AddWithValue("@s3", string.IsNullOrWhiteSpace(s3) ? (object)DBNull.Value : s3);
+                        cmd.Parameters.AddWithValue("@n1", string.IsNullOrWhiteSpace(n1) ? (object)DBNull.Value : n1);
+                        cmd.Parameters.AddWithValue("@n2", string.IsNullOrWhiteSpace(n2) ? (object)DBNull.Value : n2);
+                        cmd.Parameters.AddWithValue("@n3", string.IsNullOrWhiteSpace(n3) ? (object)DBNull.Value : n3);
+                        cmd.Parameters.AddWithValue("@ball", string.IsNullOrWhiteSpace(ball) ? (object)DBNull.Value : ball);
+                        cmd.Parameters.AddWithValue("@baho", string.IsNullOrWhiteSpace(baho) ? (object)DBNull.Value : baho);
 
-                        // yangi maydonlar
-                        cmd.Parameters.Add("@sball", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(sball) ? (object)DBNull.Value : sball;
-                        cmd.Parameters.Add("@nball", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(nball) ? (object)DBNull.Value : nball;
+                        // sball, nball — agar formadan olinayotgan bo'lsa:
+                        cmd.Parameters.AddWithValue("@sball", string.IsNullOrWhiteSpace(sball) ? (object)DBNull.Value : sball);
+                        cmd.Parameters.AddWithValue("@nball", string.IsNullOrWhiteSpace(nball) ? (object)DBNull.Value : nball);
 
-                        // Sana (dd.MM.yyyy) -> DATE
-                        if (!string.IsNullOrWhiteSpace(songgiotishsanasi)
-                            && DateTime.TryParseExact(songgiotishsanasi, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
-                        {
-                            cmd.Parameters.Add("@songgiotishsanasi", SqlDbType.Date).Value = parsedDate.Date;
-                        }
+                        // Sana (Date)
+                        DateTime tmpDate;
+                        if (DateTime.TryParse(songgiotishsanasi, out tmpDate))
+                            cmd.Parameters.AddWithValue("@songgiotishsanasi", tmpDate.Date);
                         else
-                        {
-                            cmd.Parameters.Add("@songgiotishsanasi", SqlDbType.Date).Value = DBNull.Value;
-                        }
+                            cmd.Parameters.AddWithValue("@songgiotishsanasi", DBNull.Value);
 
-                        // Vaqt (hh:mm:ss) -> TIME
-                        if (!string.IsNullOrWhiteSpace(otishdavomiyligi)
-                            && TimeSpan.TryParse(otishdavomiyligi, out TimeSpan parsedTime))
-                        {
-                            cmd.Parameters.Add("@otishdavomiyligi", SqlDbType.Time).Value = parsedTime;
-                        }
+                        // Davomiylik (TimeSpan / TIME)
+                        TimeSpan tmpTs;
+                        if (TimeSpan.TryParse(otishdavomiyligi, out tmpTs))
+                            cmd.Parameters.AddWithValue("@otishdavomiyligi", tmpTs);
                         else
-                        {
-                            cmd.Parameters.Add("@otishdavomiyligi", SqlDbType.Time).Value = DBNull.Value;
-                        }
+                            cmd.Parameters.AddWithValue("@otishdavomiyligi", DBNull.Value);
 
-                        // Image -> VARBINARY(MAX)
+                        // Rasm
                         if (image != null)
                         {
                             byte[] imageBytes = ImageToByteArray(image);
-                            cmd.Parameters.Add("@image", SqlDbType.VarBinary, -1).Value = imageBytes;
+                            cmd.Parameters.AddWithValue("@image", imageBytes);
                         }
                         else
                         {
-                            cmd.Parameters.Add("@image", SqlDbType.VarBinary, -1).Value = DBNull.Value;
+                            cmd.Parameters.AddWithValue("@image", DBNull.Value);
                         }
 
-                        // **MUHIM**: id parametri — shu yerda qo'shiladi (error shu sabab edi)
-                        cmd.Parameters.Add("@id", SqlDbType.NVarChar, 50).Value = id;
+                        // **MUHIM**: id parametri (update WHERE uchun)
+                        cmd.Parameters.AddWithValue("@id", id);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
 
                         if (rowsAffected > 0)
+                        {
                             ShowNotification("Foydalanuvchi ma'lumotlari muvaffaqiyatli yangilandi.");
+                        }
                         else
+                        {
                             ShowNotification("Yangilashda xatolik: foydalanuvchi topilmadi.");
-
-                    } // using cmd
-                } // using connection
-            }
-            catch (Exception ex)
-            {
-                ShowNotification("Xatolik: " + ex.Message);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowNotification("Xatolik: " + ex.Message);
+                }
             }
         }
+
 
 
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -1435,6 +1436,7 @@ WHERE id = @id;
         /// <summary>
         /// Portdan ma’lumot kelganda ishlaydi
         /// </summary>
+        // Portdan ma’lumot kelganda
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
@@ -1443,23 +1445,191 @@ WHERE id = @id;
 
                 string data = serialPort.ReadLine().Trim();
 
-                this.Invoke(new Action(() =>
+                // O‘q balli keladi deb faraz qilamiz
+                if (int.TryParse(data, out int ball))
                 {
-                    RedTrue(Convert.ToInt16(data.Trim()));
-                    string notification = $"Portdan ma’lumot keldi: {data}";
-                    ShowNotification(notification);
-                    // Shu yerda DB ga yozish yoki boshqa logika qo‘shish mumkin
-                }));
+                    this.Invoke(new Action(() =>
+                    {
+                        ProcessShot(ball);
+                        RedTrue(ball);
+                    }));
+                }
             }
             catch (Exception ex)
             {
                 this.Invoke(new Action(() =>
                 {
-                    ShowNotification($"O‘qishda xato: {ex.Message}");
-                    ShowNotification(NoPortSelectedText);
+                    ShowNotification($"Portdan o‘qishda xato: {ex.Message}");
                 }));
             }
         }
+        public static int Clamp(int value, int min, int max)
+        {
+            if (value < min) return min;
+            if (value > max) return max;
+            return value;
+        }
+
+        // 🔹 O‘qni qayd qilish va maydonlarga yozish
+        private void ProcessShot(int ball)
+        {
+            if (!isShooting)
+            {
+                // Birinchi o‘q kelganda vaqtni boshlaymiz
+                isShooting = true;
+                currentShotIndex = 0;
+                Array.Clear(shots, 0, shots.Length);
+                stopwatch.Restart();
+
+                // ⏰ Oxirgi otish sanasini bugunga qo‘yish
+                txtsonggiotishsanasi.Text = DateTime.Now.ToString("dd.MM.yyyy");
+
+                // Vaqtni yangilash uchun timer
+                Timer timer = new Timer();
+                timer.Interval = 100;
+                timer.Tick += (s, e) =>
+                {
+                    if (isShooting)
+                        txtotishdavomiyligi.Text = stopwatch.Elapsed.ToString(@"mm\:ss\:fff");
+                    else
+                        timer.Stop();
+                };
+                timer.Start();
+            }
+
+
+            if (currentShotIndex < shots.Length)
+            {
+                shots[currentShotIndex] = Clamp(ball, 0, 10); // ball 0–10 oralig‘ida
+                currentShotIndex++;
+
+                // Har bir o‘q natijasini mos textboxga yozish
+                switch (currentShotIndex)
+                {
+                    case 1: txts1.Text = ball.ToString(); break;
+                    case 2: txts2.Text = ball.ToString(); break;
+                    case 3: txts3.Text = ball.ToString(); break;
+                    case 4: txtn1.Text = ball.ToString(); break;
+                    case 5: txtn2.Text = ball.ToString(); break;
+                    case 6: txtn3.Text = ball.ToString(); break;
+                }
+
+                // Ballar hisoblash
+                int sBall = shots.Take(3).Sum();
+                int nBall = shots.Skip(3).Take(3).Sum();
+                int umumiyBall = sBall + nBall;
+                int baho = CalculateBaho(umumiyBall);
+
+                // Formaga chiqarish
+                txtsball.Text = sBall.ToString();
+                txtnball.Text = nBall.ToString();
+                txtball.Text = umumiyBall.ToString();
+                txtbaho.Text = baho.ToString();
+            }
+
+            if (currentShotIndex >= shots.Length)
+            {
+                stopwatch.Stop();
+                isShooting = false;
+                ShowNotification("Otish tugadi!");
+            }
+        }
+
+        // 🔹 Umumiy ballni 5 bahoga aylantirish
+        private int CalculateBaho(int umumiyBall)
+        {
+            if (umumiyBall >= 27) return 5;
+            if (umumiyBall >= 22) return 4;
+            if (umumiyBall >= 16) return 3;
+            if (umumiyBall >= 10) return 2;
+            return 1;
+        }
+
+        // 🔹 Qoldirilsin tugmasi
+
+        private void btnStopShooting_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!isShooting)
+                {
+                    ShowNotification("Otish jarayoni hali boshlanmagan!");
+                    return;
+                }
+
+                // Stop va holatni yangilash
+                stopwatch.Stop();
+                isShooting = false;
+
+                // Davomiylikni (hh:mm:ss.fff) ko'rsatish
+                TimeSpan duration = stopwatch.Elapsed;
+                txtotishdavomiyligi.Text = duration.ToString(@"hh\:mm\:ss\.fff");
+
+                // Shots massivini 0 bilan to'ldirish (agar to'ldirilmagan bo'lsa)
+                if (shots == null || shots.Length < 6) shots = new int[6];
+                for (int i = 0; i < shots.Length; i++)
+                {
+                    // agar null yoki manfiy bo'lsa 0 qilamiz (xato holatlarda himoya)
+                    if (shots[i] < 0) shots[i] = 0;
+                }
+
+                // Sinov (dastlabki 3) va Nazorat (keyingi 3) ballari
+                int sball = shots.Take(3).Sum();
+                int nball = shots.Skip(3).Take(3).Sum();
+                int umumiyBall = sball + nball;
+
+                // 5-ballik baholash (siz bergan qoidaga mos)
+                int baho;
+                if (umumiyBall >= 25) baho = 5;
+                else if (umumiyBall >= 20) baho = 4;
+                else if (umumiyBall >= 15) baho = 3;
+                else if (umumiyBall >= 10) baho = 2;
+                else if (umumiyBall > 0) baho = 1;
+                else baho = 0;
+
+                // Formani to'ldirish (indexlar xavfsiz tekshirildi)
+                txts1.Text = shots.Length > 0 ? shots[0].ToString() : "0";
+                txts2.Text = shots.Length > 1 ? shots[1].ToString() : "0";
+                txts3.Text = shots.Length > 2 ? shots[2].ToString() : "0";
+                txtn1.Text = shots.Length > 3 ? shots[3].ToString() : "0";
+                txtn2.Text = shots.Length > 4 ? shots[4].ToString() : "0";
+                txtn3.Text = shots.Length > 5 ? shots[5].ToString() : "0";
+
+                txtsball.Text = sball.ToString();
+                txtnball.Text = nball.ToString();
+                txtball.Text = umumiyBall.ToString();
+                txtbaho.Text = baho.ToString();
+
+                // Sana (dd.MM.yyyy)
+                txtsonggiotishsanasi.Text = DateTime.Now.ToString("dd.MM.yyyy");
+
+                ShowNotification("Otish jarayoni to‘xtatildi ✅");
+
+                // --- DB ga saqlash ---
+                // txtid ichida id borligiga ishonch hosil qilamiz
+                if (string.IsNullOrWhiteSpace(txtid.Text))
+                {
+                    ShowNotification("ID topilmadi — avval foydalanuvchini tanlang yoki yarating.");
+                }
+                else
+                {
+                    // Agar sizning btnUpgrade_Click() metodingiz form maydonlarini olib UpdateData() chaqirsa,
+                    // o‘sha eventni chaqirish osonroq: u txtbox'larni o'qib, UpdateData(id) bajaradi.
+                    // (Agar UpdateData() to'g'ridan-to'g'ri polygon bo'lsa, uni ham chaqirishingiz mumkin)
+                    btnUpgrade_Click(this, EventArgs.Empty);
+                }
+
+                // Agar keyingi otish uchun tayyorlash kerak bo'lsa:
+                currentShotIndex = 0;
+                Array.Clear(shots, 0, shots.Length);
+                stopwatch.Reset();
+            }
+            catch (Exception ex)
+            {
+                ShowNotification("Xatolik: " + ex.Message);
+            }
+        }
+
 
         /// <summary>
         /// Portni yopish
@@ -1487,40 +1657,26 @@ WHERE id = @id;
 
         private async void RedTrue(int n)
         {
+            Control target = null;
+
             switch (n)
             {
-                case 5:
-                    r5.Visible = true;
-                    await Task.Delay(500);
-                    r5.Visible = false;
-                    break;
-                case 6:
-                    r6.Visible = true;
-                    await Task.Delay(500);
-                    r6.Visible = false;
-                    break;
-                case 7:
-                    r7.Visible = true;
-                    await Task.Delay(500);
-                    r7.Visible = false;
-                    break;
-                case 8:
-                    r8.Visible = true;
-                    await Task.Delay(500);
-                    r8.Visible = false;
-                    break;
-                case 9:
-                    r9.Visible = true;
-                    await Task.Delay(500);
-                    r9.Visible = false;
-                    break;
-                case 10:
-                    r10.Visible = true;
-                    await Task.Delay(500);
-                    r10.Visible = false;
-                    break;
+                case 5: target = r5; break;
+                case 6: target = r6; break;
+                case 7: target = r7; break;
+                case 8: target = r8; break;
+                case 9: target = r9; break;
+                case 10: target = r10; break;
+            }
+
+            if (target != null)
+            {
+                target.Visible = true;
+                await Task.Delay(500);
+                target.Visible = false;
             }
         }
+
 
 
     }

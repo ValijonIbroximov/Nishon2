@@ -76,7 +76,6 @@
             this.txtsball = new System.Windows.Forms.TextBox();
             this.txts3 = new System.Windows.Forms.TextBox();
             this.txts2 = new System.Windows.Forms.TextBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -102,6 +101,8 @@
             this.lblMsg = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelLeftElements = new System.Windows.Forms.Panel();
+            this.pnlStopShoot = new System.Windows.Forms.Panel();
+            this.btnStopShooting = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.r7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.g7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r6)).BeginInit();
@@ -120,7 +121,6 @@
             this.panelInfo.SuspendLayout();
             this.header.SuspendLayout();
             this.panelScore.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBallN)).BeginInit();
@@ -135,6 +135,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picOtishSanasi)).BeginInit();
             this.panelRightElements.SuspendLayout();
             this.panelLeftElements.SuspendLayout();
+            this.pnlStopShoot.SuspendLayout();
             this.SuspendLayout();
             // 
             // r7
@@ -590,6 +591,7 @@
             this.panelScore.BackColor = System.Drawing.Color.Transparent;
             this.panelScore.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameGreen;
             this.panelScore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelScore.Controls.Add(this.pnlStopShoot);
             this.panelScore.Controls.Add(this.txtbaho);
             this.panelScore.Controls.Add(this.txtball);
             this.panelScore.Controls.Add(this.txtotishdavomiyligi);
@@ -602,7 +604,6 @@
             this.panelScore.Controls.Add(this.txts3);
             this.panelScore.Controls.Add(this.txts2);
             this.panelScore.Controls.Add(this.txts1);
-            this.panelScore.Controls.Add(this.pictureBox3);
             this.panelScore.Controls.Add(this.pictureBox1);
             this.panelScore.Controls.Add(this.pictureBox2);
             this.panelScore.Controls.Add(this.label1);
@@ -759,16 +760,6 @@
             this.txts2.Size = new System.Drawing.Size(32, 33);
             this.txts2.TabIndex = 70;
             this.txts2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameButton;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(96, 630);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(279, 61);
-            this.pictureBox3.TabIndex = 69;
-            this.pictureBox3.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -1030,6 +1021,29 @@
             this.panelLeftElements.Size = new System.Drawing.Size(810, 845);
             this.panelLeftElements.TabIndex = 60;
             // 
+            // pnlStopShoot
+            // 
+            this.pnlStopShoot.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameButton;
+            this.pnlStopShoot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlStopShoot.Controls.Add(this.btnStopShooting);
+            this.pnlStopShoot.Location = new System.Drawing.Point(96, 630);
+            this.pnlStopShoot.Name = "pnlStopShoot";
+            this.pnlStopShoot.Size = new System.Drawing.Size(279, 61);
+            this.pnlStopShoot.TabIndex = 81;
+            // 
+            // btnStopShooting
+            // 
+            this.btnStopShooting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStopShooting.Font = new System.Drawing.Font("Algerian", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStopShooting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnStopShooting.Location = new System.Drawing.Point(0, 0);
+            this.btnStopShooting.Name = "btnStopShooting";
+            this.btnStopShooting.Size = new System.Drawing.Size(279, 61);
+            this.btnStopShooting.TabIndex = 0;
+            this.btnStopShooting.Text = "QOLDIRILSIN";
+            this.btnStopShooting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnStopShooting.Click += new System.EventHandler(this.btnStopShooting_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1068,7 +1082,6 @@
             this.header.PerformLayout();
             this.panelScore.ResumeLayout(false);
             this.panelScore.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBallN)).EndInit();
@@ -1084,6 +1097,7 @@
             this.panelRightElements.ResumeLayout(false);
             this.panelRightElements.PerformLayout();
             this.panelLeftElements.ResumeLayout(false);
+            this.pnlStopShoot.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1146,7 +1160,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panelRight;
         private System.Windows.Forms.Panel panelRightElements;
         private System.Windows.Forms.Panel panelLeft;
@@ -1163,6 +1176,8 @@
         private System.Windows.Forms.TextBox txtbaho;
         private System.Windows.Forms.TextBox txtball;
         private System.Windows.Forms.Label lblMsg;
+        private System.Windows.Forms.Panel pnlStopShoot;
+        private System.Windows.Forms.Label btnStopShooting;
     }
 }
 
