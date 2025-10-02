@@ -10,7 +10,9 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Globalization;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -76,6 +78,32 @@ namespace MultiFaceRec
         private int retryCount = 0;
         private Timer faceTimer;
 
+        // Serial port ulanish tezligi
+        private const int DefaultBaudRate = 9600;
+
+        // Port tanlanmaganligi haqidagi xabar
+        private const string NoPortSelectedText = "Port tanlanmagan yoki mavjud emas.";
+
+        // Portlarni tekshirish oralig‘i (millisekundlarda)
+        private const int PortCheckIntervalMs = 2000;
+
+        // SerialPort obyekti
+        private SerialPort serialPort;
+
+        // Port kuzatish uchun taymer
+        private Timer portCheckTimer;
+
+        // Flag: hozir portlar ro‘yxati yangilanmoqda
+        private bool isUpdatingPorts = false;
+
+        // Oxirgi tanlangan port nomi
+        private string lastSelectedPort = string.Empty;
+
+        // Oldingi portlar ro‘yxati
+        private string[] lastKnownPorts = Array.Empty<string>();
+
+
+
 
         /// <summary>
         /// //////////////////////////////////////////////////////////////////////
@@ -116,6 +144,10 @@ namespace MultiFaceRec
         public FrmPrincipal()
         {
             InitializeComponent();
+            InitializePortComboBox();
+            StartPortWatcher();
+
+            ShowNotification(NoPortSelectedText); // lblStatus → Label
 
             // HaarCascade yuklash
             try
@@ -352,7 +384,7 @@ namespace MultiFaceRec
         private void btnDelete_Click(object sender, EventArgs e)
         {
             string currentId = txtid.Text.Trim();
-            LoadUserDataById(currentId); // ID bo‘yicha ma'lumotlarni yuklash
+            LoadUserDataById(currentId, out bool b); // ID bo‘yicha ma'lumotlarni yuklash
 
             if (!string.IsNullOrEmpty(currentId))
             {
@@ -438,35 +470,54 @@ namespace MultiFaceRec
         }
         private void btnUpgrade_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(id))
+            try
             {
-                familiya = txtfamiliya.Text.Trim();
-                ism = txtism.Text.Trim();
-                sharif = txtsharif.Text.Trim();
-                unvoni = txtunvoni.Text.Trim();
-                bolinma = txtbolinma.Text.Trim();
-                haqida = txthaqida.Text.Trim();
-                s1 = txts1.Text.Trim();
-                s2 = txts2.Text.Trim();
-                s3 = txts3.Text.Trim();
-                n1 = txtn1.Text.Trim();
-                n2 = txtn2.Text.Trim();
-                n3 = txtn3.Text.Trim();
-                ball = txtball.Text.Trim();
-                baho = txtbaho.Text.Trim();
-                image = picFace.Image;
-
-                if (string.IsNullOrWhiteSpace(familiya) ||
-                    string.IsNullOrWhiteSpace(ism) ||
-                    image == null)
+                id = txtid.Text.Trim();
+                if (!string.IsNullOrEmpty(id))
                 {
-                    ShowNotification("Familiya, ism va rasm kiritilishi shart!");
-                    return;
-                }
+                    familiya = txtfamiliya.Text.Trim();
+                    ism = txtism.Text.Trim();
+                    sharif = txtsharif.Text.Trim();
+                    unvoni = txtunvoni.Text.Trim();
+                    bolinma = txtbolinma.Text.Trim();
+                    haqida = txthaqida.Text.Trim();
+                    s1 = txts1.Text.Trim();
+                    s2 = txts2.Text.Trim();
+                    s3 = txts3.Text.Trim();
+                    n1 = txtn1.Text.Trim();
+                    n2 = txtn2.Text.Trim();
+                    n3 = txtn3.Text.Trim();
+                    ball = txtball.Text.Trim();
+                    baho = txtbaho.Text.Trim();
+                    sball = txtsball.Text.Trim();
+                    nball = txtnball.Text.Trim();
+                    songgiotishsanasi = txtsonggiotishsanasi.Text.Trim();
+                    otishdavomiyligi = txtotishdavomiyligi.Text.Trim();
+                    image = picFace.Image;
 
-                UpdateData(id);
+                    if (string.IsNullOrWhiteSpace(familiya) ||
+                        string.IsNullOrWhiteSpace(ism) ||
+                        image == null)
+                    {
+                        ShowNotification("Familiya, ism va rasm kiritilishi shart!");
+                        return;
+                    }
+
+                    UpdateData(id);
+                }
+                else
+                {
+                    ShowNotification("Yangilash uchun avval foydalanuvchi tanlang.");
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowNotification("Xatolik: " + ex.Message);
             }
         }
+
+
+
 
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -870,98 +921,120 @@ CREATE TABLE [dbo].[users]
 
         private void UpdateData(string id)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                try
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
                     string updateQuery = @"
-        UPDATE users 
-        SET familiya = @familiya,
-            ism = @ism,
-            sharif = @sharif,
-            unvoni = @unvoni,
-            bolinma = @bolinma,
-            haqida = @haqida,
-            s1 = @s1,
-            s2 = @s2,
-            s3 = @s3,
-            n1 = @n1,
-            n2 = @n2,
-            n3 = @n3,
-            ball = @ball,
-            baho = @baho,
-            sball = @sball,
-            nball = @nball,
-            songgiotishsanasi = @songgiotishsanasi,
-            otishdavomiyligi = @otishdavomiyligi,
-            image = @image
-        WHERE id = @id";
+UPDATE users 
+SET familiya = @familiya,
+    ism = @ism,
+    sharif = @sharif,
+    unvoni = @unvoni,
+    bolinma = @bolinma,
+    haqida = @haqida,
+    s1 = @s1,
+    s2 = @s2,
+    s3 = @s3,
+    n1 = @n1,
+    n2 = @n2,
+    n3 = @n3,
+    ball = @ball,
+    baho = @baho,
+    sball = @sball,
+    nball = @nball,
+    songgiotishsanasi = @songgiotishsanasi,
+    otishdavomiyligi = @otishdavomiyligi,
+    image = @image
+WHERE id = @id;
+";
 
-                    SqlCommand cmd = new SqlCommand(updateQuery, connection);
-
-                    // Oddiy matn maydonlari
-                    cmd.Parameters.AddWithValue("@familiya", familiya);
-                    cmd.Parameters.AddWithValue("@ism", ism);
-                    cmd.Parameters.AddWithValue("@sharif", sharif);
-                    cmd.Parameters.AddWithValue("@unvoni", unvoni);
-                    cmd.Parameters.AddWithValue("@bolinma", bolinma);
-                    cmd.Parameters.AddWithValue("@haqida", haqida);
-                    cmd.Parameters.AddWithValue("@s1", s1);
-                    cmd.Parameters.AddWithValue("@s2", s2);
-                    cmd.Parameters.AddWithValue("@s3", s3);
-                    cmd.Parameters.AddWithValue("@n1", n1);
-                    cmd.Parameters.AddWithValue("@n2", n2);
-                    cmd.Parameters.AddWithValue("@n3", n3);
-                    cmd.Parameters.AddWithValue("@ball", ball);
-                    cmd.Parameters.AddWithValue("@baho", baho);
-
-                    // Yangi maydonlar
-                    cmd.Parameters.AddWithValue("@sball", sball);
-                    cmd.Parameters.AddWithValue("@nball", nball);
-
-                    // Sana (agar txtBox bo‘lsa, DateTime.TryParse bilan aylantiring)
-                    DateTime songgiSana;
-                    if (DateTime.TryParse(songgiotishsanasi, out songgiSana))
-                        cmd.Parameters.AddWithValue("@songgiotishsanasi", songgiSana);
-                    else
-                        cmd.Parameters.AddWithValue("@songgiotishsanasi", DBNull.Value);
-
-                    // Vaqt (TimeSpan)
-                    TimeSpan davomiylik;
-                    if (TimeSpan.TryParse(otishdavomiyligi, out davomiylik))
-                        cmd.Parameters.AddWithValue("@otishdavomiyligi", davomiylik);
-                    else
-                        cmd.Parameters.AddWithValue("@otishdavomiyligi", DBNull.Value);
-
-                    // Rasmni byte[] ga aylantirish
-                    byte[] imageBytes = ImageToByteArray(image);
-                    cmd.Parameters.AddWithValue("@image", (object)imageBytes ?? DBNull.Value);
-
-                    //cmd.Parameters.AddWithValue("@id", id);
-
-                    int rowsAffected = cmd.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, connection))
                     {
-                        ShowNotification("Foydalanuvchi ma'lumotlari muvaffaqiyatli yangilandi.");
-                    }
-                    else
-                    {
-                        ShowNotification("Yangilashda xatolik: foydalanuvchi topilmadi.");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ShowNotification("Xatolik: " + ex.Message);
-                }
+                        // Matn maydonlari (NULL bo'lsa DB NULL yuboriladi)
+                        cmd.Parameters.Add("@familiya", SqlDbType.NVarChar, 100).Value = string.IsNullOrWhiteSpace(familiya) ? (object)DBNull.Value : familiya;
+                        cmd.Parameters.Add("@ism", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(ism) ? (object)DBNull.Value : ism;
+                        cmd.Parameters.Add("@sharif", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(sharif) ? (object)DBNull.Value : sharif;
+                        cmd.Parameters.Add("@unvoni", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(unvoni) ? (object)DBNull.Value : unvoni;
+                        cmd.Parameters.Add("@bolinma", SqlDbType.NVarChar, 100).Value = string.IsNullOrWhiteSpace(bolinma) ? (object)DBNull.Value : bolinma;
+                        cmd.Parameters.Add("@haqida", SqlDbType.NVarChar, -1).Value = string.IsNullOrWhiteSpace(haqida) ? (object)DBNull.Value : (object)haqida;
+                        cmd.Parameters.Add("@s1", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(s1) ? (object)DBNull.Value : s1;
+                        cmd.Parameters.Add("@s2", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(s2) ? (object)DBNull.Value : s2;
+                        cmd.Parameters.Add("@s3", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(s3) ? (object)DBNull.Value : s3;
+                        cmd.Parameters.Add("@n1", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(n1) ? (object)DBNull.Value : n1;
+                        cmd.Parameters.Add("@n2", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(n2) ? (object)DBNull.Value : n2;
+                        cmd.Parameters.Add("@n3", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(n3) ? (object)DBNull.Value : n3;
+                        cmd.Parameters.Add("@ball", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(ball) ? (object)DBNull.Value : ball;
+                        cmd.Parameters.Add("@baho", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(baho) ? (object)DBNull.Value : baho;
+
+                        // yangi maydonlar
+                        cmd.Parameters.Add("@sball", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(sball) ? (object)DBNull.Value : sball;
+                        cmd.Parameters.Add("@nball", SqlDbType.NVarChar, 50).Value = string.IsNullOrWhiteSpace(nball) ? (object)DBNull.Value : nball;
+
+                        // Sana (dd.MM.yyyy) -> DATE
+                        if (!string.IsNullOrWhiteSpace(songgiotishsanasi)
+                            && DateTime.TryParseExact(songgiotishsanasi, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
+                        {
+                            cmd.Parameters.Add("@songgiotishsanasi", SqlDbType.Date).Value = parsedDate.Date;
+                        }
+                        else
+                        {
+                            cmd.Parameters.Add("@songgiotishsanasi", SqlDbType.Date).Value = DBNull.Value;
+                        }
+
+                        // Vaqt (hh:mm:ss) -> TIME
+                        if (!string.IsNullOrWhiteSpace(otishdavomiyligi)
+                            && TimeSpan.TryParse(otishdavomiyligi, out TimeSpan parsedTime))
+                        {
+                            cmd.Parameters.Add("@otishdavomiyligi", SqlDbType.Time).Value = parsedTime;
+                        }
+                        else
+                        {
+                            cmd.Parameters.Add("@otishdavomiyligi", SqlDbType.Time).Value = DBNull.Value;
+                        }
+
+                        // Image -> VARBINARY(MAX)
+                        if (image != null)
+                        {
+                            byte[] imageBytes = ImageToByteArray(image);
+                            cmd.Parameters.Add("@image", SqlDbType.VarBinary, -1).Value = imageBytes;
+                        }
+                        else
+                        {
+                            cmd.Parameters.Add("@image", SqlDbType.VarBinary, -1).Value = DBNull.Value;
+                        }
+
+                        // **MUHIM**: id parametri — shu yerda qo'shiladi (error shu sabab edi)
+                        cmd.Parameters.Add("@id", SqlDbType.NVarChar, 50).Value = id;
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                            ShowNotification("Foydalanuvchi ma'lumotlari muvaffaqiyatli yangilandi.");
+                        else
+                            ShowNotification("Yangilashda xatolik: foydalanuvchi topilmadi.");
+
+                    } // using cmd
+                } // using connection
+            }
+            catch (Exception ex)
+            {
+                ShowNotification("Xatolik: " + ex.Message);
             }
         }
 
 
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
+            ClosePort();
+            if (portCheckTimer != null)
+            {
+                portCheckTimer.Stop();
+                portCheckTimer.Dispose();
+                portCheckTimer = null;
+            }
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
@@ -1008,10 +1081,10 @@ CREATE TABLE [dbo].[users]
 
             MCvAvgComp[][] facesDetected = gray.DetectHaarCascade(
                 face,
-                1.2,
-                10,
+                1.1,
+                5,
                 HAAR_DETECTION_TYPE.DO_CANNY_PRUNING,
-                new Size(20, 20));
+                new Size(50, 50));
 
             if (facesDetected[0].Length > 0)
             {
@@ -1089,14 +1162,20 @@ CREATE TABLE [dbo].[users]
             ContTrain = trainingImages.Count;
         }
 
+        private void lblMsg_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(lblMsg.Text);
+        }
+
 
 
 
         // --- FrameGrabber (kamera oqimi) ---
 
         // 🔹 id bo‘yicha ma’lumotlarni o‘qib, formadagi maydonlarga to‘ldiradi
-        private void LoadUserDataById(string userId)
+        private void LoadUserDataById(string userId, out bool foundInDb)
         {
+            foundInDb = false; // default qiymat
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -1108,6 +1187,8 @@ CREATE TABLE [dbo].[users]
                     {
                         if (reader.Read())
                         {
+                            foundInDb = true;
+
                             txtfamiliya.Text = reader["familiya"].ToString();
                             txtism.Text = reader["ism"].ToString();
                             txtsharif.Text = reader["sharif"].ToString();
@@ -1125,9 +1206,9 @@ CREATE TABLE [dbo].[users]
                             txtball.Text = reader["ball"].ToString();
                             txtbaho.Text = reader["baho"].ToString();
 
-                            // 🔴 yangi maydonlar
                             txtsball.Text = reader["sball"].ToString();
                             txtnball.Text = reader["nball"].ToString();
+
                             if (!(reader["songgiotishsanasi"] is DBNull))
                             {
                                 DateTime sana = Convert.ToDateTime(reader["songgiotishsanasi"]);
@@ -1152,6 +1233,7 @@ CREATE TABLE [dbo].[users]
         }
 
 
+
         void FrameGrabber(object sender, EventArgs e)
         {
             try
@@ -1160,9 +1242,9 @@ CREATE TABLE [dbo].[users]
                 gray = currentFrame.Convert<Gray, Byte>();
 
                 MCvAvgComp[][] facesDetected = gray.DetectHaarCascade(
-                    face, 1.2, 10,
+                    face, 1.1, 10,
                     Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING,
-                    new Size(20, 20));
+                    new Size(50, 50));
 
                 if (facesDetected[0].Length > 0 && trainingImages.Count > 0)
                 {
@@ -1185,7 +1267,19 @@ CREATE TABLE [dbo].[users]
                     if (!string.IsNullOrEmpty(name))
                     {
                         txtid.Text = name;
-                        LoadUserDataById(name); // ✅ alohida funksiyaga chaqirildi
+
+                        bool found;
+                        LoadUserDataById(name, out found);
+
+                        // 🔴 Agar DB da mavjud bo‘lsa -> to‘xtatamiz
+                        if (found)
+                        {
+                            Application.Idle -= FrameGrabber;
+                        }
+                        else
+                        {
+                            ShowNotification("Yuz tanildi, lekin DB da mavjud emas. Qidirilmoqda...");
+                        }
                     }
 
                     currentFrame.Draw(name ?? "Unknown",
@@ -1195,8 +1289,6 @@ CREATE TABLE [dbo].[users]
                     imageBoxFrameGrabber.Image = currentFrame;
                     picFace.Visible = true;
                     picFace.Image = result.Bitmap;
-
-                    Application.Idle -= FrameGrabber;
                 }
                 else
                 {
@@ -1207,6 +1299,188 @@ CREATE TABLE [dbo].[users]
             catch (Exception ex)
             {
                 ShowNotification("FrameGrabber xato: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Portlar ro‘yxatini boshlang‘ich holatga keltirish
+        /// </summary>
+        private void InitializePortComboBox()
+        {
+            isUpdatingPorts = true;
+            cmbPorts.Items.Clear(); // cmbPorts → ComboBox
+            cmbPorts.Items.Add("Tanlang...");
+            cmbPorts.SelectedIndex = 0;
+            RefreshPortList();
+            isUpdatingPorts = false;
+        }
+
+        /// <summary>
+        /// Portlarni avtomatik kuzatish taymerini ishga tushirish
+        /// </summary>
+        private void StartPortWatcher()
+        {
+            portCheckTimer = new Timer();
+            portCheckTimer.Interval = PortCheckIntervalMs;
+            portCheckTimer.Tick += (s, e) =>
+            {
+                var currentPorts = SerialPort.GetPortNames();
+
+                var added = currentPorts.Except(lastKnownPorts);
+                foreach (var port in added)
+                {
+                    ShowNotification($"Yangi port qo‘shildi: {port}");
+                    RefreshPortList();
+                }
+
+                var removed = lastKnownPorts.Except(currentPorts);
+                foreach (var port in removed)
+                {
+                    ShowNotification($"Port o‘chirildi: {port}");
+                    RefreshPortList();
+                }
+
+                lastKnownPorts = currentPorts;
+            };
+            portCheckTimer.Start();
+        }
+
+        /// <summary>
+        /// Portlar ro‘yxatini yangilash
+        /// </summary>
+        private void RefreshPortList()
+        {
+            try
+            {
+                isUpdatingPorts = true;
+                string[] ports = SerialPort.GetPortNames();
+
+                string currentSelection = cmbPorts.SelectedItem?.ToString();
+
+                cmbPorts.Items.Clear();
+                cmbPorts.Items.Add("Tanlang...");
+
+                foreach (string port in ports)
+                {
+                    cmbPorts.Items.Add(port);
+                }
+
+                if (!string.IsNullOrEmpty(lastSelectedPort) && ports.Contains(lastSelectedPort))
+                    cmbPorts.SelectedItem = lastSelectedPort;
+                else if (!string.IsNullOrEmpty(currentSelection) && ports.Contains(currentSelection))
+                    cmbPorts.SelectedItem = currentSelection;
+                else
+                {
+                    cmbPorts.SelectedIndex = 0;
+                    ShowNotification(NoPortSelectedText);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowNotification($"Portlarni yangilashda xato: {ex.Message}");
+            }
+            finally
+            {
+                isUpdatingPorts = false;
+            }
+        }
+
+        /// <summary>
+        /// Port tanlanganda ishga tushadi
+        /// </summary>
+        private void cmbPorts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isUpdatingPorts) return;
+
+            if (cmbPorts.SelectedIndex == 0)
+            {
+                if (!string.IsNullOrEmpty(lastSelectedPort))
+                {
+                    ShowNotification($"{lastSelectedPort} portidan chiqildi");
+                    lastSelectedPort = string.Empty;
+                }
+                ClosePort();
+                ShowNotification(NoPortSelectedText);
+                return;
+            }
+
+            if (cmbPorts.SelectedItem != null)
+            {
+                lastSelectedPort = cmbPorts.SelectedItem.ToString();
+                OpenPort(lastSelectedPort);
+            }
+        }
+
+        /// <summary>
+        /// Belgilangan portga ulanish
+        /// </summary>
+        private void OpenPort(string portName)
+        {
+            ClosePort();
+            try
+            {
+                serialPort = new SerialPort(portName, DefaultBaudRate);
+                serialPort.DataReceived += SerialPort_DataReceived;
+                serialPort.Open();
+                ShowNotification($"{portName} portiga ulandi!");
+            }
+            catch (Exception ex)
+            {
+                ShowNotification($"Portni ochishda xato: {ex.Message}");
+                cmbPorts.SelectedIndex = 0;
+                ShowNotification(NoPortSelectedText);
+            }
+        }
+
+        /// <summary>
+        /// Portdan ma’lumot kelganda ishlaydi
+        /// </summary>
+        private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                if (serialPort == null || !serialPort.IsOpen) return;
+
+                string data = serialPort.ReadLine().Trim();
+
+                this.Invoke(new Action(() =>
+                {
+                    string notification = $"Portdan ma’lumot keldi: {data}";
+                    ShowNotification(notification);
+                    // Shu yerda DB ga yozish yoki boshqa logika qo‘shish mumkin
+                }));
+            }
+            catch (Exception ex)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    ShowNotification($"O‘qishda xato: {ex.Message}");
+                    ShowNotification(NoPortSelectedText);
+                }));
+            }
+        }
+
+        /// <summary>
+        /// Portni yopish
+        /// </summary>
+        private void ClosePort()
+        {
+            if (serialPort != null)
+            {
+                try
+                {
+                    if (serialPort.IsOpen)
+                    {
+                        serialPort.DataReceived -= SerialPort_DataReceived;
+                        serialPort.Close();
+                    }
+                    serialPort.Dispose();
+                }
+                catch { }
+                finally
+                {
+                    serialPort = null;
+                }
             }
         }
 

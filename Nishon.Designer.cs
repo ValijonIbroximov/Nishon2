@@ -58,7 +58,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnUpgrade = new System.Windows.Forms.Button();
-            this.cboPorts = new System.Windows.Forms.ComboBox();
+            this.cmbPorts = new System.Windows.Forms.ComboBox();
             this.panelInfo = new System.Windows.Forms.Panel();
             this.header = new System.Windows.Forms.Panel();
             this.btnLocation = new System.Windows.Forms.Button();
@@ -261,7 +261,7 @@
             this.txtunvoni.Location = new System.Drawing.Point(53, 532);
             this.txtunvoni.Name = "txtunvoni";
             this.txtunvoni.Size = new System.Drawing.Size(310, 27);
-            this.txtunvoni.TabIndex = 33;
+            this.txtunvoni.TabIndex = 153;
             // 
             // r9
             // 
@@ -285,7 +285,7 @@
             this.txtism.Location = new System.Drawing.Point(53, 407);
             this.txtism.Name = "txtism";
             this.txtism.Size = new System.Drawing.Size(310, 27);
-            this.txtism.TabIndex = 31;
+            this.txtism.TabIndex = 151;
             // 
             // txtfamiliya
             // 
@@ -296,7 +296,7 @@
             this.txtfamiliya.Location = new System.Drawing.Point(53, 343);
             this.txtfamiliya.Name = "txtfamiliya";
             this.txtfamiliya.Size = new System.Drawing.Size(310, 27);
-            this.txtfamiliya.TabIndex = 30;
+            this.txtfamiliya.TabIndex = 150;
             // 
             // g10
             // 
@@ -345,7 +345,7 @@
             this.txtid.Location = new System.Drawing.Point(76, 728);
             this.txtid.Name = "txtid";
             this.txtid.Size = new System.Drawing.Size(265, 28);
-            this.txtid.TabIndex = 34;
+            this.txtid.TabIndex = 156;
             this.txtid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.faqatraqam);
             // 
             // imageBoxFrameGrabber
@@ -400,7 +400,7 @@
             this.txtsharif.Location = new System.Drawing.Point(53, 470);
             this.txtsharif.Name = "txtsharif";
             this.txtsharif.Size = new System.Drawing.Size(310, 27);
-            this.txtsharif.TabIndex = 32;
+            this.txtsharif.TabIndex = 152;
             // 
             // picFace
             // 
@@ -422,7 +422,7 @@
             this.txtbolinma.Location = new System.Drawing.Point(53, 595);
             this.txtbolinma.Name = "txtbolinma";
             this.txtbolinma.Size = new System.Drawing.Size(310, 27);
-            this.txtbolinma.TabIndex = 39;
+            this.txtbolinma.TabIndex = 154;
             // 
             // txthaqida
             // 
@@ -433,7 +433,7 @@
             this.txthaqida.Location = new System.Drawing.Point(53, 660);
             this.txthaqida.Name = "txthaqida";
             this.txthaqida.Size = new System.Drawing.Size(310, 27);
-            this.txthaqida.TabIndex = 40;
+            this.txthaqida.TabIndex = 155;
             // 
             // txts1
             // 
@@ -497,18 +497,19 @@
             this.btnUpgrade.Size = new System.Drawing.Size(60, 60);
             this.btnUpgrade.TabIndex = 50;
             this.btnUpgrade.UseVisualStyleBackColor = false;
+            this.btnUpgrade.Click += new System.EventHandler(this.btnUpgrade_Click);
             // 
-            // cboPorts
+            // cmbPorts
             // 
-            this.cboPorts.Dock = System.Windows.Forms.DockStyle.Right;
-            this.cboPorts.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cboPorts.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cboPorts.FormattingEnabled = true;
-            this.cboPorts.Location = new System.Drawing.Point(1592, 0);
-            this.cboPorts.Name = "cboPorts";
-            this.cboPorts.Size = new System.Drawing.Size(252, 29);
-            this.cboPorts.TabIndex = 53;
-            this.cboPorts.Text = "Port";
+            this.cmbPorts.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cmbPorts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPorts.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmbPorts.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmbPorts.FormattingEnabled = true;
+            this.cmbPorts.Location = new System.Drawing.Point(1592, 0);
+            this.cmbPorts.Name = "cmbPorts";
+            this.cmbPorts.Size = new System.Drawing.Size(252, 29);
+            this.cmbPorts.TabIndex = 53;
             // 
             // panelInfo
             // 
@@ -537,7 +538,7 @@
             // 
             // header
             // 
-            this.header.Controls.Add(this.cboPorts);
+            this.header.Controls.Add(this.cmbPorts);
             this.header.Controls.Add(this.btnLocation);
             this.header.Controls.Add(this.btnCreate);
             this.header.Controls.Add(this.btnConnect);
@@ -1007,6 +1008,7 @@
             this.lblMsg.Size = new System.Drawing.Size(0, 13);
             this.lblMsg.TabIndex = 57;
             this.lblMsg.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblMsg.Click += new System.EventHandler(this.lblMsg_Click);
             // 
             // panelLeft
             // 
@@ -1116,7 +1118,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnUpgrade;
-        private System.Windows.Forms.ComboBox cboPorts;
+        private System.Windows.Forms.ComboBox cmbPorts;
         private System.Windows.Forms.Panel panelInfo;
         private System.Windows.Forms.Panel header;
         private System.Windows.Forms.Button btnLocation;
