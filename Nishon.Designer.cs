@@ -674,7 +674,7 @@
             this.txtsonggiotishsanasi.Name = "txtsonggiotishsanasi";
             this.txtsonggiotishsanasi.Size = new System.Drawing.Size(165, 45);
             this.txtsonggiotishsanasi.TabIndex = 77;
-            this.txtsonggiotishsanasi.Text = "18-02-2025";
+            this.txtsonggiotishsanasi.Text = "18.02.2025";
             this.txtsonggiotishsanasi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtnball

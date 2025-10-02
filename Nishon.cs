@@ -128,26 +128,17 @@ namespace MultiFaceRec
                 return;
             }
 
-            // Trening ma'lumotlarini o‘qish
+            // Endi faqat DB dan trening ma’lumotlarini yuklaymiz
             try
             {
-                string Labelsinfo = File.ReadAllText(Application.StartupPath + "/TrainedFaces/TrainedLabels.txt");
-                string[] Labels = Labelsinfo.Split('%');
-                NumLabels = Convert.ToInt16(Labels[0]);
-                ContTrain = NumLabels;
-
-                for (int tf = 1; tf < NumLabels + 1; tf++)
-                {
-                    string LoadFaces = "face" + tf + ".bmp";
-                    trainingImages.Add(new Image<Gray, byte>(Application.StartupPath + "/TrainedFaces/" + LoadFaces));
-                    labels.Add(Labels[tf]);
-                }
+                LoadTrainingDataFromDB(); // alohida metod, faqat DB dan yuklaydi
             }
-            catch
+            catch (Exception ex)
             {
-                ShowNotification("Database bo'sh. Yuz qo‘shing!");
+                ShowNotification("Database bo'sh yoki ulanishda xato: " + ex.Message);
             }
         }
+
 
         // --- Qidirish tugmasi ---
         private void btnSearchPerson_Click(object sender, EventArgs e)
@@ -173,63 +164,121 @@ namespace MultiFaceRec
         {
             try
             {
-                picFace.Visible = true;
-                if (string.IsNullOrEmpty(txtid.Text))
+                if (grabber == null)
                 {
-                    ShowNotification("Yangi yuz qo‘shish uchun ID kiriting!");
+                    ShowNotification("Kamera ishga tushmagan!");
                     return;
                 }
 
-                gray = grabber.QueryGrayFrame().Resize(320, 240, INTER.CV_INTER_CUBIC);
-
-                // Yuz qidirish
-                MCvAvgComp[][] facesDetected = gray.DetectHaarCascade(
-                    face,
-                    1.2,
-                    10,
-                    HAAR_DETECTION_TYPE.DO_CANNY_PRUNING,
-                    new Size(26, 26));
-
-                if (facesDetected[0].Length == 0)
+                if (!picFace.Visible || picFace.Image == null)
                 {
-                    ShowNotification("Yuz aniqlanmadi. Kameraga yaqinroq turing.");
+                    ShowNotification("Avval yuzni aniqlang (Take bosib)!");
                     return;
                 }
 
-                // Birinchi yuzni olish
-                MCvAvgComp f = facesDetected[0][0];
-                TrainedFace = currentFrame.Copy(f.rect).Convert<Gray, byte>();
-                TrainedFace = TrainedFace.Resize(100, 100, INTER.CV_INTER_CUBIC);
+                // 🔹 Hozircha hisoblash funksiyasi (keyinchalik to‘liq qilamiz)
+                string sball = "0";
+                string nball = "0";
+                string ball = "0";
+                string baho = "0";
+                DateTime songgiotishsanasi = DateTime.Now.Date;
+                TimeSpan otishdavomiyligi = TimeSpan.Zero;
 
-                // Training listga qo‘shish
-                trainingImages.Add(TrainedFace);
-                labels.Add(txtid.Text);
+                // Rasmni byte[] ga aylantirish
+                byte[] imageBytes = ImageToByteArray(picFace.Image);
 
-                // Rasmni ko‘rsatish
-                picFace.Visible = true;
-                picFace.Image = TrainedFace.Bitmap;
-
-                // Faylga yozish
-                string savePath = Application.StartupPath + "/TrainedFaces/";
-                Directory.CreateDirectory(savePath);
-
-                File.WriteAllText(savePath + "TrainedLabels.txt", trainingImages.Count.ToString() + "%");
-
-                for (int i = 1; i <= trainingImages.Count; i++)
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    trainingImages[i - 1].Save(savePath + "face" + i + ".bmp");
-                    File.AppendAllText(savePath + "TrainedLabels.txt", labels[i - 1] + "%");
+                    connection.Open();
+
+                    // INSERT so‘rovi (id ustuni kiritilmaydi)
+                    string insertQuery = @"
+                INSERT INTO users
+                (familiya, ism, sharif, unvoni, bolinma, haqida,
+                 s1, s2, s3, n1, n2, n3, ball, baho, sball, nball,
+                 songgiotishsanasi, otishdavomiyligi, image)
+                OUTPUT INSERTED.id
+                VALUES
+                (@familiya, @ism, @sharif, @unvoni, @bolinma, @haqida,
+                 @s1, @s2, @s3, @n1, @n2, @n3, @ball, @baho, @sball, @nball,
+                 @songgiotishsanasi, @otishdavomiyligi, @image)";
+
+                    int newId;
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@familiya", txtfamiliya.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ism", txtism.Text.Trim());
+                        cmd.Parameters.AddWithValue("@sharif", txtsharif.Text.Trim());
+                        cmd.Parameters.AddWithValue("@unvoni", txtunvoni.Text.Trim());
+                        cmd.Parameters.AddWithValue("@bolinma", txtbolinma.Text.Trim());
+                        cmd.Parameters.AddWithValue("@haqida", txthaqida.Text.Trim());
+                        cmd.Parameters.AddWithValue("@s1", txts1.Text.Trim());
+                        cmd.Parameters.AddWithValue("@s2", txts2.Text.Trim());
+                        cmd.Parameters.AddWithValue("@s3", txts3.Text.Trim());
+                        cmd.Parameters.AddWithValue("@n1", txtn1.Text.Trim());
+                        cmd.Parameters.AddWithValue("@n2", txtn2.Text.Trim());
+                        cmd.Parameters.AddWithValue("@n3", txtn3.Text.Trim());
+                        cmd.Parameters.AddWithValue("@ball", ball);
+                        cmd.Parameters.AddWithValue("@baho", baho);
+                        cmd.Parameters.AddWithValue("@sball", sball);
+                        cmd.Parameters.AddWithValue("@nball", nball);
+                        cmd.Parameters.AddWithValue("@songgiotishsanasi", songgiotishsanasi);
+                        cmd.Parameters.AddWithValue("@otishdavomiyligi", otishdavomiyligi);
+                        cmd.Parameters.AddWithValue("@image", imageBytes);
+
+                        newId = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+
+                    // 🔹 Yangi ID ni txtid ga chiqaramiz
+                    txtid.Text = newId.ToString();
+
+                    // 🔹 Qo‘shilgan ma’lumotlarni o‘qib formaga chiqaramiz
+                    string selectQuery = "SELECT * FROM users WHERE id=@id";
+                    using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", newId);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                txtfamiliya.Text = reader["familiya"].ToString();
+                                txtism.Text = reader["ism"].ToString();
+                                txtsharif.Text = reader["sharif"].ToString();
+                                txtunvoni.Text = reader["unvoni"].ToString();
+                                txtbolinma.Text = reader["bolinma"].ToString();
+                                txthaqida.Text = reader["haqida"].ToString();
+                                txts1.Text = reader["s1"].ToString();
+                                txts2.Text = reader["s2"].ToString();
+                                txts3.Text = reader["s3"].ToString();
+                                txtn1.Text = reader["n1"].ToString();
+                                txtn2.Text = reader["n2"].ToString();
+                                txtn3.Text = reader["n3"].ToString();
+                                txtball.Text = reader["ball"].ToString();
+                                txtbaho.Text = reader["baho"].ToString();
+                                txtsball.Text = reader["sball"].ToString();
+                                txtnball.Text = reader["nball"].ToString();
+                                txtsonggiotishsanasi.Text = Convert.ToDateTime(reader["songgiotishsanasi"]).ToString("dd.MM.yyyy");
+                                txtotishdavomiyligi.Text = reader["otishdavomiyligi"].ToString();
+
+                                if (!(reader["image"] is DBNull))
+                                {
+                                    byte[] imgBytes = (byte[])reader["image"];
+                                    picFace.Image = ByteArrayToImage(imgBytes);
+                                }
+                            }
+                        }
+                    }
                 }
 
-                btnAdd_Click(sender, e); // Ma'lumotlar bazasiga qo‘shish
-
-                ShowNotification(txtid.Text + " yuz ma'lumotlar bazasiga qo‘shildi!");
+                ShowNotification("Yangi foydalanuvchi bazaga qo‘shildi!");
             }
             catch (Exception ex)
             {
                 ShowNotification("Xato: " + ex.Message);
             }
         }
+
+
 
 
         private void malumotlarBazasiBilanBoglashToolStripMenuItem_Click(object sender, EventArgs e)
@@ -511,30 +560,30 @@ namespace MultiFaceRec
                     if (exists == 0)
                     {
                         string createTableQuery = @"
-                CREATE TABLE [dbo].[users]
-                (
-                    [id] CHAR(9) NOT NULL PRIMARY KEY,
-                    [familiya] NVARCHAR(100) NULL,
-                    [ism] NVARCHAR(50) NULL,
-                    [sharif] NVARCHAR(50) NULL,
-                    [unvoni] NVARCHAR(50) NULL,
-                    [bolinma] NVARCHAR(100) NULL,
-                    [haqida] NVARCHAR(MAX) NULL,
-                    [s1] NVARCHAR(50) NULL,
-                    [s2] NVARCHAR(50) NULL,
-                    [s3] NVARCHAR(50) NULL,
-                    [n1] NVARCHAR(50) NULL,
-                    [n2] NVARCHAR(50) NULL,
-                    [n3] NVARCHAR(50) NULL,
-                    [ball] NVARCHAR(50) NULL,
-                    [baho] NVARCHAR(50) NULL,
-                    [sball] NVARCHAR(50) NULL,
-                    [nball] NVARCHAR(50) NULL,
-                    [songgiotishsanasi] DATE NULL,
-                    [otishdavomiyligi] TIME NULL,
-                    [image] VARBINARY(MAX) NULL,
-                    CONSTRAINT CK_users_id_digits CHECK ([id] NOT LIKE '%[^0-9]%')
-                )";
+CREATE TABLE [dbo].[users]
+(
+    [id] INT IDENTITY(1,1) PRIMARY KEY,   -- ✅ Avtomatik ID
+    [familiya] NVARCHAR(100) NULL,
+    [ism] NVARCHAR(50) NULL,
+    [sharif] NVARCHAR(50) NULL,
+    [unvoni] NVARCHAR(50) NULL,
+    [bolinma] NVARCHAR(100) NULL,
+    [haqida] NVARCHAR(MAX) NULL,
+    [s1] NVARCHAR(50) NULL,
+    [s2] NVARCHAR(50) NULL,
+    [s3] NVARCHAR(50) NULL,
+    [n1] NVARCHAR(50) NULL,
+    [n2] NVARCHAR(50) NULL,
+    [n3] NVARCHAR(50) NULL,
+    [ball] NVARCHAR(50) NULL,
+    [baho] NVARCHAR(50) NULL,
+    [sball] NVARCHAR(50) NULL,
+    [nball] NVARCHAR(50) NULL,
+    [songgiotishsanasi] DATE NULL,
+    [otishdavomiyligi] TIME NULL,
+    [image] VARBINARY(MAX) NULL
+)";
+
 
                         using (SqlCommand command = new SqlCommand(createTableQuery, connection))
                         {
@@ -616,7 +665,7 @@ namespace MultiFaceRec
         }
 
         // --- Konstruktor ---
-        
+
         private void connectToDatabase(string databaseFileName)
         {
             string connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={databaseFileName};Integrated Security=True;Connect Timeout=30";
@@ -852,7 +901,7 @@ namespace MultiFaceRec
                     byte[] imageBytes = ImageToByteArray(image);
                     cmd.Parameters.AddWithValue("@image", (object)imageBytes ?? DBNull.Value);
 
-                    cmd.Parameters.AddWithValue("@id", id);
+                    //cmd.Parameters.AddWithValue("@id", id);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
 
@@ -974,26 +1023,34 @@ namespace MultiFaceRec
                     {
                         string personId = reader["id"].ToString();
 
-                        if (!(reader["image"] is DBNull))
+                        if (reader["image"] != DBNull.Value)
                         {
                             byte[] imgBytes = (byte[])reader["image"];
-                            using (MemoryStream ms = new MemoryStream(imgBytes))
+                            if (imgBytes.Length > 0)
                             {
-                                Bitmap bmp = new Bitmap(ms);
-                                Image<Gray, byte> faceImg = new Image<Gray, byte>(bmp)
-                                                                .Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+                                using (MemoryStream ms = new MemoryStream(imgBytes))
+                                {
+                                    using (Bitmap bmp = new Bitmap(ms))
+                                    {
+                                        // O‘qilgan rasmni Gray formatga o‘tkazib, qayta o‘lchaymiz
+                                        Image<Gray, byte> faceImg = new Image<Gray, byte>(bmp)
+                                                                        .Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
 
-                                trainingImages.Add(faceImg);
-                                labels.Add(personId);
+                                        trainingImages.Add(faceImg);
+                                        labels.Add(personId);
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
 
-            ContTrain = trainingImages.Count;
+            // Yangi ma’lumotlar sonini belgilash
             NumLabels = labels.Count;
+            ContTrain = trainingImages.Count;
         }
+
 
 
 
