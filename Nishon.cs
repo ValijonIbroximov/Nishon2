@@ -41,14 +41,22 @@ namespace MultiFaceRec
         string name;                                // Taniqlangan foydalanuvchi ismi
 
 
-        string snomi = string.Empty;
-        string snarxi = string.Empty;
-        Image simage = null;
-        string smavjud = string.Empty;
-        string sizoh = string.Empty;
-        string skategoriya = string.Empty;
-        string smx = string.Empty;
-        string smy = string.Empty;
+        string id = string.Empty;
+        string familiya = string.Empty;
+        string ism = string.Empty;
+        string sharif = string.Empty;
+        string unvoni = string.Empty;
+        string bolinma = string.Empty;
+        string haqida = string.Empty;
+        string s1 = string.Empty;
+        string s2 = string.Empty;
+        string s3 = string.Empty;
+        string n1 = string.Empty;
+        string n2 = string.Empty;
+        string n3 = string.Empty;
+        string ball = string.Empty;
+        string baho = string.Empty;
+        Image image = null;
 
 
         string connectionString = string.Empty;
@@ -79,16 +87,14 @@ namespace MultiFaceRec
             }
             else
             {
-                // Bog'lanish muvaffaqiyatli, ehtiyotqismlar jadvalini tekshirish
+                // Bog'lanish muvaffaqiyatli, users jadvalini tekshirish
                 if (!checkTableExistence(connectionString))
                 {
-                    MessageBox.Show("Ma'lumotlar bazasida 'ehtiyotqismlar' jadvali mavjud emas. Jadvalni yaratilmoqda...");
+                    MessageBox.Show("Ma'lumotlar bazasida 'users' jadvali mavjud emas. Jadvalni yaratilmoqda...");
                     createTable(connectionString);
                 }
             }
             connectionString = loadConnectionString();
-
-            //addproduct(pnlehtiyotqismlar);
         }
 
         public FrmPrincipal()
@@ -186,7 +192,7 @@ namespace MultiFaceRec
 
                 // Rasmni ko‘rsatish
                 picFace.Visible = true;
-                picFace.Image = TrainedFace;
+                picFace.Image = TrainedFace.Bitmap;
 
                 // Faylga yozish
                 string savePath = Application.StartupPath + "/TrainedFaces/";
@@ -253,7 +259,7 @@ namespace MultiFaceRec
                     string folderPath = folderBrowser.SelectedPath;
 
                     // Ma'lumotlar bazasi nomini so'rash
-                    string databaseName = Interaction.InputBox("Ma'lumotlar bazasi nomini kiriting:", "Ma'lumotlar bazasi nomi", "avtoehtiyotqismlar");
+                    string databaseName = Interaction.InputBox("Ma'lumotlar bazasi nomini kiriting:", "Ma'lumotlar bazasi nomi", "NishonData");
                     if (string.IsNullOrWhiteSpace(databaseName))
                         return; // Foydalanuvchi nom kiritmagan
 
@@ -267,46 +273,52 @@ namespace MultiFaceRec
         {
             MessageBox.Show(connectionString, "Ma'lumotlar bazasi joylashuvi");
         }
-        string selectId = string.Empty;
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(selectId))
+            string currentId = txtid.Text.Trim();
+
+            if (!string.IsNullOrEmpty(currentId))
             {
-                //if (mid.Text == "ID: ")
-                //{
-                //    MessageBox.Show("Iltimos, birorta mahsulot tanlang!");
-                //    return;
-                //}
-                // Ma'lumotlar bazasidan selectId ga mos ma'lumotni o'chirish
-                DeleteData(selectId);
+                // Ma'lumotlar bazasidan txtid dagi qiymatga mos yozuvni o‘chiradi
+                DeleteData(currentId);
+            }
+            else
+            {
+                MessageBox.Show("O‘chirish uchun ID kiritilmagan!");
             }
         }
 
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //snomi = mnomi.Text;
-            //snarxi = vergultozalash(mnarxi);
-            //simage = mrasmi.Image;
-            //byte[] imageBytes = ImageToByteArray(simage);
-            //smavjud = vergultozalash(mmavjud);
-            //sizoh = mizoh.Text;
-            //skategoriya = mkategoriya.Text;
-            //smx = mx.Text;
-            //smy = my.Text;
+            // TextBox qiymatlarini global o‘zgaruvchilarga yuklash
+            familiya = txtfamiliya.Text.Trim();
+            ism = txtism.Text.Trim();
+            sharif = txtsharif.Text.Trim();
+            unvoni = txtunvoni.Text.Trim();
+            bolinma = txtbolinma.Text.Trim();
+            haqida = txthaqida.Text.Trim();
+            s1 = txts1.Text.Trim();
+            s2 = txts2.Text.Trim();
+            s3 = txts3.Text.Trim();
+            n1 = txtn1.Text.Trim();
+            n2 = txtn2.Text.Trim();
+            n3 = txtn3.Text.Trim();
+            ball = txtball.Text.Trim();
+            baho = txtbaho.Text.Trim();
+            image = picFace.Image;
 
-            // Ma'lumotlarning bo'sh emasligini tekshirish
-            if (string.IsNullOrWhiteSpace(snomi) ||
-                string.IsNullOrWhiteSpace(snarxi) ||
-                simage == null ||
-                string.IsNullOrWhiteSpace(smavjud) ||
-                string.IsNullOrWhiteSpace(sizoh) ||
-                string.IsNullOrWhiteSpace(skategoriya) ||
-                string.IsNullOrWhiteSpace(smx) ||
-                string.IsNullOrWhiteSpace(smy))
+            // Tekshiruv
+            if (string.IsNullOrWhiteSpace(familiya) ||
+                string.IsNullOrWhiteSpace(ism) ||
+                image == null)
             {
-                MessageBox.Show("Iltimos, barcha ma'lumotlarni to'ldiring.");
+                MessageBox.Show("Familiya, ism va rasm kiritilishi shart!");
                 return;
             }
+
+            // Rasm byte[] ga o‘tkazish
+            byte[] imageBytes = ImageToByteArray(image);
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -314,29 +326,32 @@ namespace MultiFaceRec
                 {
                     connection.Open();
 
-                    // INSERT so'rovi tayyorlash
                     string insertQuery = @"
-                    INSERT INTO ehtiyotqismlar (Nom, Narx, Rasm, Miqdor, Izoh, Kategoriya, koordinataX, koordinataY)
-                    VALUES (@Nom, @Narx, @Rasm, @Miqdor, @Izoh, @Kategoriya, @koordinataX, @koordinataY)
-                    ";
+                INSERT INTO users (familiya, ism, sharif, unvoni, bolinma, haqida, s1, s2, s3, n1, n2, n3, ball, baho, image)
+                VALUES (@familiya, @ism, @sharif, @unvoni, @bolinma, @haqida, @s1, @s2, @s3, @n1, @n2, @n3, @ball, @baho, @image);
+                SELECT SCOPE_IDENTITY();";  // qo‘shilgan ID ni olish
 
-                    SqlCommand command = new SqlCommand(insertQuery, connection);
-                    command.Parameters.AddWithValue("@Nom", snomi);
-                    command.Parameters.AddWithValue("@Narx", snarxi);
+                    SqlCommand cmd = new SqlCommand(insertQuery, connection);
+                    cmd.Parameters.AddWithValue("@familiya", familiya);
+                    cmd.Parameters.AddWithValue("@ism", ism);
+                    cmd.Parameters.AddWithValue("@sharif", sharif);
+                    cmd.Parameters.AddWithValue("@unvoni", unvoni);
+                    cmd.Parameters.AddWithValue("@bolinma", bolinma);
+                    cmd.Parameters.AddWithValue("@haqida", haqida);
+                    cmd.Parameters.AddWithValue("@s1", s1);
+                    cmd.Parameters.AddWithValue("@s2", s2);
+                    cmd.Parameters.AddWithValue("@s3", s3);
+                    cmd.Parameters.AddWithValue("@n1", n1);
+                    cmd.Parameters.AddWithValue("@n2", n2);
+                    cmd.Parameters.AddWithValue("@n3", n3);
+                    cmd.Parameters.AddWithValue("@ball", ball);
+                    cmd.Parameters.AddWithValue("@baho", baho);
+                    cmd.Parameters.AddWithValue("@image", imageBytes);
 
-                    // Rasmni byte[] massiviga aylantirish
-                    command.Parameters.AddWithValue("@Rasm", picFace);
+                    // Ma'lumotlarni qo‘shib ID ni olish
+                    int newId = Convert.ToInt32(cmd.ExecuteScalar());
 
-                    command.Parameters.AddWithValue("@Miqdor", smavjud);
-                    command.Parameters.AddWithValue("@Izoh", sizoh);
-                    command.Parameters.AddWithValue("@Kategoriya", skategoriya);
-                    //command.Parameters.AddWithValue("@koordinataX", relativeX.ToString());
-                    //command.Parameters.AddWithValue("@koordinataY", relativeY.ToString());
-
-                    // So'rovni bajaring
-                    command.ExecuteNonQuery();
-
-                    MessageBox.Show("Ma'lumotlar bazasiga muvaffaqiyatli qo'shildi.");
+                    MessageBox.Show("Yangi foydalanuvchi qo‘shildi. ID = " + newId);
                 }
                 catch (Exception ex)
                 {
@@ -346,58 +361,63 @@ namespace MultiFaceRec
         }
         private void btnUpgrade_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(selectId))
+            if (!string.IsNullOrEmpty(id))
             {
-                //if (mid.Text == "ID: ")
-                //{
-                //    MessageBox.Show("Iltimos, birorta mahsulot tanlang!");
-                //    return;
-                //}
-                // Ma'lumotlarni yangilash uchun selectId ga mos ma'lumotlarni o'zgaruvchilarga o'rnating
-                //snomi = mnomi.Text;
-                //snarxi = vergultozalash(mnarxi);
-                //simage = mrasmi.Image;
-                //smavjud = vergultozalash(mmavjud);
-                //sizoh = mizoh.Text;
-                //skategoriya = mkategoriya.Text;
-                //smx = mx.Text;
-                //smy = my.Text;
-                if (string.IsNullOrWhiteSpace(snomi) ||
-                string.IsNullOrWhiteSpace(snarxi) ||
-                simage == null ||
-                string.IsNullOrWhiteSpace(smavjud) ||
-                string.IsNullOrWhiteSpace(sizoh) ||
-                string.IsNullOrWhiteSpace(skategoriya) //||
-                //string.IsNullOrWhiteSpace(relativeX.ToString()) ||
-                //string.IsNullOrWhiteSpace(relativeY.ToString())
-                )
+                familiya = txtfamiliya.Text.Trim();
+                ism = txtism.Text.Trim();
+                sharif = txtsharif.Text.Trim();
+                unvoni = txtunvoni.Text.Trim();
+                bolinma = txtbolinma.Text.Trim();
+                haqida = txthaqida.Text.Trim();
+                s1 = txts1.Text.Trim();
+                s2 = txts2.Text.Trim();
+                s3 = txts3.Text.Trim();
+                n1 = txtn1.Text.Trim();
+                n2 = txtn2.Text.Trim();
+                n3 = txtn3.Text.Trim();
+                ball = txtball.Text.Trim();
+                baho = txtbaho.Text.Trim();
+                image = picFace.Image;
+
+                if (string.IsNullOrWhiteSpace(familiya) ||
+                    string.IsNullOrWhiteSpace(ism) ||
+                    image == null)
                 {
-                    MessageBox.Show("Iltimos, barcha ma'lumotlarni to'ldiring.");
+                    MessageBox.Show("Familiya, ism va rasm kiritilishi shart!");
                     return;
                 }
-                // Ma'lumotlarni ma'lumotlar bazasida yangilash
-                UpdateData(selectId);
+
+                UpdateData(id);
             }
         }
 
+
         private void btnClear_Click(object sender, EventArgs e)
         {
-            //mid.Text = "ID: ";
-            //mnomi.Clear();
-            //mnarxi.Clear();
-            //mrasmi.Image = null;
-            //mmavjud.Clear();
-            //mizoh.Clear();
-            //mkategoriya.Text = String.Empty;
-            //mkategoriya.SelectedIndex = -1;
-            //mx.Clear();
-            //my.Clear();
+            txtid.Clear();
+            txtfamiliya.Clear();
+            txtism.Clear();
+            txtsharif.Clear();
+            txtunvoni.Clear();
+            txtbolinma.Clear();
+            txthaqida.Clear();
+            txts1.Clear();
+            txts2.Clear();
+            txts3.Clear();
+            txtn1.Clear();
+            txtn2.Clear();
+            txtn3.Clear();
+            txtball.Clear();
+            txtbaho.Clear();
+
+            // Rasmni tozalash
+            picFace.Image = null;
+
+            // Fokusni rasmga berish (qulaylik uchun)
+            picFace.Focus();
         }
 
-        private void adminOynasidanChiqishToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
 
 
         /// <summary>
@@ -430,7 +450,7 @@ namespace MultiFaceRec
         private bool checkTableExistence(string connectionString)
         {
             bool tableExists = false;
-            string tableName = "ehtiyotqismlar";
+            string tableName = "users";
 
             try
             {
@@ -462,24 +482,50 @@ namespace MultiFaceRec
                 {
                     connection.Open();
 
-                    // CREATE TABLE so'rovi
-                    string createTableQuery = @"
-       CREATE TABLE [dbo].[ehtiyotqismlar]
-       (
-           [Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-           [Nom] VARCHAR(MAX) NULL, 
-           [Narx] VARCHAR(MAX) NULL, 
-           [Rasm] IMAGE NULL, 
-           [Miqdor] VARCHAR(MAX) NULL, 
-           [Izoh] VARCHAR(MAX) NULL, 
-           [Kategoriya] VARCHAR(MAX) NULL, 
-           [koordinataX] VARCHAR(MAX) NULL, 
-           [koordinataY] VARCHAR(MAX) NULL
-       )";
-                    SqlCommand command = new SqlCommand(createTableQuery, connection);
-                    command.ExecuteNonQuery();
+                    // Avval jadval mavjudligini tekshiramiz
+                    string checkQuery = @"SELECT COUNT(*) 
+                                  FROM INFORMATION_SCHEMA.TABLES 
+                                  WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'users'";
+                    int exists;
+                    using (SqlCommand checkCmd = new SqlCommand(checkQuery, connection))
+                    {
+                        exists = (int)checkCmd.ExecuteScalar();
+                    }
 
-                    MessageBox.Show("Ehtiyotqismlar jadvali muvaffaqiyatli yaratildi.");
+                    if (exists == 0)
+                    {
+                        string createTableQuery = @"
+                CREATE TABLE [dbo].[users]
+                (
+                    [id] CHAR(9) NOT NULL PRIMARY KEY,
+                    [familiya] NVARCHAR(100) NULL,
+                    [ism] NVARCHAR(50) NULL,
+                    [sharif] NVARCHAR(50) NULL,
+                    [unvoni] NVARCHAR(50) NULL,
+                    [bolinma] NVARCHAR(100) NULL,
+                    [haqida] NVARCHAR(MAX) NULL,
+                    [s1] NVARCHAR(50) NULL,
+                    [s2] NVARCHAR(50) NULL,
+                    [s3] NVARCHAR(50) NULL,
+                    [n1] NVARCHAR(50) NULL,
+                    [n2] NVARCHAR(50) NULL,
+                    [n3] NVARCHAR(50) NULL,
+                    [ball] NVARCHAR(50) NULL,
+                    [baho] NVARCHAR(50) NULL,
+                    [image] VARBINARY(MAX) NULL,
+                    CONSTRAINT CK_users_id_digits CHECK ([id] NOT LIKE '%[^0-9]%')
+                )";
+
+                        using (SqlCommand command = new SqlCommand(createTableQuery, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                        MessageBox.Show("users jadvali muvaffaqiyatli yaratildi.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("users jadvali allaqachon mavjud.");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -487,11 +533,6 @@ namespace MultiFaceRec
                 }
             }
         }
-
-        
-
-        
-
 
         // Image obyektini byte[] massiviga aylantiruvchi metod
         private byte[] ImageToByteArray(Image image)
@@ -512,42 +553,12 @@ namespace MultiFaceRec
             }
         }
 
-        private void verguljoylash(object sender, KeyPressEventArgs e)
+        private void faqatraqam(object sender, KeyPressEventArgs e)
         {
             // Faqat raqamlarni qabul qilish
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true; // Hodisa bajarilmaydi
-            }
-            if (sender is TextBox textBox)
-            {
-                //TextBox textBox = (TextBox)sender;
-                string text = textBox.Text.Replace(",", ""); // Vergullarni olib tashlash
-
-                // Yangi harf kiritilganda va matn uzunligi 0 dan katta bo'lsa
-                if (text.Length > 0)
-                {
-                    int len = text.Length;
-                    int groupCount = len / 3 - 1; // 3 ta raqamdan keyingi vergullar soni
-                    int startIndex = len % 3; // Birinchi verguldan keyin keladigan raqamlar soni
-                    StringBuilder sb = new StringBuilder(text);
-                    if (char.IsDigit(e.KeyChar))
-                    {
-                        for (int i = groupCount; i >= 0; i--)
-                        {
-                            sb.Insert(startIndex + i * 3 + 1, ","); // Har 3 raqamdan keyin vergul qo'shish
-                        }
-                    }
-                    else
-                    {
-                        for (int i = groupCount; i >= 0; i--)
-                        {
-                            sb.Insert(startIndex + i * 3, ","); // Har 3 raqamdan keyin vergul qo'shish
-                        }
-                    }
-                    textBox.Text = sb.ToString();
-                    textBox.SelectionStart = textBox.Text.Length;
-                }
             }
         }
 
@@ -680,29 +691,40 @@ namespace MultiFaceRec
 
         private void DeleteData(string id)
         {
+            // Avval foydalanuvchidan tasdiq olish
+            DialogResult confirm = MessageBox.Show(
+                $"Siz haqiqatdan ham {id} raqamli foydalanuvchini o‘chirmoqchimisiz?",
+                "O‘chirishni tasdiqlash",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes)
+            {
+                // Agar Yes bosilmasa, funksiya tugaydi
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
 
-                    // DELETE so'rovi tayyorlash
-                    string deleteQuery = "DELETE FROM ehtiyotqismlar WHERE Id = @Id";
-
+                    string deleteQuery = "DELETE FROM users WHERE Id = @Id";
                     SqlCommand command = new SqlCommand(deleteQuery, connection);
                     command.Parameters.AddWithValue("@Id", id);
 
-                    // So'rovni bajaring
                     int rowsAffected = command.ExecuteNonQuery();
 
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Ma'lumot muvaffaqiyatli o'chirildi.");
-                        // O'chirilgan ma'lumotni ko'rsatish uchun kerakli amallar
+                        MessageBox.Show("Ma'lumot muvaffaqiyatli o‘chirildi.");
+                        // O‘chirildi – formadagi maydonlarni tozalash foydali
+                        btnClear_Click(null, EventArgs.Empty);
                     }
                     else
                     {
-                        MessageBox.Show("O'chirishda xatolik yuz berdi. Ma'lumot topilmadi yoki o'chirilmadi.");
+                        MessageBox.Show("Ma'lumot topilmadi yoki o‘chirilmadi.");
                     }
                 }
                 catch (Exception ex)
@@ -711,6 +733,8 @@ namespace MultiFaceRec
                 }
             }
         }
+
+
 
 
         private void UpdateData(string id)
@@ -721,46 +745,57 @@ namespace MultiFaceRec
                 {
                     connection.Open();
 
-                    // UPDATE so'rovi tayyorlash
                     string updateQuery = @"
-                UPDATE ehtiyotqismlar 
-                SET Nom = @Nom, 
-                    Narx = @Narx, 
-                    Rasm = @Rasm, 
-                    Miqdor = @Miqdor, 
-                    Izoh = @Izoh, 
-                    Kategoriya = @Kategoriya, 
-                    koordinataX = @koordinataX, 
-                    koordinataY = @koordinataY 
-                WHERE Id = @Id
-            ";
+                UPDATE users 
+                SET familiya = @familiya,
+                    ism = @ism,
+                    sharif = @sharif,
+                    unvoni = @unvoni,
+                    bolinma = @bolinma,
+                    haqida = @haqida,
+                    s1 = @s1,
+                    s2 = @s2,
+                    s3 = @s3,
+                    n1 = @n1,
+                    n2 = @n2,
+                    n3 = @n3,
+                    ball = @ball,
+                    baho = @baho,
+                    image = @image
+                WHERE id = @id";
 
-                    SqlCommand command = new SqlCommand(updateQuery, connection);
-                    command.Parameters.AddWithValue("@Nom", snomi);
-                    command.Parameters.AddWithValue("@Narx", snarxi);
+                    SqlCommand cmd = new SqlCommand(updateQuery, connection);
 
-                    // Rasmni byte[] massiviga aylantirish
-                    byte[] imageBytes = ImageToByteArray(simage);
-                    command.Parameters.AddWithValue("@Rasm", imageBytes);
+                    cmd.Parameters.AddWithValue("@familiya", familiya);
+                    cmd.Parameters.AddWithValue("@ism", ism);
+                    cmd.Parameters.AddWithValue("@sharif", sharif);
+                    cmd.Parameters.AddWithValue("@unvoni", unvoni);
+                    cmd.Parameters.AddWithValue("@bolinma", bolinma);
+                    cmd.Parameters.AddWithValue("@haqida", haqida);
+                    cmd.Parameters.AddWithValue("@s1", s1);
+                    cmd.Parameters.AddWithValue("@s2", s2);
+                    cmd.Parameters.AddWithValue("@s3", s3);
+                    cmd.Parameters.AddWithValue("@n1", n1);
+                    cmd.Parameters.AddWithValue("@n2", n2);
+                    cmd.Parameters.AddWithValue("@n3", n3);
+                    cmd.Parameters.AddWithValue("@ball", ball);
+                    cmd.Parameters.AddWithValue("@baho", baho);
 
-                    command.Parameters.AddWithValue("@Miqdor", smavjud);
-                    command.Parameters.AddWithValue("@Izoh", sizoh);
-                    command.Parameters.AddWithValue("@Kategoriya", skategoriya);
-                    //command.Parameters.AddWithValue("@koordinataX", relativeX.ToString());
-                    //command.Parameters.AddWithValue("@koordinataY", relativeY.ToString());
-                    command.Parameters.AddWithValue("@Id", id);
+                    // Rasmni byte[] ga aylantirish
+                    byte[] imageBytes = ImageToByteArray(image);
+                    cmd.Parameters.AddWithValue("@image", imageBytes);
 
-                    // So'rovni bajaring
-                    int rowsAffected = command.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
 
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Ma'lumotlar muvaffaqiyatli yangilandi.");
-                        // Yangilangan ma'lumotlarni ko'rsatish uchun kerakli amallar
+                        MessageBox.Show("Foydalanuvchi ma'lumotlari muvaffaqiyatli yangilandi.");
                     }
                     else
                     {
-                        MessageBox.Show("Yangilashda xatolik yuz berdi. Ma'lumot topilmadi yoki yangilanmadi.");
+                        MessageBox.Show("Yangilashda xatolik: foydalanuvchi topilmadi.");
                     }
                 }
                 catch (Exception ex)
@@ -769,6 +804,7 @@ namespace MultiFaceRec
                 }
             }
         }
+
 
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -843,6 +879,8 @@ namespace MultiFaceRec
 
                     // Rasmni chiqarish
                     imageBoxFrameGrabber.Image = currentFrame;
+                    picFace.Visible = true;
+                    picFace.Image = result.Bitmap;
 
                     // Faqat 1 marta ishlashini istasangiz → eventni o‘chirish:
                     Application.Idle -= FrameGrabber;
@@ -850,6 +888,8 @@ namespace MultiFaceRec
                 else
                 {
                     // Yuz topilmasa ham dastur davom etadi
+
+                    picFace.Visible = false;
                     imageBoxFrameGrabber.Image = currentFrame;
                 }
             }

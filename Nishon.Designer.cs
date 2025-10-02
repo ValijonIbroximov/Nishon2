@@ -42,9 +42,8 @@
             this.r9 = new System.Windows.Forms.PictureBox();
             this.txtism = new System.Windows.Forms.TextBox();
             this.txtfamiliya = new System.Windows.Forms.TextBox();
-            this.picFace = new Emgu.CV.UI.ImageBox();
             this.g10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picInfoPanel = new System.Windows.Forms.PictureBox();
             this.r10 = new System.Windows.Forms.PictureBox();
             this.btnAddPerson = new System.Windows.Forms.Button();
             this.txtid = new System.Windows.Forms.TextBox();
@@ -58,6 +57,17 @@
             this.Malumotlarbazasijoylashuvinikorish = new System.Windows.Forms.ToolStripMenuItem();
             this.parolniAlmashtirishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminOynasidanChiqishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.picFace = new System.Windows.Forms.PictureBox();
+            this.txtbolinma = new System.Windows.Forms.TextBox();
+            this.txthaqida = new System.Windows.Forms.TextBox();
+            this.txts2 = new System.Windows.Forms.TextBox();
+            this.txts1 = new System.Windows.Forms.TextBox();
+            this.txtn3 = new System.Windows.Forms.TextBox();
+            this.txtn2 = new System.Windows.Forms.TextBox();
+            this.txtn1 = new System.Windows.Forms.TextBox();
+            this.txts3 = new System.Windows.Forms.TextBox();
+            this.txtbaho = new System.Windows.Forms.TextBox();
+            this.txtball = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.r7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.g7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r6)).BeginInit();
@@ -67,14 +77,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.g9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picFace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.g10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picInfoPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).BeginInit();
             this.target.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.g8)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picFace)).BeginInit();
             this.SuspendLayout();
             // 
             // r7
@@ -237,16 +247,6 @@
             this.txtfamiliya.Size = new System.Drawing.Size(181, 27);
             this.txtfamiliya.TabIndex = 30;
             // 
-            // picFace
-            // 
-            this.picFace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picFace.Location = new System.Drawing.Point(862, 85);
-            this.picFace.Name = "picFace";
-            this.picFace.Size = new System.Drawing.Size(82, 105);
-            this.picFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picFace.TabIndex = 29;
-            this.picFace.TabStop = false;
-            // 
             // g10
             // 
             this.g10.BackColor = System.Drawing.Color.Transparent;
@@ -259,16 +259,16 @@
             this.g10.TabIndex = 5;
             this.g10.TabStop = false;
             // 
-            // pictureBox1
+            // picInfoPanel
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::MultiFaceRec.Properties.Resources.Info_user2;
-            this.pictureBox1.Location = new System.Drawing.Point(824, 41);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(253, 479);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
+            this.picInfoPanel.BackColor = System.Drawing.Color.Transparent;
+            this.picInfoPanel.Image = global::MultiFaceRec.Properties.Resources.Info_user2;
+            this.picInfoPanel.Location = new System.Drawing.Point(824, 41);
+            this.picInfoPanel.Name = "picInfoPanel";
+            this.picInfoPanel.Size = new System.Drawing.Size(253, 479);
+            this.picInfoPanel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picInfoPanel.TabIndex = 27;
+            this.picInfoPanel.TabStop = false;
             // 
             // r10
             // 
@@ -306,6 +306,7 @@
             this.txtid.Name = "txtid";
             this.txtid.Size = new System.Drawing.Size(156, 28);
             this.txtid.TabIndex = 34;
+            this.txtid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.faqatraqam);
             // 
             // imageBoxFrameGrabber
             // 
@@ -412,6 +413,126 @@
             this.adminOynasidanChiqishToolStripMenuItem.Size = new System.Drawing.Size(202, 25);
             this.adminOynasidanChiqishToolStripMenuItem.Text = "Admin oynasidan chiqish";
             // 
+            // picFace
+            // 
+            this.picFace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.picFace.Location = new System.Drawing.Point(862, 85);
+            this.picFace.Name = "picFace";
+            this.picFace.Size = new System.Drawing.Size(82, 105);
+            this.picFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picFace.TabIndex = 38;
+            this.picFace.TabStop = false;
+            // 
+            // txtbolinma
+            // 
+            this.txtbolinma.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtbolinma.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtbolinma.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbolinma.ForeColor = System.Drawing.Color.White;
+            this.txtbolinma.Location = new System.Drawing.Point(586, 72);
+            this.txtbolinma.Name = "txtbolinma";
+            this.txtbolinma.Size = new System.Drawing.Size(181, 27);
+            this.txtbolinma.TabIndex = 39;
+            // 
+            // txthaqida
+            // 
+            this.txthaqida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txthaqida.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txthaqida.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txthaqida.ForeColor = System.Drawing.Color.White;
+            this.txthaqida.Location = new System.Drawing.Point(586, 105);
+            this.txthaqida.Name = "txthaqida";
+            this.txthaqida.Size = new System.Drawing.Size(181, 27);
+            this.txthaqida.TabIndex = 40;
+            // 
+            // txts2
+            // 
+            this.txts2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txts2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txts2.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txts2.ForeColor = System.Drawing.Color.White;
+            this.txts2.Location = new System.Drawing.Point(586, 185);
+            this.txts2.Name = "txts2";
+            this.txts2.Size = new System.Drawing.Size(181, 27);
+            this.txts2.TabIndex = 42;
+            // 
+            // txts1
+            // 
+            this.txts1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txts1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txts1.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txts1.ForeColor = System.Drawing.Color.White;
+            this.txts1.Location = new System.Drawing.Point(586, 152);
+            this.txts1.Name = "txts1";
+            this.txts1.Size = new System.Drawing.Size(181, 27);
+            this.txts1.TabIndex = 41;
+            // 
+            // txtn3
+            // 
+            this.txtn3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtn3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtn3.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtn3.ForeColor = System.Drawing.Color.White;
+            this.txtn3.Location = new System.Drawing.Point(586, 318);
+            this.txtn3.Name = "txtn3";
+            this.txtn3.Size = new System.Drawing.Size(181, 27);
+            this.txtn3.TabIndex = 46;
+            // 
+            // txtn2
+            // 
+            this.txtn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtn2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtn2.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtn2.ForeColor = System.Drawing.Color.White;
+            this.txtn2.Location = new System.Drawing.Point(586, 285);
+            this.txtn2.Name = "txtn2";
+            this.txtn2.Size = new System.Drawing.Size(181, 27);
+            this.txtn2.TabIndex = 45;
+            // 
+            // txtn1
+            // 
+            this.txtn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtn1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtn1.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtn1.ForeColor = System.Drawing.Color.White;
+            this.txtn1.Location = new System.Drawing.Point(586, 252);
+            this.txtn1.Name = "txtn1";
+            this.txtn1.Size = new System.Drawing.Size(181, 27);
+            this.txtn1.TabIndex = 44;
+            // 
+            // txts3
+            // 
+            this.txts3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txts3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txts3.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txts3.ForeColor = System.Drawing.Color.White;
+            this.txts3.Location = new System.Drawing.Point(586, 219);
+            this.txts3.Name = "txts3";
+            this.txts3.Size = new System.Drawing.Size(181, 27);
+            this.txts3.TabIndex = 43;
+            // 
+            // txtbaho
+            // 
+            this.txtbaho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtbaho.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtbaho.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbaho.ForeColor = System.Drawing.Color.White;
+            this.txtbaho.Location = new System.Drawing.Point(586, 385);
+            this.txtbaho.Name = "txtbaho";
+            this.txtbaho.Size = new System.Drawing.Size(181, 27);
+            this.txtbaho.TabIndex = 48;
+            // 
+            // txtball
+            // 
+            this.txtball.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtball.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtball.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtball.ForeColor = System.Drawing.Color.White;
+            this.txtball.Location = new System.Drawing.Point(586, 352);
+            this.txtball.Name = "txtball";
+            this.txtball.Size = new System.Drawing.Size(181, 27);
+            this.txtball.TabIndex = 47;
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -419,6 +540,16 @@
             this.BackgroundImage = global::MultiFaceRec.Properties.Resources.Background_nishon1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1098, 561);
+            this.Controls.Add(this.txtbaho);
+            this.Controls.Add(this.txtball);
+            this.Controls.Add(this.txtn3);
+            this.Controls.Add(this.txtn2);
+            this.Controls.Add(this.txtn1);
+            this.Controls.Add(this.txts3);
+            this.Controls.Add(this.txts2);
+            this.Controls.Add(this.txts1);
+            this.Controls.Add(this.txthaqida);
+            this.Controls.Add(this.txtbolinma);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.btnSearchPerson);
             this.Controls.Add(this.btnAddPerson);
@@ -429,7 +560,7 @@
             this.Controls.Add(this.txtsharif);
             this.Controls.Add(this.picFace);
             this.Controls.Add(this.imageBoxFrameGrabber);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picInfoPanel);
             this.Controls.Add(this.target);
             this.DoubleBuffered = true;
             this.Name = "FrmPrincipal";
@@ -445,15 +576,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.g9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.r8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.r9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picFace)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.g10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picInfoPanel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.r10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).EndInit();
             this.target.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.g8)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picFace)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,9 +605,8 @@
         private System.Windows.Forms.PictureBox r9;
         private System.Windows.Forms.TextBox txtism;
         private System.Windows.Forms.TextBox txtfamiliya;
-        private Emgu.CV.UI.ImageBox picFace;
         private System.Windows.Forms.PictureBox g10;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picInfoPanel;
         private System.Windows.Forms.PictureBox r10;
         private System.Windows.Forms.Button btnAddPerson;
         private System.Windows.Forms.TextBox txtid;
@@ -490,6 +620,17 @@
         private System.Windows.Forms.ToolStripMenuItem Malumotlarbazasijoylashuvinikorish;
         private System.Windows.Forms.ToolStripMenuItem parolniAlmashtirishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminOynasidanChiqishToolStripMenuItem;
+        private System.Windows.Forms.PictureBox picFace;
+        private System.Windows.Forms.TextBox txtbolinma;
+        private System.Windows.Forms.TextBox txthaqida;
+        private System.Windows.Forms.TextBox txts2;
+        private System.Windows.Forms.TextBox txts1;
+        private System.Windows.Forms.TextBox txtn3;
+        private System.Windows.Forms.TextBox txtn2;
+        private System.Windows.Forms.TextBox txtn1;
+        private System.Windows.Forms.TextBox txts3;
+        private System.Windows.Forms.TextBox txtbaho;
+        private System.Windows.Forms.TextBox txtball;
     }
 }
 
