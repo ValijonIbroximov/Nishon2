@@ -206,6 +206,8 @@ namespace MultiFaceRec
                     File.AppendAllText(savePath + "TrainedLabels.txt", labels[i - 1] + "%");
                 }
 
+                btnAdd_Click(sender, e); // Ma'lumotlar bazasiga qo‘shish
+
                 MessageBox.Show(txtid.Text + " yuz ma'lumotlar bazasiga qo‘shildi!");
             }
             catch (Exception ex)
@@ -842,7 +844,7 @@ namespace MultiFaceRec
                     face,
                     1.2,
                     10,
-                    HAAR_DETECTION_TYPE.DO_CANNY_PRUNING,
+                    Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING,
                     new Size(20, 20));
 
                 if (facesDetected[0].Length > 0)
@@ -868,27 +870,70 @@ namespace MultiFaceRec
 
                         name = recognizer.Recognize(result);
 
-                        // Ismni chiqarish
-                        currentFrame.Draw(name ?? "Unknown",
+                        // Agar ID tanilgan bo‘lsa
+                        if (!string.IsNullOrEmpty(name))
+                        {
+                            txtid.Text = name;
+
+                            // Bazadan ma'lumotni chiqaramiz
+                            using (SqlConnection conn = new SqlConnection(connectionString))
+                            {
+                                conn.Open();
+                                string query = "SELECT * FROM users WHERE id = @id";
+                                using (SqlCommand cmd = new SqlCommand(query, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@id", name);
+                                    using (SqlDataReader reader = cmd.ExecuteReader())
+                                    {
+                                        if (reader.Read())
+                                        {
+                                            txtfamiliya.Text = reader["familiya"].ToString();
+                                            txtism.Text = reader["ism"].ToString();
+                                            txtsharif.Text = reader["sharif"].ToString();
+                                            txtunvoni.Text = reader["unvoni"].ToString();
+                                            txtbolinma.Text = reader["bolinma"].ToString();
+                                            txthaqida.Text = reader["haqida"].ToString();
+                                            txts1.Text = reader["s1"].ToString();
+                                            txts2.Text = reader["s2"].ToString();
+                                            txts3.Text = reader["s3"].ToString();
+                                            txtn1.Text = reader["n1"].ToString();
+                                            txtn2.Text = reader["n2"].ToString();
+                                            txtn3.Text = reader["n3"].ToString();
+                                            txtball.Text = reader["ball"].ToString();
+                                            txtbaho.Text = reader["baho"].ToString();
+
+                                            if (!(reader["image"] is DBNull))
+                                            {
+                                                byte[] imgBytes = (byte[])reader["image"];
+                                                picFace.Image = ByteArrayToImage(imgBytes);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            txtid.Text = "";
+                        }
+
+                        // Ekranga ism yozib qo‘yish
+                        currentFrame.Draw(name ?? "",
                             ref font, new Point(f.rect.X - 2, f.rect.Y - 2),
                             new Bgr(Color.Red));
-
-                        // ID textboxga chiqarish
-                        txtid.Text = string.IsNullOrEmpty(name) ? "Unknown" : name;
                     }
 
                     // Rasmni chiqarish
                     imageBoxFrameGrabber.Image = currentFrame;
                     picFace.Visible = true;
-                    picFace.Image = result.Bitmap;
+                    if (result != null)
+                        picFace.Image = result.ToBitmap();
 
-                    // Faqat 1 marta ishlashini istasangiz → eventni o‘chirish:
+                    // Faqat 1 marta ishlashini istasangiz:
                     Application.Idle -= FrameGrabber;
                 }
                 else
                 {
-                    // Yuz topilmasa ham dastur davom etadi
-
                     picFace.Visible = false;
                     imageBoxFrameGrabber.Image = currentFrame;
                 }
@@ -898,5 +943,6 @@ namespace MultiFaceRec
                 Debug.WriteLine("FrameGrabber xato: " + ex.Message);
             }
         }
+
     }
 }
