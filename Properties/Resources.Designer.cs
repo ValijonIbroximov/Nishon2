@@ -73,6 +73,46 @@ namespace MultiFaceRec.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnClear {
+            get {
+                object obj = ResourceManager.GetObject("btnClear", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnDelete {
+            get {
+                object obj = ResourceManager.GetObject("btnDelete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnTake {
+            get {
+                object obj = ResourceManager.GetObject("btnTake", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnUpgrade {
+            get {
+                object obj = ResourceManager.GetObject("btnUpgrade", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap g10 {
             get {
                 object obj = ResourceManager.GetObject("g10", resourceCulture);
@@ -156,6 +196,26 @@ namespace MultiFaceRec.Properties {
         internal static System.Drawing.Bitmap Info_user2 {
             get {
                 object obj = ResourceManager.GetObject("Info_user2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Info_user3 {
+            get {
+                object obj = ResourceManager.GetObject("Info_user3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Info_user4 {
+            get {
+                object obj = ResourceManager.GetObject("Info_user4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -139,11 +139,17 @@
   <data name="g8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\g8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="g7-" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\g7-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnUpgrade" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnUpgrade.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="personAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\personAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g7-" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\g7-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Info_user3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info_user3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Background_nishon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Background_nishon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,8 +163,17 @@
   <data name="r8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\r8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="r9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\r9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Info_user4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info_user4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="g6-" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\g6-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnClear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnClear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="personSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\personSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="r7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\r7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,10 +181,13 @@
   <data name="r5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\r5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="g6-" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\g6-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btnTake" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnTake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="personSearch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\personSearch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="r9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\r9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnDelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

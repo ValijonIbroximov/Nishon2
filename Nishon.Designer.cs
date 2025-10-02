@@ -35,7 +35,7 @@
             this.g6 = new System.Windows.Forms.PictureBox();
             this.r5 = new System.Windows.Forms.PictureBox();
             this.g5 = new System.Windows.Forms.PictureBox();
-            this.btnSearchPerson = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.g9 = new System.Windows.Forms.PictureBox();
             this.r8 = new System.Windows.Forms.PictureBox();
             this.txtunvoni = new System.Windows.Forms.TextBox();
@@ -45,7 +45,7 @@
             this.g10 = new System.Windows.Forms.PictureBox();
             this.picInfoPanel = new System.Windows.Forms.PictureBox();
             this.r10 = new System.Windows.Forms.PictureBox();
-            this.btnAddPerson = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.txtid = new System.Windows.Forms.TextBox();
             this.imageBoxFrameGrabber = new Emgu.CV.UI.ImageBox();
             this.target = new System.Windows.Forms.Panel();
@@ -55,7 +55,6 @@
             this.malumotlarBazasiBilanBoglashToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yangiMalumotlarBazasiYaratishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Malumotlarbazasijoylashuvinikorish = new System.Windows.Forms.ToolStripMenuItem();
-            this.parolniAlmashtirishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.picFace = new System.Windows.Forms.PictureBox();
             this.txtbolinma = new System.Windows.Forms.TextBox();
             this.txthaqida = new System.Windows.Forms.TextBox();
@@ -67,6 +66,11 @@
             this.txts3 = new System.Windows.Forms.TextBox();
             this.txtbaho = new System.Windows.Forms.TextBox();
             this.txtball = new System.Windows.Forms.TextBox();
+            this.btnTake = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnUpgrade = new System.Windows.Forms.Button();
+            this.portToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.r7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.g7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r6)).BeginInit();
@@ -163,18 +167,18 @@
             this.g5.TabIndex = 0;
             this.g5.TabStop = false;
             // 
-            // btnSearchPerson
+            // btnSearch
             // 
-            this.btnSearchPerson.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearchPerson.BackgroundImage = global::MultiFaceRec.Properties.Resources.personSearch;
-            this.btnSearchPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSearchPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchPerson.Location = new System.Drawing.Point(1712, 233);
-            this.btnSearchPerson.Name = "btnSearchPerson";
-            this.btnSearchPerson.Size = new System.Drawing.Size(60, 60);
-            this.btnSearchPerson.TabIndex = 36;
-            this.btnSearchPerson.UseVisualStyleBackColor = false;
-            this.btnSearchPerson.Click += new System.EventHandler(this.btnSearchPerson_Click);
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.BackgroundImage = global::MultiFaceRec.Properties.Resources.personSearch;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Location = new System.Drawing.Point(1704, 276);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(60, 60);
+            this.btnSearch.TabIndex = 36;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearchPerson_Click);
             // 
             // g9
             // 
@@ -207,9 +211,9 @@
             this.txtunvoni.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtunvoni.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtunvoni.ForeColor = System.Drawing.Color.White;
-            this.txtunvoni.Location = new System.Drawing.Point(1582, 501);
+            this.txtunvoni.Location = new System.Drawing.Point(1434, 613);
             this.txtunvoni.Name = "txtunvoni";
-            this.txtunvoni.Size = new System.Drawing.Size(181, 27);
+            this.txtunvoni.Size = new System.Drawing.Size(310, 27);
             this.txtunvoni.TabIndex = 33;
             // 
             // r9
@@ -231,9 +235,9 @@
             this.txtism.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtism.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtism.ForeColor = System.Drawing.Color.White;
-            this.txtism.Location = new System.Drawing.Point(1582, 394);
+            this.txtism.Location = new System.Drawing.Point(1434, 488);
             this.txtism.Name = "txtism";
-            this.txtism.Size = new System.Drawing.Size(181, 27);
+            this.txtism.Size = new System.Drawing.Size(310, 27);
             this.txtism.TabIndex = 31;
             // 
             // txtfamiliya
@@ -242,9 +246,9 @@
             this.txtfamiliya.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtfamiliya.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtfamiliya.ForeColor = System.Drawing.Color.White;
-            this.txtfamiliya.Location = new System.Drawing.Point(1582, 341);
+            this.txtfamiliya.Location = new System.Drawing.Point(1434, 424);
             this.txtfamiliya.Name = "txtfamiliya";
-            this.txtfamiliya.Size = new System.Drawing.Size(181, 27);
+            this.txtfamiliya.Size = new System.Drawing.Size(310, 27);
             this.txtfamiliya.TabIndex = 30;
             // 
             // g10
@@ -262,10 +266,10 @@
             // picInfoPanel
             // 
             this.picInfoPanel.BackColor = System.Drawing.Color.Transparent;
-            this.picInfoPanel.Image = global::MultiFaceRec.Properties.Resources.Info_user2;
-            this.picInfoPanel.Location = new System.Drawing.Point(1547, 136);
+            this.picInfoPanel.Image = global::MultiFaceRec.Properties.Resources.Info_user4;
+            this.picInfoPanel.Location = new System.Drawing.Point(1381, 81);
             this.picInfoPanel.Name = "picInfoPanel";
-            this.picInfoPanel.Size = new System.Drawing.Size(253, 479);
+            this.picInfoPanel.Size = new System.Drawing.Size(418, 800);
             this.picInfoPanel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picInfoPanel.TabIndex = 27;
             this.picInfoPanel.TabStop = false;
@@ -283,18 +287,18 @@
             this.r10.TabStop = false;
             this.r10.Visible = false;
             // 
-            // btnAddPerson
+            // btnAdd
             // 
-            this.btnAddPerson.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddPerson.BackgroundImage = global::MultiFaceRec.Properties.Resources.personAdd;
-            this.btnAddPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPerson.Location = new System.Drawing.Point(1712, 167);
-            this.btnAddPerson.Name = "btnAddPerson";
-            this.btnAddPerson.Size = new System.Drawing.Size(60, 60);
-            this.btnAddPerson.TabIndex = 35;
-            this.btnAddPerson.UseVisualStyleBackColor = false;
-            this.btnAddPerson.Click += new System.EventHandler(this.btnAddPerson_Click);
+            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdd.BackgroundImage = global::MultiFaceRec.Properties.Resources.personAdd;
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Location = new System.Drawing.Point(1704, 144);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(60, 60);
+            this.btnAdd.TabIndex = 35;
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAddPerson_Click);
             // 
             // txtid
             // 
@@ -302,19 +306,19 @@
             this.txtid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtid.Font = new System.Drawing.Font("Agency FB", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtid.ForeColor = System.Drawing.Color.White;
-            this.txtid.Location = new System.Drawing.Point(1595, 555);
+            this.txtid.Location = new System.Drawing.Point(1456, 809);
             this.txtid.Name = "txtid";
-            this.txtid.Size = new System.Drawing.Size(156, 28);
+            this.txtid.Size = new System.Drawing.Size(265, 28);
             this.txtid.TabIndex = 34;
             this.txtid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.faqatraqam);
             // 
             // imageBoxFrameGrabber
             // 
-            this.imageBoxFrameGrabber.BackColor = System.Drawing.Color.White;
+            this.imageBoxFrameGrabber.BackColor = System.Drawing.Color.Transparent;
             this.imageBoxFrameGrabber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.imageBoxFrameGrabber.Location = new System.Drawing.Point(1585, 180);
+            this.imageBoxFrameGrabber.Location = new System.Drawing.Point(1509, 162);
             this.imageBoxFrameGrabber.Name = "imageBoxFrameGrabber";
-            this.imageBoxFrameGrabber.Size = new System.Drawing.Size(82, 105);
+            this.imageBoxFrameGrabber.Size = new System.Drawing.Size(160, 160);
             this.imageBoxFrameGrabber.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.imageBoxFrameGrabber.TabIndex = 28;
             this.imageBoxFrameGrabber.TabStop = false;
@@ -357,9 +361,9 @@
             this.txtsharif.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtsharif.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsharif.ForeColor = System.Drawing.Color.White;
-            this.txtsharif.Location = new System.Drawing.Point(1582, 447);
+            this.txtsharif.Location = new System.Drawing.Point(1434, 551);
             this.txtsharif.Name = "txtsharif";
-            this.txtsharif.Size = new System.Drawing.Size(181, 27);
+            this.txtsharif.Size = new System.Drawing.Size(310, 27);
             this.txtsharif.TabIndex = 32;
             // 
             // menuStrip1
@@ -370,7 +374,7 @@
             this.malumotlarBazasiBilanBoglashToolStripMenuItem,
             this.yangiMalumotlarBazasiYaratishToolStripMenuItem,
             this.Malumotlarbazasijoylashuvinikorish,
-            this.parolniAlmashtirishToolStripMenuItem});
+            this.portToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1844, 29);
@@ -398,19 +402,14 @@
             this.Malumotlarbazasijoylashuvinikorish.Text = "Ma\'lumotlar bazasi joylashuvini ko\'rish";
             this.Malumotlarbazasijoylashuvinikorish.Click += new System.EventHandler(this.Malumotlarbazasijoylashuvinikorish_Click);
             // 
-            // parolniAlmashtirishToolStripMenuItem
-            // 
-            this.parolniAlmashtirishToolStripMenuItem.Name = "parolniAlmashtirishToolStripMenuItem";
-            this.parolniAlmashtirishToolStripMenuItem.Size = new System.Drawing.Size(162, 25);
-            this.parolniAlmashtirishToolStripMenuItem.Text = "Parolni almashtirish";
-            // 
             // picFace
             // 
+            this.picFace.BackColor = System.Drawing.Color.Transparent;
             this.picFace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picFace.Location = new System.Drawing.Point(1585, 180);
+            this.picFace.Location = new System.Drawing.Point(1509, 162);
             this.picFace.Name = "picFace";
-            this.picFace.Size = new System.Drawing.Size(82, 105);
-            this.picFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picFace.Size = new System.Drawing.Size(160, 160);
+            this.picFace.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picFace.TabIndex = 38;
             this.picFace.TabStop = false;
             // 
@@ -420,9 +419,9 @@
             this.txtbolinma.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbolinma.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbolinma.ForeColor = System.Drawing.Color.White;
-            this.txtbolinma.Location = new System.Drawing.Point(1054, 279);
+            this.txtbolinma.Location = new System.Drawing.Point(1434, 676);
             this.txtbolinma.Name = "txtbolinma";
-            this.txtbolinma.Size = new System.Drawing.Size(181, 27);
+            this.txtbolinma.Size = new System.Drawing.Size(310, 27);
             this.txtbolinma.TabIndex = 39;
             // 
             // txthaqida
@@ -431,9 +430,9 @@
             this.txthaqida.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txthaqida.Font = new System.Drawing.Font("High Tower Text", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txthaqida.ForeColor = System.Drawing.Color.White;
-            this.txthaqida.Location = new System.Drawing.Point(1054, 312);
+            this.txthaqida.Location = new System.Drawing.Point(1434, 741);
             this.txthaqida.Name = "txthaqida";
-            this.txthaqida.Size = new System.Drawing.Size(181, 27);
+            this.txthaqida.Size = new System.Drawing.Size(310, 27);
             this.txthaqida.TabIndex = 40;
             // 
             // txts2
@@ -524,6 +523,64 @@
             this.txtball.Size = new System.Drawing.Size(181, 27);
             this.txtball.TabIndex = 47;
             // 
+            // btnTake
+            // 
+            this.btnTake.BackColor = System.Drawing.Color.Transparent;
+            this.btnTake.BackgroundImage = global::MultiFaceRec.Properties.Resources.btnTake;
+            this.btnTake.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTake.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTake.Location = new System.Drawing.Point(1704, 210);
+            this.btnTake.Name = "btnTake";
+            this.btnTake.Size = new System.Drawing.Size(60, 60);
+            this.btnTake.TabIndex = 49;
+            this.btnTake.UseVisualStyleBackColor = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
+            this.btnDelete.BackgroundImage = global::MultiFaceRec.Properties.Resources.btnDelete;
+            this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Location = new System.Drawing.Point(1414, 144);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(60, 60);
+            this.btnDelete.TabIndex = 52;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.Transparent;
+            this.btnClear.BackgroundImage = global::MultiFaceRec.Properties.Resources.btnClear;
+            this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Location = new System.Drawing.Point(1414, 276);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(60, 60);
+            this.btnClear.TabIndex = 51;
+            this.btnClear.UseVisualStyleBackColor = false;
+            // 
+            // btnUpgrade
+            // 
+            this.btnUpgrade.BackColor = System.Drawing.Color.Transparent;
+            this.btnUpgrade.BackgroundImage = global::MultiFaceRec.Properties.Resources.btnUpgrade;
+            this.btnUpgrade.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUpgrade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpgrade.Location = new System.Drawing.Point(1414, 210);
+            this.btnUpgrade.Name = "btnUpgrade";
+            this.btnUpgrade.Size = new System.Drawing.Size(60, 60);
+            this.btnUpgrade.TabIndex = 50;
+            this.btnUpgrade.UseVisualStyleBackColor = false;
+            // 
+            // portToolStripMenuItem
+            // 
+            this.portToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.portToolStripMenuItem.AutoSize = false;
+            this.portToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.portToolStripMenuItem.Name = "portToolStripMenuItem";
+            this.portToolStripMenuItem.Size = new System.Drawing.Size(200, 25);
+            this.portToolStripMenuItem.Text = "Port";
+            this.portToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -531,6 +588,10 @@
             this.BackgroundImage = global::MultiFaceRec.Properties.Resources.Background_nishon1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1844, 875);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnUpgrade);
+            this.Controls.Add(this.btnTake);
             this.Controls.Add(this.txtbaho);
             this.Controls.Add(this.txtball);
             this.Controls.Add(this.txtn3);
@@ -542,8 +603,8 @@
             this.Controls.Add(this.txthaqida);
             this.Controls.Add(this.txtbolinma);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.btnSearchPerson);
-            this.Controls.Add(this.btnAddPerson);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtunvoni);
             this.Controls.Add(this.txtism);
             this.Controls.Add(this.txtfamiliya);
@@ -589,7 +650,7 @@
         private System.Windows.Forms.PictureBox g6;
         private System.Windows.Forms.PictureBox r5;
         private System.Windows.Forms.PictureBox g5;
-        private System.Windows.Forms.Button btnSearchPerson;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.PictureBox g9;
         private System.Windows.Forms.PictureBox r8;
         private System.Windows.Forms.TextBox txtunvoni;
@@ -599,7 +660,7 @@
         private System.Windows.Forms.PictureBox g10;
         private System.Windows.Forms.PictureBox picInfoPanel;
         private System.Windows.Forms.PictureBox r10;
-        private System.Windows.Forms.Button btnAddPerson;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtid;
         private Emgu.CV.UI.ImageBox imageBoxFrameGrabber;
         private System.Windows.Forms.Panel target;
@@ -609,7 +670,6 @@
         private System.Windows.Forms.ToolStripMenuItem malumotlarBazasiBilanBoglashToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem yangiMalumotlarBazasiYaratishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Malumotlarbazasijoylashuvinikorish;
-        private System.Windows.Forms.ToolStripMenuItem parolniAlmashtirishToolStripMenuItem;
         private System.Windows.Forms.PictureBox picFace;
         private System.Windows.Forms.TextBox txtbolinma;
         private System.Windows.Forms.TextBox txthaqida;
@@ -621,6 +681,11 @@
         private System.Windows.Forms.TextBox txts3;
         private System.Windows.Forms.TextBox txtbaho;
         private System.Windows.Forms.TextBox txtball;
+        private System.Windows.Forms.Button btnTake;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnUpgrade;
+        private System.Windows.Forms.ToolStripMenuItem portToolStripMenuItem;
     }
 }
 
