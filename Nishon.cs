@@ -48,15 +48,26 @@ namespace MultiFaceRec
         string unvoni = string.Empty;
         string bolinma = string.Empty;
         string haqida = string.Empty;
+
         string s1 = string.Empty;
         string s2 = string.Empty;
         string s3 = string.Empty;
+
         string n1 = string.Empty;
         string n2 = string.Empty;
         string n3 = string.Empty;
+
         string ball = string.Empty;
         string baho = string.Empty;
+
+        // yangi maydonlar
+        string sball = string.Empty;              // string qilib saqlaymiz (keyin int.TryParse qilsangiz bo‘ladi)
+        string nball = string.Empty;              // string qilib saqlaymiz (keyin int.TryParse qilsangiz bo‘ladi)
+        string songgiotishsanasi = string.Empty;  // foydalanuvchi "dd.MM.yyyy" formatida kiritadi
+        string otishdavomiyligi = string.Empty;   // foydalanuvchi "hh:mm:ss" formatida kiritadi
+
         Image image = null;
+
 
 
         string connectionString = string.Empty;
@@ -487,7 +498,7 @@ namespace MultiFaceRec
                 {
                     connection.Open();
 
-                    // Avval jadval mavjudligini tekshiramiz
+                    // Jadval mavjudligini tekshirish
                     string checkQuery = @"SELECT COUNT(*) 
                                   FROM INFORMATION_SCHEMA.TABLES 
                                   WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'users'";
@@ -517,6 +528,10 @@ namespace MultiFaceRec
                     [n3] NVARCHAR(50) NULL,
                     [ball] NVARCHAR(50) NULL,
                     [baho] NVARCHAR(50) NULL,
+                    [sball] NVARCHAR(50) NULL,
+                    [nball] NVARCHAR(50) NULL,
+                    [songgiotishsanasi] DATE NULL,
+                    [otishdavomiyligi] TIME NULL,
                     [image] VARBINARY(MAX) NULL,
                     CONSTRAINT CK_users_id_digits CHECK ([id] NOT LIKE '%[^0-9]%')
                 )";
@@ -529,7 +544,30 @@ namespace MultiFaceRec
                     }
                     else
                     {
-                        ShowNotification("users jadvali allaqachon mavjud.");
+                        // Agar jadval mavjud bo‘lsa, yangi ustunlarni qo‘shish
+                        string[] newColumns = {
+                    "sball NVARCHAR(50)",
+                    "nball NVARCHAR(50)",
+                    "songgiotishsanasi DATE",
+                    "otishdavomiyligi TIME"
+                };
+
+                        foreach (var col in newColumns)
+                        {
+                            string alterQuery = $@"
+                    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS 
+                                   WHERE TABLE_NAME = 'users' AND COLUMN_NAME = '{col.Split(' ')[0]}')
+                    BEGIN
+                        ALTER TABLE [dbo].[users] ADD {col}
+                    END";
+
+                            using (SqlCommand alterCmd = new SqlCommand(alterQuery, connection))
+                            {
+                                alterCmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        ShowNotification("users jadvaliga yangi ustunlar qo‘shildi (agar mavjud bo‘lmasa).");
                     }
                 }
                 catch (Exception ex)
@@ -538,6 +576,7 @@ namespace MultiFaceRec
                 }
             }
         }
+
 
         // Image obyektini byte[] massiviga aylantiruvchi metod
         private byte[] ImageToByteArray(Image image)
@@ -751,26 +790,31 @@ namespace MultiFaceRec
                     connection.Open();
 
                     string updateQuery = @"
-                UPDATE users 
-                SET familiya = @familiya,
-                    ism = @ism,
-                    sharif = @sharif,
-                    unvoni = @unvoni,
-                    bolinma = @bolinma,
-                    haqida = @haqida,
-                    s1 = @s1,
-                    s2 = @s2,
-                    s3 = @s3,
-                    n1 = @n1,
-                    n2 = @n2,
-                    n3 = @n3,
-                    ball = @ball,
-                    baho = @baho,
-                    image = @image
-                WHERE id = @id";
+        UPDATE users 
+        SET familiya = @familiya,
+            ism = @ism,
+            sharif = @sharif,
+            unvoni = @unvoni,
+            bolinma = @bolinma,
+            haqida = @haqida,
+            s1 = @s1,
+            s2 = @s2,
+            s3 = @s3,
+            n1 = @n1,
+            n2 = @n2,
+            n3 = @n3,
+            ball = @ball,
+            baho = @baho,
+            sball = @sball,
+            nball = @nball,
+            songgiotishsanasi = @songgiotishsanasi,
+            otishdavomiyligi = @otishdavomiyligi,
+            image = @image
+        WHERE id = @id";
 
                     SqlCommand cmd = new SqlCommand(updateQuery, connection);
 
+                    // Oddiy matn maydonlari
                     cmd.Parameters.AddWithValue("@familiya", familiya);
                     cmd.Parameters.AddWithValue("@ism", ism);
                     cmd.Parameters.AddWithValue("@sharif", sharif);
@@ -786,9 +830,27 @@ namespace MultiFaceRec
                     cmd.Parameters.AddWithValue("@ball", ball);
                     cmd.Parameters.AddWithValue("@baho", baho);
 
+                    // Yangi maydonlar
+                    cmd.Parameters.AddWithValue("@sball", sball);
+                    cmd.Parameters.AddWithValue("@nball", nball);
+
+                    // Sana (agar txtBox bo‘lsa, DateTime.TryParse bilan aylantiring)
+                    DateTime songgiSana;
+                    if (DateTime.TryParse(songgiotishsanasi, out songgiSana))
+                        cmd.Parameters.AddWithValue("@songgiotishsanasi", songgiSana);
+                    else
+                        cmd.Parameters.AddWithValue("@songgiotishsanasi", DBNull.Value);
+
+                    // Vaqt (TimeSpan)
+                    TimeSpan davomiylik;
+                    if (TimeSpan.TryParse(otishdavomiyligi, out davomiylik))
+                        cmd.Parameters.AddWithValue("@otishdavomiyligi", davomiylik);
+                    else
+                        cmd.Parameters.AddWithValue("@otishdavomiyligi", DBNull.Value);
+
                     // Rasmni byte[] ga aylantirish
                     byte[] imageBytes = ImageToByteArray(image);
-                    cmd.Parameters.AddWithValue("@image", imageBytes);
+                    cmd.Parameters.AddWithValue("@image", (object)imageBytes ?? DBNull.Value);
 
                     cmd.Parameters.AddWithValue("@id", id);
 
