@@ -225,7 +225,7 @@
             this.btnSearch.Location = new System.Drawing.Point(323, 195);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(60, 60);
-            this.btnSearch.TabIndex = 36;
+            this.btnSearch.TabIndex = 0;
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearchPerson_Click);
             // 
@@ -334,7 +334,7 @@
             this.btnAdd.Location = new System.Drawing.Point(323, 63);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(60, 60);
-            this.btnAdd.TabIndex = 35;
+            this.btnAdd.TabIndex = 2;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAddPerson_Click);
             // 
@@ -459,7 +459,7 @@
             this.btnTake.Location = new System.Drawing.Point(323, 129);
             this.btnTake.Name = "btnTake";
             this.btnTake.Size = new System.Drawing.Size(60, 60);
-            this.btnTake.TabIndex = 49;
+            this.btnTake.TabIndex = 1;
             this.btnTake.UseVisualStyleBackColor = false;
             this.btnTake.Click += new System.EventHandler(this.btnTake_Click);
             // 
@@ -472,7 +472,7 @@
             this.btnDelete.Location = new System.Drawing.Point(33, 63);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(60, 60);
-            this.btnDelete.TabIndex = 52;
+            this.btnDelete.TabIndex = 5;
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -485,7 +485,7 @@
             this.btnClear.Location = new System.Drawing.Point(33, 195);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(60, 60);
-            this.btnClear.TabIndex = 51;
+            this.btnClear.TabIndex = 3;
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -498,7 +498,7 @@
             this.btnUpgrade.Location = new System.Drawing.Point(33, 129);
             this.btnUpgrade.Name = "btnUpgrade";
             this.btnUpgrade.Size = new System.Drawing.Size(60, 60);
-            this.btnUpgrade.TabIndex = 50;
+            this.btnUpgrade.TabIndex = 4;
             this.btnUpgrade.UseVisualStyleBackColor = false;
             this.btnUpgrade.Click += new System.EventHandler(this.btnUpgrade_Click);
             // 
@@ -556,10 +556,10 @@
             // 
             this.btnLocation.AutoSize = true;
             this.btnLocation.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnLocation.Location = new System.Drawing.Point(420, 0);
+            this.btnLocation.Location = new System.Drawing.Point(494, 0);
             this.btnLocation.Name = "btnLocation";
-            this.btnLocation.Size = new System.Drawing.Size(193, 30);
-            this.btnLocation.TabIndex = 2;
+            this.btnLocation.Size = new System.Drawing.Size(225, 30);
+            this.btnLocation.TabIndex = 8;
             this.btnLocation.Text = "Ma\'lumotlar bazasi joylashuvini ko\'rish";
             this.btnLocation.UseVisualStyleBackColor = true;
             this.btnLocation.Click += new System.EventHandler(this.Malumotlarbazasijoylashuvinikorish_Click);
@@ -568,10 +568,10 @@
             // 
             this.btnCreate.AutoSize = true;
             this.btnCreate.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCreate.Location = new System.Drawing.Point(249, 0);
+            this.btnCreate.Location = new System.Drawing.Point(290, 0);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(171, 30);
-            this.btnCreate.TabIndex = 1;
+            this.btnCreate.Size = new System.Drawing.Size(204, 30);
+            this.btnCreate.TabIndex = 7;
             this.btnCreate.Text = "Yangi ma\'lumotlar bazasi yaratish";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.yangiMalumotlarBazasiYaratishToolStripMenuItem_Click);
@@ -582,8 +582,8 @@
             this.btnConnect.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnConnect.Location = new System.Drawing.Point(0, 0);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(249, 30);
-            this.btnConnect.TabIndex = 0;
+            this.btnConnect.Size = new System.Drawing.Size(290, 30);
+            this.btnConnect.TabIndex = 6;
             this.btnConnect.Text = "Ma\'lumotlar bazasi bilan bog\'lash yoki almashtirish";
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.malumotlarBazasiBilanBoglashToolStripMenuItem_Click);

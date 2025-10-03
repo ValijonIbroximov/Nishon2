@@ -18,6 +18,10 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
 
 namespace MultiFaceRec
 {
@@ -68,7 +72,7 @@ namespace MultiFaceRec
         string songgiotishsanasi = string.Empty;  // foydalanuvchi "dd.MM.yyyy" formatida kiritadi
         string otishdavomiyligi = string.Empty;   // foydalanuvchi "hh:mm:ss" formatida kiritadi
 
-        Image image = null;
+        System.Drawing.Image image = null;
 
 
 
@@ -723,7 +727,7 @@ CREATE TABLE [dbo].[users]
 
 
         // Image obyektini byte[] massiviga aylantiruvchi metod
-        private byte[] ImageToByteArray(Image image)
+        private byte[] ImageToByteArray(System.Drawing.Image image)
         {
             using (MemoryStream memoryStream = new MemoryStream())
             {
@@ -732,11 +736,11 @@ CREATE TABLE [dbo].[users]
             }
         }
 
-        private Image ByteArrayToImage(byte[] byteArray)
+        private System.Drawing.Image ByteArrayToImage(byte[] byteArray)
         {
             using (MemoryStream memoryStream = new MemoryStream(byteArray))
             {
-                Image image = Image.FromStream(memoryStream);
+                System.Drawing.Image image = System.Drawing.Image.FromStream(memoryStream);
                 return image;
             }
         }
