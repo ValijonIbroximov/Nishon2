@@ -123,33 +123,55 @@ namespace MultiFaceRec
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            // Rasmlarni yumaloq shaklga keltirish uchun (agar kerak bo‘lsa)
-            CirclePic(g6); CirclePic(g7); CirclePic(g8); CirclePic(g9); CirclePic(g10);
-            CirclePic(r6); CirclePic(r7); CirclePic(r8); CirclePic(r9); CirclePic(r10);
-            this.WindowState = FormWindowState.Maximized;
-            // Asosiy.cs dan connection stringni olish
-            connectionString = loadConnectionString();
+            try
+            {
+                // Rasmlarni yumaloq shaklga keltirish uchun (agar kerak bo‘lsa)
+                CirclePic(g6); CirclePic(g7); CirclePic(g8); CirclePic(g9); CirclePic(g10);
+                CirclePic(r6); CirclePic(r7); CirclePic(r8); CirclePic(r9); CirclePic(r10);
 
-            // Ma'lumotlar bazasiga ulanishni tekshirish
-            if (!checkDatabaseConnection(connectionString))
-            {
-                MessageBox.Show("Ma'lumotlar bazasi joylashuvi aniqlanmadi.\n" +
+                this.WindowState = FormWindowState.Maximized;
+
+                // 🔹 Asosiy.cs dan connection stringni olish
+                connectionString = loadConnectionString();
+
+                if (string.IsNullOrEmpty(connectionString))
+                {
+                    ShowNotification("⚠️ Connection string topilmadi. Keyinchalik bog‘lash mumkin.");
+                    return; // Dastur ishlashda davom etadi
+                }
+
+                // 🔹 Ma'lumotlar bazasiga ulanishni tekshirish
+                if (!checkDatabaseConnection(connectionString))
+                {
+                    MessageBox.Show(
+                        "Ma'lumotlar bazasi joylashuvi aniqlanmadi.\n" +
                         "Ma'lumotlar bazasini qayta bog'lang yoki yarating!",
-                        "Xatolik", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                malumotlarBazasiBilanBoglashToolStripMenuItem_Click(sender, e);
-            }
-            else
-            {
-                // Bog'lanish muvaffaqiyatli, users jadvalini tekshirish
+                        "Xatolik",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    // ❌ DB topilmasa ham dastur ishlashda davom etadi
+                    return;
+                }
+
+                // 🔹 Agar jadval mavjud bo‘lmasa — yaratish
                 if (!checkTableExistence(connectionString))
                 {
-                    ShowNotification("Ma'lumotlar bazasida 'users' jadvali mavjud emas. Jadvalni yaratilmoqda...");
+                    ShowNotification("📂 'users' jadvali mavjud emas. Endi yaratilmoqda...");
                     createTable(connectionString);
                 }
+
+                // 🔹 Training ma’lumotlarini DB dan yuklash
+                LoadTrainingDataFromDB();
             }
-            connectionString = loadConnectionString();
-            LoadTrainingDataFromDB();
+            catch (Exception ex)
+            {
+                ShowNotification("❌ FrmPrincipal_Load da xatolik: " + ex.Message);
+                MessageBox.Show("❌ FrmPrincipal_Load da xatolik: " + ex.Message);
+                // Dastur ishlashni davom ettiradi
+            }
         }
+
 
         public FrmPrincipal()
         {
@@ -187,6 +209,7 @@ namespace MultiFaceRec
             catch (Exception ex)
             {
                 ShowNotification("Database bo'sh yoki ulanishda xato: " + ex.Message);
+                MessageBox.Show("Database bo'sh yoki ulanishda xato: " + ex.Message);
             }
         }
 
