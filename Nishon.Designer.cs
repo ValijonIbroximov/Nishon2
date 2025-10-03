@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.r7 = new System.Windows.Forms.PictureBox();
             this.g7 = new System.Windows.Forms.PictureBox();
             this.r6 = new System.Windows.Forms.PictureBox();
@@ -65,6 +66,8 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.panelScore = new System.Windows.Forms.Panel();
+            this.pnlStopShoot = new System.Windows.Forms.Panel();
+            this.btnStopShooting = new System.Windows.Forms.Label();
             this.txtbaho = new System.Windows.Forms.TextBox();
             this.txtball = new System.Windows.Forms.TextBox();
             this.txtotishdavomiyligi = new System.Windows.Forms.TextBox();
@@ -101,8 +104,6 @@
             this.lblMsg = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelLeftElements = new System.Windows.Forms.Panel();
-            this.pnlStopShoot = new System.Windows.Forms.Panel();
-            this.btnStopShooting = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.r7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.g7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.r6)).BeginInit();
@@ -121,6 +122,7 @@
             this.panelInfo.SuspendLayout();
             this.header.SuspendLayout();
             this.panelScore.SuspendLayout();
+            this.pnlStopShoot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBallN)).BeginInit();
@@ -135,7 +137,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picOtishSanasi)).BeginInit();
             this.panelRightElements.SuspendLayout();
             this.panelLeftElements.SuspendLayout();
-            this.pnlStopShoot.SuspendLayout();
             this.SuspendLayout();
             // 
             // r7
@@ -347,6 +348,7 @@
             this.txtid.Name = "txtid";
             this.txtid.Size = new System.Drawing.Size(265, 28);
             this.txtid.TabIndex = 156;
+            this.txtid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtid_KeyDown);
             this.txtid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.faqatraqam);
             // 
             // imageBoxFrameGrabber
@@ -628,6 +630,29 @@
             this.panelScore.Name = "panelScore";
             this.panelScore.Size = new System.Drawing.Size(467, 800);
             this.panelScore.TabIndex = 56;
+            // 
+            // pnlStopShoot
+            // 
+            this.pnlStopShoot.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameButton;
+            this.pnlStopShoot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlStopShoot.Controls.Add(this.btnStopShooting);
+            this.pnlStopShoot.Location = new System.Drawing.Point(96, 630);
+            this.pnlStopShoot.Name = "pnlStopShoot";
+            this.pnlStopShoot.Size = new System.Drawing.Size(279, 61);
+            this.pnlStopShoot.TabIndex = 81;
+            // 
+            // btnStopShooting
+            // 
+            this.btnStopShooting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStopShooting.Font = new System.Drawing.Font("Algerian", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStopShooting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnStopShooting.Location = new System.Drawing.Point(0, 0);
+            this.btnStopShooting.Name = "btnStopShooting";
+            this.btnStopShooting.Size = new System.Drawing.Size(279, 61);
+            this.btnStopShooting.TabIndex = 0;
+            this.btnStopShooting.Text = "QOLDIRILSIN";
+            this.btnStopShooting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnStopShooting.Click += new System.EventHandler(this.btnStopShooting_Click);
             // 
             // txtbaho
             // 
@@ -1021,29 +1046,6 @@
             this.panelLeftElements.Size = new System.Drawing.Size(810, 845);
             this.panelLeftElements.TabIndex = 60;
             // 
-            // pnlStopShoot
-            // 
-            this.pnlStopShoot.BackgroundImage = global::MultiFaceRec.Properties.Resources.frameButton;
-            this.pnlStopShoot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlStopShoot.Controls.Add(this.btnStopShooting);
-            this.pnlStopShoot.Location = new System.Drawing.Point(96, 630);
-            this.pnlStopShoot.Name = "pnlStopShoot";
-            this.pnlStopShoot.Size = new System.Drawing.Size(279, 61);
-            this.pnlStopShoot.TabIndex = 81;
-            // 
-            // btnStopShooting
-            // 
-            this.btnStopShooting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnStopShooting.Font = new System.Drawing.Font("Algerian", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStopShooting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnStopShooting.Location = new System.Drawing.Point(0, 0);
-            this.btnStopShooting.Name = "btnStopShooting";
-            this.btnStopShooting.Size = new System.Drawing.Size(279, 61);
-            this.btnStopShooting.TabIndex = 0;
-            this.btnStopShooting.Text = "QOLDIRILSIN";
-            this.btnStopShooting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnStopShooting.Click += new System.EventHandler(this.btnStopShooting_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1057,8 +1059,9 @@
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.header);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrincipal";
-            this.Text = "Camera Input & Face Detection";
+            this.Text = "Nishon";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.r7)).EndInit();
@@ -1082,6 +1085,7 @@
             this.header.PerformLayout();
             this.panelScore.ResumeLayout(false);
             this.panelScore.PerformLayout();
+            this.pnlStopShoot.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBallN)).EndInit();
@@ -1097,7 +1101,6 @@
             this.panelRightElements.ResumeLayout(false);
             this.panelRightElements.PerformLayout();
             this.panelLeftElements.ResumeLayout(false);
-            this.pnlStopShoot.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

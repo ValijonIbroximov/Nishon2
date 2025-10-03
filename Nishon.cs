@@ -1303,6 +1303,37 @@ WHERE id = @id";
             }
         }
 
+
+        private void txtid_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter) // faqat Enter bosilganda ishlaydi
+                {
+                    e.SuppressKeyPress = true; // Enter bosilganda beep chiqmasin
+                    string enteredId = txtid.Text.Trim();
+
+                    if (!string.IsNullOrEmpty(enteredId))
+                    {
+                        bool found;
+                        LoadUserDataById(enteredId, out found);
+
+                        if (!found)
+                        {
+                            btnClear_Click(null, EventArgs.Empty);
+                            ShowNotification("ID bo‘yicha ma'lumot topilmadi.");
+                            txtid.Text = enteredId; // ID ni saqlab qolamiz
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowNotification("ID bo‘yicha qidirishda xatolik: " + ex.Message);
+            }
+        }
+
+
         /// <summary>
         /// Portlar ro‘yxatini boshlang‘ich holatga keltirish
         /// </summary>
